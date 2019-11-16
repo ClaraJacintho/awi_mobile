@@ -1,4 +1,4 @@
-node_modules/**/*
+node_modules/
 .expo/*
 npm-debug.*
 *.jks
@@ -10,5 +10,7 @@ npm-debug.*
 web-build/
 web-report/
 
+ios/build
+ios/DerivedData
 # macOS
 .DS_Store
