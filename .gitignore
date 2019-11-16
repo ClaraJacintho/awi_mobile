@@ -12,5 +12,6 @@ web-report/
 
 ios/build
 ios/DerivedData
+ios/Pods
 # macOS
 .DS_Store
