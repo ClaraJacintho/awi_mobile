@@ -10,6 +10,9 @@ npm-debug.*
 web-build/
 web-report/
 
+.idea
+android/
+
 ios/build
 ios/DerivedData
 ios/Pods
