@@ -6,7 +6,7 @@ class FormButton extends React.Component {
   render() {
     const {label, onPress} = this.props;
     return (
-      <TouchableOpacity style={styles.containter} onPress={onPress}>
+      <TouchableOpacity style={styles.container} onPress={onPress}>
         <Text>{label}</Text>
       </TouchableOpacity>
     );
