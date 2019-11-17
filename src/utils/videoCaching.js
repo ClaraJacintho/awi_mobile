@@ -24,7 +24,7 @@ function storeVideo(videoURL) {
           })
             .promise.then(res => {
               console.log(res);
-              resolve(res);
+              resolve(filename);
             })
             .catch(err => {
               reject(err);

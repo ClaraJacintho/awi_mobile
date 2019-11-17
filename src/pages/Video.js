@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {View, StyleSheet, Text, Button, Alert} from 'react-native';
+import {View, StyleSheet, Text, Button} from 'react-native';
 import Video from 'react-native-video';
-import videoCaching from '../utils/videoCaching';
+import SaveVideosContainer from '../containers/SaveVideosContainer';
 
 const styles = StyleSheet.create({
   container: {
@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   },
   video: {
     position: 'absolute',
-    top: '10%',
+    top: '0%',
     width: '100%',
     left: 0,
     bottom: '10%',
@@ -33,22 +33,16 @@ const videoURI =
 export default class VideoPage extends React.Component {
   constructor(props) {
     super(props);
-    this.downloadVideo = this.downloadVideo.bind(this);
+    this.printState = this.printState.bind(this);
   }
 
-  downloadVideo = () => {
-    videoCaching
-      .storeVideo(videoURI)
-      .then(() => Alert.alert('Success', 'Downloaded!'))
-      .catch(() =>
-        Alert.alert('Error', 'Already downloaded or problem with the storage.'),
-      );
+  printState = () => {
+    console.log(this.state);
   };
 
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.titleText}>Now playing</Text>
         <Video
           source={{uri: videoURI}}
           style={styles.video}
@@ -60,7 +54,8 @@ export default class VideoPage extends React.Component {
           resizeMode={'contain'}
           fullScreen={'true'}
         />
-        <Button title={'Download...'} onPress={this.downloadVideo} />
+        <SaveVideosContainer videoURI={videoURI} />
+        <Button title={'Test'} onPress={this.printState} />
       </View>
     );
   }

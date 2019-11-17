@@ -10,7 +10,7 @@ const AppNavigator = createStackNavigator(
     Video: Video,
   },
   {
-    initialRouteName: 'Login',
+    initialRouteName: 'Video',
   },
 );
 
