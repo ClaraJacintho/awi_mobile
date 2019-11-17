@@ -3,7 +3,7 @@ import * as RNFS from 'react-native-fs';
 function storeVideo(videoURL) {
     return new Promise((resolve, reject) => {
         const filename = videoURL.substring(videoURL.lastIndexOf("/") + 1, videoURL.length);
-        const path_name = (RNFS.DocumentDirectoryPath + filename).replace(/%20/g, "_");
+        const path_name = (RNFS.DocumentDirectoryPath + '/' + filename).replace(/%20/g, "_");
 
         RNFS.exists(path_name).then(exists => {
             if (exists) {
@@ -27,26 +27,20 @@ function storeVideo(videoURL) {
     });
 }
 
-function retrieveVideo(filename) {
+function retrieveVideoPath(filename) {
     return new Promise((resolve, reject) => {
-        RNFS.readDir(RNFS.DocumentDirectoryPath)
-            .then(result => {
-                result.forEach(element => {
-                    if (element.name === filename.replace(/%20/g, "_")) {
-                        resolve(element.path);
-                    }
-                });
-                resolve(null);
-            })
-            .catch(err => {
-                reject(err);
+        const path = RNFS.DocumentDirectoryPath + '/' + filename.replace(/%20/g, "_");
+        RNFS.exists(path)
+            .then((exists) => {
+                if(exists) resolve(path);
+                else reject(new Error("File is not present"))
             });
     });
 }
 
 function deleteVideo(filename) {
     return new Promise((resolve, reject) => {
-        const path = RNFS.DocumentDirectoryPath + '/test.txt';
+        const path = RNFS.DocumentDirectoryPath + '/' + filename.replace(/%20/g, "_");
 
         return RNFS.unlink(path)
             .then(() => {
@@ -60,6 +54,6 @@ function deleteVideo(filename) {
 
 export default {
     storeVideo,
-    retrieveVideo,
+    retrieveVideoPath,
     deleteVideo,
 };
