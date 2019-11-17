@@ -59,10 +59,10 @@ export default class SliderEntry extends Component {
         activeOpacity={1}
         style={styles.slideInnerContainer}
         onPress={() => {
-          // eslint-disable-next-line no-alert
-          //alert(`You've clicked '${title}'`);
-          const {navigate} = this.props.navigation;
-          navigate('CoursePage', {user: this.state.username});
+          //eslint-disable-next-line no-alert
+          alert(`You've clicked '${title}'`);
+          //const {navigate} = this.props.navigation;
+          //navigate('CoursePage', {user: this.state.username});
         }}>
         <View style={styles.shadow} />
         <View

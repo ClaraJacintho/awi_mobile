@@ -37,7 +37,6 @@ export default class Home extends React.Component {
           Welcome {navigation.getParam('user', 'user')}
         </Text>
         <Carousel
-          ref={c => (this._slider1Ref = c)}
           data={ENTRIES1}
           renderItem={this._renderItemWithParallax()}
           sliderWidth={sliderWidth}

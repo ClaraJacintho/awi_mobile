@@ -33,7 +33,7 @@ export default class Login extends React.Component {
       alert('Please fill your username and password!');
     } else {
       // auth
-      console.log('a');
+      console.log('login in');
       /*
       await connexionAction.askToken(this.state.username, this.state.password)
       const { token } = this.props
@@ -43,7 +43,7 @@ export default class Login extends React.Component {
         alert(this.props.error)
       )
       */
-     navigate('CoursePage', {user: this.state.username })
+     navigate('App', {user: this.state.username })
     }
   };
 

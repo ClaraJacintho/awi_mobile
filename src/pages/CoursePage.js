@@ -6,12 +6,12 @@ export default class CoursePage extends React.Component {
     
     render() {
         const data = {characters: [
-            {id:123, name:'Sheldon', profession:'Theoretical Physicist', image="..\assets\youtube.jpg" },
-            {id:234, name:'Leonard', profession:'Experimental Physicist', image="..\assets\youtube.jpg"  },
-            {id:345, name:'Howard', profession:'Mechanical Engineer', image="..\assets\youtube.jpg" },
-            {id:456, name:'Raj', profession:'Astro-Physicist', image="..\assets\youtube.jpg" },
-            {id:567, name:'Amy', profession:'Neurobiologist', image="..\assets\youtube.jpg" },
-            {id:678, name:'Bernadette', profession:'Microbiologist', image="..\assets\youtube.jpg" },
+            {id:123, name:'Sheldon', profession:'Theoretical Physicist', image:"../assets/youtube.jpg" },
+            {id:234, name:'Leonard', profession:'Experimental Physicist', image:"../assets/youtube.jpg" },
+            {id:345, name:'Howard', profession:'Mechanical Engineer', image:"../assets/youtube.jpg"},
+            {id:456, name:'Raj', profession:'Astro-Physicist', image:"../assets/youtube.jpg"},
+            {id:567, name:'Amy', profession:'Neurobiologist', image:"../assets/youtube.jpg"},
+            {id:678, name:'Bernadette', profession:'Microbiologist', image:"../assets/youtube.jpg" },
         ]};
         const list = [{key:'Sheldon', prof:'Theoretical Physicist'},
                      {key:'Leonard', prof:'Experimental Physicist'},
