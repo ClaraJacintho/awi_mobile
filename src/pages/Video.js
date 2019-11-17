@@ -9,13 +9,15 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         flexDirection: 'column',
         alignItems: 'center',
+        width: "100%",
         backgroundColor: 'black',
     },
     video: {
         position:'absolute',
-        top: "30%",
+        top: "10%",
+        width: "100%",
         left: 0,
-        bottom: "40%",
+        bottom: "10%",
         right: 0,
     },
     titleText: {
@@ -51,6 +53,8 @@ export default class VideoPage extends React.Component {
                     }}
                     controls={true}
                     playWhenInactive={true}
+                    resizeMode={'contain'}
+                    fullScreen={'true'}
                 />
                 <Button title={"Download..."} onPress={this.downloadVideo}/>
             </View>
