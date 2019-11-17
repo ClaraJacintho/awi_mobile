@@ -22,6 +22,12 @@ export default class DownloadVideoButton extends React.Component {
   };
 
   render() {
-    return <Button title={'Download...'} onPress={this.downloadVideo} />;
+    return (
+      <Button
+        title={'Download'}
+        disabled={false}
+        onPress={this.downloadVideo}
+      />
+    );
   }
 }

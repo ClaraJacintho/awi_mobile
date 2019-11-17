@@ -1,5 +1,4 @@
 import React from 'react';
-// import {StyleSheet, Text, View} from 'react-native';
 import AppNavigator from './src/AppNavigator';
 import {createAppContainer} from 'react-navigation';
 import {Provider} from 'react-redux';

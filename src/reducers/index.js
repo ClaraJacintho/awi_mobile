@@ -7,9 +7,9 @@ import video from './videoReducer';
 import savedVideos from './savedVideosReducer';
 
 export default combineReducers({
-  courses: course,
   network,
-  user: user,
-  video: video,
-  savedVideos: savedVideos,
+  course,
+  user,
+  video,
+  savedVideos,
 });

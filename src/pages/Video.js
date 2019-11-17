@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, StyleSheet, Text, Button} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import Video from 'react-native-video';
 import SaveVideosContainer from '../containers/SaveVideosContainer';
 
@@ -14,16 +14,11 @@ const styles = StyleSheet.create({
   },
   video: {
     position: 'absolute',
-    top: '0%',
+    top: 0,
     width: '100%',
     left: 0,
     bottom: '10%',
     right: 0,
-  },
-  titleText: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: 'white',
   },
 });
 
@@ -55,7 +50,6 @@ export default class VideoPage extends React.Component {
           fullScreen={'true'}
         />
         <SaveVideosContainer videoURI={videoURI} />
-        <Button title={'Test'} onPress={this.printState} />
       </View>
     );
   }
