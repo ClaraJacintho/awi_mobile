@@ -11,7 +11,8 @@ web-build/
 web-report/
 
 .idea
-android/
+android/app/build
+android/.gradle
 
 ios/build
 ios/DerivedData

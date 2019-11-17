@@ -1,17 +1,18 @@
 import {
-    FETCH_USER_REQUEST
-    FETCH_USER_SUCCESS
+    FETCH_USER_REQUEST,
+    FETCH_USER_SUCCESS,
     FETCH_USER_FAILURE
 } from './actionTypes';
 import axios from 'axios';
 
-apiUrl = ""
+apiUrl = 'https://twiddle-back.igpolytech.fr/api'
 
 export const fetchUser = () => {
-  function thunk(dispatch({ type: FETCH_USER_REQUEST})) {
-    return axios.get(`${apiUrl}/user`)
+  function thunk(dispatch) {
+    console.log('action')
+    return axios.get(`${apiUrl}/api-status`)
       .then((response) => {
-        dispatch(fetchUserSuccess(response.json));
+        dispatch(fetchUserSuccess(response.data));
       })
       .catch((error) => {
         dispatch(fetchUserFailure(error));
@@ -24,9 +25,7 @@ export const fetchUser = () => {
 export const fetchUserSuccess =  (data) => {
     return {
         type: FETCH_USER_SUCCESS,
-        payload: {
-            data
-        }
+        key: data.status,
     }
  }
 

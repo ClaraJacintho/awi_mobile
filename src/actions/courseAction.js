@@ -1,6 +1,6 @@
 import {
-    FETCH_COURSE_REQUEST
-    FETCH_COURSE_SUCCESS
+    FETCH_COURSE_REQUEST,
+    FETCH_COURSE_SUCCESS,
     FETCH_COURSE_FAILURE
 } from './actionTypes';
 import axios from 'axios';
