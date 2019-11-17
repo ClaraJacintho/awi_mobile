@@ -1,23 +1,29 @@
 import * as RNFS from 'react-native-fs';
 
 function storeVideo(videoURL) {
-    let filename = videoURL.substring(videoURL.lastIndexOf("/") + 1, videoURL.length);
-    let path_name = RNFS.DocumentDirectoryPath + filename;
+    return new Promise((resolve, reject) => {
+        const filename = videoURL.substring(videoURL.lastIndexOf("/") + 1, videoURL.length);
+        const path_name = (RNFS.DocumentDirectoryPath + filename).replace(/%20/g, "_");
 
-    RNFS.exists(path_name).then(exists => {
-        if (exists) {
-            throw new Error("Already downloaded");
-        } else {
-            RNFS.downloadFile({
-                fromUrl: videoURL,
-                toFile: path_name.replace(/%20/g, "_"),
-                background: true
-            }).promise.then(res => {
-                return res;
-            }).catch(err => {
-                throw err;
-            });
-        }
+        RNFS.exists(path_name).then(exists => {
+            if (exists) {
+                reject(Error("Already downloaded"));
+            } else {
+                console.log("Downloading");
+                RNFS.downloadFile({
+                    fromUrl: videoURL,
+                    toFile: path_name,
+                    background: true
+                }).promise.then(res => {
+                    console.log(res);
+                    resolve(res);
+                }).catch(err => {
+                    reject(err);
+                });
+            }
+        }).catch(err => {
+            reject(err);
+        });
     });
 }
 
@@ -38,7 +44,22 @@ function retrieveVideo(filename) {
     });
 }
 
+function deleteVideo(filename) {
+    return new Promise((resolve, reject) => {
+        const path = RNFS.DocumentDirectoryPath + '/test.txt';
+
+        return RNFS.unlink(path)
+            .then(() => {
+                resolve(true);
+            })
+            .catch((err) => {
+                reject(err);
+            });
+    })
+}
+
 export default {
     storeVideo,
     retrieveVideo,
+    deleteVideo,
 };

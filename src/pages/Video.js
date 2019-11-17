@@ -9,11 +9,11 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         flexDirection: 'column',
         alignItems: 'center',
-        backgroundColor: 'skyblue',
+        backgroundColor: 'black',
     },
     video: {
         position:'absolute',
-        top: "10%",
+        top: "30%",
         left: 0,
         bottom: "40%",
         right: 0,
@@ -21,10 +21,11 @@ const styles = StyleSheet.create({
     titleText: {
         fontSize: 20,
         fontWeight: 'bold',
+        color: 'white'
     },
   });
 
-const videoURI = this.store.videoURI || "https://rawgit.com/mediaelement/mediaelement-files/master/big_buck_bunny.mp4";
+const videoURI = "https://rawgit.com/mediaelement/mediaelement-files/master/big_buck_bunny.mp4";
 
 export default class VideoPage extends React.Component {
     constructor(props) {
@@ -33,13 +34,9 @@ export default class VideoPage extends React.Component {
     }
 
     downloadVideo = () => {
-        Alert.alert("Download", "Downloading video");
-        try {
-            const res = videoCaching.storeVideo(videoURI);
-            Alert.alert("Success", "Downloaded!" + res);
-        } catch (e) {
-            Alert.alert("Error", e);
-        }
+        videoCaching.storeVideo(videoURI)
+            .then(() => Alert.alert("Success", "Downloaded!"))
+            .catch(() => Alert.alert("Error", "Already downloaded or problem with the storage."));
     };
 
     render() {
