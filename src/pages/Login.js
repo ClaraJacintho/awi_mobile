@@ -3,6 +3,8 @@ import {StyleSheet, Text, View, Button} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 import {colors, fonts, padding, dimensions} from './../styles/base.js';
 import FormButton from '../components/FormButton';
+import axios from 'axios';
+import connexionAction from '../actions/connexionActions'
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -32,9 +34,21 @@ export default class Login extends React.Component {
     } else {
       // auth
       console.log('a');
-      navigate('Home', {user: this.state.username});
+      /*
+      await connexionAction.askToken(this.state.username, this.state.password)
+      const { token } = this.props
+      token ? (
+      navigate('CoursePage', {user: this.state.username })
+      ) : ( 
+        alert(this.props.error)
+      )
+      */
+     navigate('CoursePage', {user: this.state.username })
     }
   };
+
+
+
   render() {
     const {navigate} = this.props.navigation;
     return (
