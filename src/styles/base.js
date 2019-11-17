@@ -1,5 +1,5 @@
 // From https://medium.com/mindorks/everything-to-know-about-styling-in-react-native-7e30aed53ad
-import {StyleSheet, Dimensions} from 'react-native';
+import {Dimensions} from 'react-native';
 
 export const dimensions = {
   fullHeight: Dimensions.get('window').height,

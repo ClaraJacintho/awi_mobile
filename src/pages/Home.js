@@ -5,7 +5,7 @@ import {sliderWidth, itemWidth} from '../styles/SliderEntryStyle.js';
 import SliderEntry from '../components/SliderEntry';
 import styles from '../styles/sliderBaseStyle.js';
 import {ENTRIES1} from './../assets/entries';
-import {colors, fonts, padding, dimensions} from './../styles/base.js';
+import {colors, fonts, padding} from './../styles/base.js';
 
 const SLIDER_1_FIRST_ITEM = 1;
 
