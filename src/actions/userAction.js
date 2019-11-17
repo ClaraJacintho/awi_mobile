@@ -1,16 +1,15 @@
 import {
-    FETCH_USER_REQUEST,
     FETCH_USER_SUCCESS,
     FETCH_USER_FAILURE
 } from './actionTypes';
 import axios from 'axios';
 
-apiUrl = 'https://twiddle-back.igpolytech.fr/api'
+apiUrl = 'https://polyteach-back.igpolytech.fr'
 
 export const fetchUser = () => {
   function thunk(dispatch) {
     console.log('action')
-    return axios.get(`${apiUrl}/api-status`)
+    return axios.get(`${apiUrl}/ping`)
       .then((response) => {
         dispatch(fetchUserSuccess(response.data));
       })
@@ -25,7 +24,7 @@ export const fetchUser = () => {
 export const fetchUserSuccess =  (data) => {
     return {
         type: FETCH_USER_SUCCESS,
-        key: data.status,
+        user: data.id,
     }
  }
 

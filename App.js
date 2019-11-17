@@ -19,9 +19,9 @@ export default class App extends React.Component {
         <Provider store={store}>
             <PersistGate /*loading={<Loading/>}*/ persistor={persistor}>
                 <ReduxNetworkProvider pingTimeout= {10000}
-                                 pingServerUrl = {'https://www.google.com/'}
+                                 pingServerUrl = {'https:/polyteach-back.igpolytech.fr/ping'}
                                  shouldPing = {true}
-                                 pingInterval = {0}
+                                 pingInterval = {30000}
                                  pingOnlyIfOffline = {false}
                                  pingInBackground = {false}
                                  httpMethod = {'HEAD'}>

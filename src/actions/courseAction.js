@@ -5,13 +5,13 @@ import {
 } from './actionTypes';
 import axios from 'axios';
 
-apiUrl = ""
+apiUrl = apiUrl = 'https://polyteach-back.igpolytech.fr'
 
 export const fetchCourse = () => {
-  function thunk(dispatch({ type: FETCH_COURSE_REQUEST})) {
-    return axios.get(`${apiUrl}/course`)
+  function thunk(dispatch) {
+    return axios.get(`${apiUrl}/courses`)
       .then((response) => {
-        dispatch(fetchCourseSuccess(response.json));
+        dispatch(fetchCourseSuccess(response.data));
       })
       .catch((error) => {
         dispatch(fetchCourseFailure(error));
@@ -24,12 +24,10 @@ export const fetchCourse = () => {
   return thunk;
 };
 
-export const fetchCourseSuccess =  (data) => {
+export const fetchCourseSuccess =  (courses) => {
     return {
         type: FETCH_COURSE_SUCCESS,
-        payload: {
-            data
-        }
+        courses
     }
  }
 
