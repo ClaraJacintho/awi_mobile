@@ -39,10 +39,10 @@ export default class Home extends React.Component {
         <Carousel
           ref={c => (this._slider1Ref = c)}
           data={ENTRIES1}
-          renderItem={this._renderItemWithParallax}
+          renderItem={this._renderItemWithParallax()}
           sliderWidth={sliderWidth}
           itemWidth={itemWidth}
-          hasParallaxImages={true}
+          hasParallaxImages ={true}
           firstItem={SLIDER_1_FIRST_ITEM}
           inactiveSlideScale={0.94}
           inactiveSlideOpacity={0.7}
