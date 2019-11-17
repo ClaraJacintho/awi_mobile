@@ -10,8 +10,13 @@ npm-debug.*
 web-build/
 web-report/
 
+android/app/build
+android/.gradle
+
 ios/build
 ios/DerivedData
 ios/Pods
 # macOS
 .DS_Store
+
+.idea/
