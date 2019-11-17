@@ -7,25 +7,52 @@ import {
     Image,
     TouchableOpacity
 } from 'react-native';
+import ReadMore from 'react-native-read-more-text';
 
 
 export default class VideoItem extends Component {
     render() {
-        let item = this.props.item;
+        let video = this.props.video.item;
+        console.log(video)
         return (
             <View style={styles.container}>
                 <Image source={{ uri: video.image }} style={{ height: 200 }} />
                 <View style={styles.descContainer}>
                     <View style={styles.videoDetails}>
-                        <Text numberOfLines={2} style={styles.videoTitle}>{video.snippet.title}</Text>
-                        <Text style={styles.videoStats}>{video.snippet.channelTitle + " · " + nFormatter(video.statistics.viewCount, 1) + " · 3 months ago "}</Text>
+                    <ReadMore
+                            numberOfLines={2}
+                            renderTruncatedFooter={this._renderTruncatedFooter}
+                            renderRevealedFooter={this._renderRevealedFooter}>
+                        <Text numberOfLines={2} style={styles.videoTitle}>{video.name}</Text>
+                        </ReadMore>
+                        <ReadMore
+                            numberOfLines={2}
+                            renderTruncatedFooter={this._renderTruncatedFooter}
+                            renderRevealedFooter={this._renderRevealedFooter}>
+                        <Text style={styles.descContainer}>{video.description}</Text>
+                        </ReadMore>
                     </View>
-                    
                 </View>
             </View>
         )
     }
 }
+
+_renderTruncatedFooter = (handlePress) => {
+    return (
+      <RegularText style={{color: Colors.Blue, marginTop: 5}} onPress={handlePress}>
+        Read more
+      </RegularText>
+    );
+  }
+ 
+  _renderRevealedFooter = (handlePress) => {
+    return (
+      <RegularText style={{color: Colors.tintColor, marginTop: 5}} onPress={handlePress}>
+        Show less
+      </RegularText>
+    );
+  }
 
 function nFormatter(num, digits) {
     var si = [
