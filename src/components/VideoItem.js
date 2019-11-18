@@ -6,11 +6,18 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import DownloadVideoButton from './DownloadVideoButton';
 
 export default class VideoItem extends Component {
+
+    handleTextPress = () => {
+        if (this.props.onItemPress) {
+            const {navigation} = this.props.onItemPress;
+             navigation.navigate('VideoPage')};
+    };
+
   render() {
     let video = this.props.video.item;
     console.log(video);
     return (
-      <View style={styles.container}>
+      <View style={styles.container} >
         <View style={styles.descContainer}>
           <View
             style={
@@ -21,7 +28,7 @@ export default class VideoItem extends Component {
                 numberOfLines={2}
                 renderTruncatedFooter={this._renderTruncatedFooter}
                 renderRevealedFooter={this._renderRevealedFooter}>
-                <Text numberOfLines={2} style={styles.videoTitle}>
+                <Text numberOfLines={2} style={styles.videoTitle} onPress={this.handleTextPress}>
                   {video.name}
                 </Text>
               </ReadMore>

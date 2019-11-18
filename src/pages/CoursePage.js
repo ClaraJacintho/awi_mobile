@@ -5,7 +5,13 @@ import ReadMore from 'react-native-read-more-text';
 import styles from '../styles/CoursePageStyle';
 
 export default class CoursePage extends React.Component {
-  render() {
+
+
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
     const data = {
       videos: [
         {
@@ -93,7 +99,7 @@ export default class CoursePage extends React.Component {
         {data.videos.length > 0 ? (
           <FlatList
             data={data.videos}
-            renderItem={video => <VideoItem video={video} />}
+            renderItem={video => <VideoItem video={video} onItemPress={this.props} />}
             keyExtractor={item => item.id}
             ItemSeparatorComponent={() => (
               <View style={{height: 0.5, backgroundColor: '#E5E5E5'}} />

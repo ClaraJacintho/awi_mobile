@@ -1,19 +1,20 @@
-
 import { createBottomTabNavigator, BottomTabBar } from 'react-navigation-tabs';
 import {createStackNavigator} from 'react-navigation-stack';
 
 import Home from '../pages/Home.js';
 import CoursePage from '../pages/CoursePage.js';
 import DownloadedVideos from '../pages/DownloadedVideos.js';
+import VideoPage from '../pages/Video.js';
 
 const CourseNavigator = createStackNavigator(
-  {
-    CoursePage: CoursePage,
-    Home: Home
-  },
-  {
-    initialRouteName: 'Home',
-  },
+    {
+        CoursePage: CoursePage,
+        VideoPage: VideoPage,
+        Home: Home
+    },
+    {
+        initialRouteName: 'Home',
+    },
 );
 
 const TabNavigator  = createBottomTabNavigator({
