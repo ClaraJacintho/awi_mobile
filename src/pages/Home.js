@@ -15,19 +15,25 @@ export default class Home extends React.Component {
     this.state = {
       slider1ActiveSlide: SLIDER_1_FIRST_ITEM,
     };
+    this._renderItem = this._renderItem.bind(this)
+    this.onPress = this.onPress.bind(this);
   }
 
-  _renderItemWithParallax({item, index}, parallaxProps) {
+  onPress() {
+    const {navigation} = this.props;
+    navigation.navigate('CoursePage')
+  }
+  
+  _renderItem({item, index}) {
     return (
       <SliderEntry
         data={item}
         even={(index + 1) % 2 === 0}
-        parallax={true}
-        parallaxProps={parallaxProps}
+        click= {this.onPress}
       />
     );
   }
-
+  
   render() {
     const {navigation} = this.props;
     //const {navigate} = this.props.navigation;
@@ -41,10 +47,10 @@ export default class Home extends React.Component {
         <Carousel
           ref={c => (this._slider1Ref = c)}
           data={ENTRIES1}
-          renderItem={this._renderItemWithParallax}
+          renderItem={this._renderItem}
           sliderWidth={sliderWidth}
           itemWidth={itemWidth}
-          hasParallaxImages={true}
+          hasParallaxImages={false}
           firstItem={SLIDER_1_FIRST_ITEM}
           inactiveSlideScale={0.94}
           inactiveSlideOpacity={0.7}
@@ -53,16 +59,15 @@ export default class Home extends React.Component {
           loop={true}
           loopClonesPerSide={2}
           onSnapToItem={index => this.setState({slider1ActiveSlide: index})}
-          cliiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiick = {console.log("guh")}
         />
         <Text  style={componentStyles.listTitle}>All courses</Text>
         <Carousel
-          ref={c => (this._slider1Ref = c)}
+          ref={c => (this._slider2Ref = c)}
           data={ENTRIES1}
-          renderItem={this._renderItemWithParallax}
+          renderItem={this._renderItem}
           sliderWidth={sliderWidth}
           itemWidth={itemWidth}
-          hasParallaxImages={true}
+          hasParallaxImages={false}
           firstItem={SLIDER_1_FIRST_ITEM}
           inactiveSlideScale={0.94}
           inactiveSlideOpacity={0.7}
@@ -71,16 +76,15 @@ export default class Home extends React.Component {
           loop={true}
           loopClonesPerSide={2}
           onSnapToItem={index => this.setState({slider1ActiveSlide: index})}
-          cliiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiick = {console.log("guh")}
         />
         <Text  style={componentStyles.listTitle}>Finished</Text>
         <Carousel
-          ref={c => (this._slider1Ref = c)}
+          ref={c => (this._slider3Ref = c)}
           data={ENTRIES1}
-          renderItem={this._renderItemWithParallax}
+          renderItem={this._renderItem}
           sliderWidth={sliderWidth}
           itemWidth={itemWidth}
-          hasParallaxImages={true}
+          hasParallaxImages={false}
           firstItem={SLIDER_1_FIRST_ITEM}
           inactiveSlideScale={0.94}
           inactiveSlideOpacity={0.7}
@@ -89,7 +93,6 @@ export default class Home extends React.Component {
           loop={true}
           loopClonesPerSide={2}
           onSnapToItem={index => this.setState({slider1ActiveSlide: index})}
-          cliiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiick = {console.log("guh")}
         />
       </ScrollView>
     );
