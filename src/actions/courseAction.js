@@ -1,6 +1,6 @@
 import {FETCH_COURSE_SUCCESS, FETCH_COURSE_FAILURE} from './actionTypes';
 import axios from 'axios';
-import mockCourses from '../assets/mockCourses.js'
+import {mockCourses} from './mockCourses'
 
 const apiUrl = 'https://polyteach-back.igpolytech.fr';
 

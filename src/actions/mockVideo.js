@@ -1,4 +1,4 @@
-[
+export default mockVideos =  [
     {
         "id": 3,
         "title": "DevOps",
