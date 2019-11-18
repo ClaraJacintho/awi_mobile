@@ -19,5 +19,6 @@ ios/DerivedData
 ios/Pods
 # macOS
 .DS_Store
+ios/Polyteach.xcworkspace/xcuserdata/
 
 .idea/
