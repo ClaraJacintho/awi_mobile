@@ -25,7 +25,9 @@ export default class App extends React.Component {
             pingOnlyIfOffline={false}
             pingInBackground={false}
             httpMethod={'HEAD'}>
+
             <AppContainer />
+
           </ReduxNetworkProvider>
         </PersistGate>
       </Provider>
