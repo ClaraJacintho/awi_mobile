@@ -1,16 +1,20 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, Card, Button, Icon,RegularText, Text, Image, View, FlatList } from 'react-native';
+import VideoItem from '../components/VideoItem'
+import ReadMore from 'react-native-read-more-text';
+import styles from '../styles/CoursePageStyle'
+
 
 export default class CoursePage extends React.Component {
     
     render() {
-        const data = {characters: [
-            {id:123, name:'Sheldon', profession:'Theoretical Physicist'},
-            {id:234, name:'Leonard', profession:'Experimental Physicist'},
-            {id:345, name:'Howard', profession:'Mechanical Engineer'},
-            {id:456, name:'Raj', profession:'Astro-Physicist'},
-            {id:567, name:'Amy', profession:'Neurobiologist'},
-            {id:678, name:'Bernadette', profession:'Microbiologist'},
+        const data = {videos: [
+            {id:123, name:'PEWDIEPIE EXTREM MINECRAFT : Le cours de survie en 3h ', description:'When an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ', image:"https://cdn.mos.cms.futurecdn.net/ShdJFwZ5X35p8qoCYkBvpF.jpg" },
+            {id:234, name:'Leonard', description:'As opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web p', image:"https://i.ytimg.com/vi/Nz3Ngt0AMDA/maxresdefault.jpg"  },
+            {id:345, name:'Howard', description:'The industrys standard dummy text ever since the 1500s, when an unknown', image:"https://i.ytimg.com/vi/HdckOCdnD_0/maxresdefault.jpg" },
+            {id:456, name:'Raj', description:' Various versions have evolved over the years, sometimes by ac', image:"https://i.ytimg.com/vi/WiTxwdGWLoY/maxresdefault.jpg" },
+            {id:567, name:'Amy', description:'Neurobiologist', image:"https://i.ytimg.com/vi/WiTxwdGWLoY/maxresdefault.jpg" },
+            {id:678, name:'Bernadette', description:'Microbiologist', image:"https://i.ytimg.com/vi/WiTxwdGWLoY/maxresdefault.jpg" },
         ]};
         const list = [{key:'Sheldon', prof:'Theoretical Physicist'},
                      {key:'Leonard', prof:'Experimental Physicist'},
@@ -27,42 +31,51 @@ export default class CoursePage extends React.Component {
                      {key:'Lucy', prof:'unknown'}];
         return (
             <View style={styles.container}>
-            
-            { data.characters.length > 0 ? 
-                <FlatList data={data.characters}
-                    renderItem={({item})=> (
-                <View style={{borderBottomColor:'#999', padding:10}}>
-            <Text style={{fontSize:60, fontWeight:'bold', color:'#333'}}>
-                {item.id}
-            </Text>
-            <Text style={{fontSize:36, color:'#999'}}>
-                {item.profession}
-            </Text>
-        </View>
-                    
-            )} />
-            
-            :
+              <View >
+              <Image style={{ width: "100%", height:150, resizeMode: 'stretch', alignContent:"center" }}  source={{uri:"https://i.ytimg.com/vi/WiTxwdGWLoY/maxresdefault.jpg"}}/>
+                    <Text style={styles.courseTitle}>
+                        Statstiques et Regression
+                    </Text>
+              <ReadMore
+              numberOfLines={3}
+              renderTruncatedFooter={this._renderTruncatedFooter}
+              renderRevealedFooter={this._renderRevealedFooter}>
+              <Text style={styles.courseDescription}>
+                This course is about statistics, it is held in 5th year of engineer school in the departement of Polytech Montpellier
+              </Text>
+                </ReadMore> 
+              </View>   
+                { 
+                data.videos.length > 0 ? (
+                <FlatList
+                data={data.videos}
+                renderItem={(video)=><VideoItem video={video} />}
+                keyExtractor={(item)=>item.id}
+                ItemSeparatorComponent={()=><View style={{height:0.5,backgroundColor:'#E5E5E5'}}/>}
+                 />
+                ):(
                 <Text style={{fontSize: 48, color:'red'}}>
                     Sorry. No Videos Available.
                 </Text>
-            }
+        )}
             </View>
-        );
+            )
+                       
     }
 }
 
-const styles = StyleSheet.create({
-  container: {
-      backgroundColor: '#fff',
-      paddingTop: 20,
-      paddingBottom: 20
-  },
-    listitem: {
-        fontSize:48, 
-        fontWeight:'bold', 
-        color:'#333',
-        borderBottomWidth: 2,
-        borderBottomColor: '#999'
-    }
-});
+_renderTruncatedFooter = (handlePress) => {
+    return (
+      <RegularText style={{color: Colors.Blue, marginTop: 5}} onPress={handlePress}>
+        Read more
+      </RegularText>
+    );
+  }
+ 
+  _renderRevealedFooter = (handlePress) => {
+    return (
+      <RegularText style={{color: Colors.tintColor, marginTop: 5}} onPress={handlePress}>
+        Show less
+      </RegularText>
+    );
+  }
