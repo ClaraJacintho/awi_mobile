@@ -10,7 +10,16 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+const mapStateToProps = store => {
+  return {
+    videoURI:
+      store.videoURI !== undefined
+        ? store.videoURI
+        : 'https://rawgit.com/mediaelement/mediaelement-files/master/big_buck_bunny.mp4',
+  };
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(DownloadVideoButton);
