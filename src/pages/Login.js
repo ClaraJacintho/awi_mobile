@@ -45,6 +45,30 @@ export default class Login extends React.Component {
     }
   };
 
+  //Deep linking
+  componentDidMount() {
+    if(Platform.OS === 'android') Linking.getInitialURL().then(url => { this.navigate(url); });
+    else Linking.addEventListener('url', this.handleOpenURL);
+  }
+
+  componentWillUnmount() {
+    Linking.removeEventListener('url', this.handleOpenURL);
+  }
+
+  handleOpenURL = (e) =>{
+    this.navigate(e.url);
+  }
+
+  navigate = (url) => {
+    const { navigate } = this.props.navigation;
+    const route = url.replace(/.*?:\/\//g, '');
+    const routeName = route.split('/')[0];
+
+    if (routeName === 'app') {
+      navigate('App/Home')
+    };
+  }
+
 
 
   render() {

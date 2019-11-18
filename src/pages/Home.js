@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, StyleSheet, ScrollView} from 'react-native';
+import { Text, StyleSheet, ScrollView, Linking, Platform } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import {sliderWidth, itemWidth} from '../styles/SliderEntryStyle.js';
 import SliderEntry from '../components/SliderEntry';
