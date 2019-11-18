@@ -12,6 +12,7 @@ import {
 import ReadMore from 'react-native-read-more-text';
 import styles from '../styles/VideoItemStyle'
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+import DownloadVideoButton from './DownloadVideoButton'
 
 
 
@@ -32,10 +33,7 @@ export default class VideoItem extends Component {
                           </ReadMore>
                           </View>
                     <View style={{width:"20%"}, {marginRight:"30%"}}>
-                        <Button
-                        color={Colors.red}
-                        title="Download"
-                        />
+                        <DownloadVideoButton/>
                     </View>
         </View>
         </View>
