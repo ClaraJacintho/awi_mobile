@@ -1,10 +1,8 @@
 import * as React from 'react';
 import {StyleSheet, Text, View, Button} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
-import {colors, fonts, padding, dimensions} from './../styles/base.js';
 import FormButton from '../components/FormButton';
-import axios from 'axios';
-import connexionAction from '../actions/connexionActions'
+import styles from '../styles/LoginStyles'
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -81,24 +79,4 @@ export default class Login extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: dimensions.fullWidth,
-    backgroundColor: colors.background,
-  },
-  header: {
-    textAlign: 'center',
-    fontSize: fonts.lg,
-    fontFamily: fonts.primary,
-    color: colors.primary,
-    paddingBottom: padding.md,
-  },
-  textField: {
-    width: dimensions.fullWidth / 2,
-    backgroundColor: colors.primary,
-    marginBottom: padding.sm,
-  },
-});
+

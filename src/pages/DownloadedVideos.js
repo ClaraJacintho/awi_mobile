@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
+import styles from '../styles/CoursePageStyle'
 
 export default class CoursePage extends React.Component {
     
@@ -50,17 +51,3 @@ export default class CoursePage extends React.Component {
     }
 }
 
-const styles = StyleSheet.create({
-  container: {
-      backgroundColor: '#fff',
-      paddingTop: 20,
-      paddingBottom: 20
-  },
-    listitem: {
-        fontSize:48, 
-        fontWeight:'bold', 
-        color:'#333',
-        borderBottomWidth: 2,
-        borderBottomColor: '#999'
-    }
-});
