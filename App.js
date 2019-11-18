@@ -1,5 +1,6 @@
 import React from 'react';
-import AppNavigator from './src/AppNavigator';
+import AppNavigator from './src/navigation/AppNavigator';
+// import { StyleSheet, Text, View } from 'react-native';
 import {createAppContainer} from 'react-navigation';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';

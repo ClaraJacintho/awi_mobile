@@ -38,6 +38,7 @@ export default class SliderEntry extends Component {
     );
   }
 
+  
   render() {
     const {
       data: {title, subtitle},
@@ -53,7 +54,7 @@ export default class SliderEntry extends Component {
     ) : (
       false
     );
-
+    //const {click} = this.props.click
     return (
       <TouchableOpacity
         activeOpacity={1}

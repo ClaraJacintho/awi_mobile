@@ -1,8 +1,10 @@
-import * as React from 'react';
+import React from 'react';
 import {StyleSheet, Text, View, Button} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 import {colors, fonts, padding, dimensions} from './../styles/base.js';
 import FormButton from '../components/FormButton';
+import axios from 'axios';
+import connexionAction from '../actions/connexionActions'
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -31,10 +33,22 @@ export default class Login extends React.Component {
       alert('Please fill your username and password!');
     } else {
       // auth
-      console.log('a');
-      navigate('Home', {user: this.state.username});
+      console.log('login in');
+      /*
+      await connexionAction.askToken(this.state.username, this.state.password)
+      const { token } = this.props
+      token ? (
+      navigate('CoursePage', {user: this.state.username })
+      ) : ( 
+        alert(this.props.error)
+      )
+      */
+     navigate('App', {user: this.state.username })
     }
   };
+
+
+
   render() {
     const {navigate} = this.props.navigation;
     return (
@@ -61,7 +75,7 @@ export default class Login extends React.Component {
         {
           // why u no work??
         }
-        <FormButton lablel={'Login'} onPress={() => navigate('Home')} />
+        <FormButton lablel={'Login'} onPress={() => navigate('App')} />
       </View>
     );
   }
