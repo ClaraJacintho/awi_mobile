@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, StyleSheet, ScrollView, Linking, Platform } from 'react-native';
+import {Text, StyleSheet, ScrollView} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import {sliderWidth, itemWidth} from '../styles/SliderEntryStyle.js';
 import SliderEntry from '../components/SliderEntry';
@@ -15,25 +15,25 @@ export default class Home extends React.Component {
     this.state = {
       slider1ActiveSlide: SLIDER_1_FIRST_ITEM,
     };
-    this._renderItem = this._renderItem.bind(this)
+    this._renderItem = this._renderItem.bind(this);
     this.onPress = this.onPress.bind(this);
   }
 
   onPress() {
     const {navigation} = this.props;
-    navigation.navigate('CoursePage')
+    navigation.navigate('CoursePage');
   }
-  
+
   _renderItem({item, index}) {
     return (
       <SliderEntry
         data={item}
         even={(index + 1) % 2 === 0}
-        click= {this.onPress}
+        click={this.onPress}
       />
     );
   }
-  
+
   render() {
     const {navigation} = this.props;
     //const {navigate} = this.props.navigation;
@@ -43,7 +43,7 @@ export default class Home extends React.Component {
           {' '}
           Welcome {navigation.getParam('user', 'user')}
         </Text>
-        <Text  style={componentStyles.listTitle}>Recently watched</Text>
+        <Text style={componentStyles.listTitle}>Recently watched</Text>
         <Carousel
           ref={c => (this._slider1Ref = c)}
           data={ENTRIES1}
@@ -60,7 +60,7 @@ export default class Home extends React.Component {
           loopClonesPerSide={2}
           onSnapToItem={index => this.setState({slider1ActiveSlide: index})}
         />
-        <Text  style={componentStyles.listTitle}>All courses</Text>
+        <Text style={componentStyles.listTitle}>All courses</Text>
         <Carousel
           ref={c => (this._slider2Ref = c)}
           data={ENTRIES1}
@@ -77,7 +77,7 @@ export default class Home extends React.Component {
           loopClonesPerSide={2}
           onSnapToItem={index => this.setState({slider1ActiveSlide: index})}
         />
-        <Text  style={componentStyles.listTitle}>Finished</Text>
+        <Text style={componentStyles.listTitle}>Finished</Text>
         <Carousel
           ref={c => (this._slider3Ref = c)}
           data={ENTRIES1}

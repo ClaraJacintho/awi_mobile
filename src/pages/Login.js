@@ -1,8 +1,8 @@
 import React from 'react';
-import {StyleSheet, Text, View, Button} from 'react-native';
+import {Text, View, Button, Linking, Platform} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 import FormButton from '../components/FormButton';
-import styles from '../styles/LoginStyles'
+import styles from '../styles/LoginStyles';
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -37,39 +37,42 @@ export default class Login extends React.Component {
       const { token } = this.props
       token ? (
       navigate('CoursePage', {user: this.state.username })
-      ) : ( 
+      ) : (
         alert(this.props.error)
       )
       */
-     navigate('App', {user: this.state.username })
+      navigate('App', {user: this.state.username});
     }
   };
 
   //Deep linking
   componentDidMount() {
-    if(Platform.OS === 'android') Linking.getInitialURL().then(url => { this.navigate(url); });
-    else Linking.addEventListener('url', this.handleOpenURL);
+    if (Platform.OS === 'android') {
+      Linking.getInitialURL().then(url => {
+        this.navigate(url);
+      });
+    } else {
+      Linking.addEventListener('url', this.handleOpenURL);
+    }
   }
 
   componentWillUnmount() {
     Linking.removeEventListener('url', this.handleOpenURL);
   }
 
-  handleOpenURL = (e) =>{
+  handleOpenURL = e => {
     this.navigate(e.url);
-  }
+  };
 
-  navigate = (url) => {
-    const { navigate } = this.props.navigation;
+  navigate = url => {
+    const {navigate} = this.props.navigation;
     const route = url.replace(/.*?:\/\//g, '');
     const routeName = route.split('/')[0];
 
     if (routeName === 'app') {
-      navigate('App/Home')
-    };
-  }
-
-
+      navigate('App/Home');
+    }
+  };
 
   render() {
     const {navigate} = this.props.navigation;
@@ -102,5 +105,3 @@ export default class Login extends React.Component {
     );
   }
 }
-
-

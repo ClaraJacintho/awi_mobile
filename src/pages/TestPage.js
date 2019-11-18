@@ -1,9 +1,11 @@
 import React from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
+import {View, TouchableOpacity, Text} from 'react-native';
 
 const getAvailableRoutes = navigation => {
   let availableRoutes = [];
-  if (!navigation) return availableRoutes;
+  if (!navigation) {
+    return availableRoutes;
+  }
 
   const parent = navigation.dangerouslyGetParent();
   if (parent) {
@@ -21,7 +23,7 @@ const getAvailableRoutes = navigation => {
 
   // De-dupe the list and then remove the current route from the list
   return [...new Set(availableRoutes)].filter(
-    route => route !== navigation.state.routeName
+    route => route !== navigation.state.routeName,
   );
 };
 
@@ -34,7 +36,7 @@ const getRandomColor = () => {
   return color;
 };
 
-const Example = ({ navigation }) => {
+const Example = ({navigation}) => {
   return (
     <View
       style={{
@@ -42,8 +44,7 @@ const Example = ({ navigation }) => {
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: getRandomColor(),
-      }}
-    >
+      }}>
       {getAvailableRoutes(navigation).map(route => (
         <TouchableOpacity
           onPress={() => navigation.navigate(route)}
@@ -52,8 +53,7 @@ const Example = ({ navigation }) => {
             backgroundColor: '#fff',
             padding: 10,
             margin: 10,
-          }}
-        >
+          }}>
           <Text>{route}</Text>
         </TouchableOpacity>
       ))}

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
-import {ParallaxImage} from 'react-native-snap-carousel';
 import styles from '../styles/SliderEntryStyle';
 
 export default class SliderEntry extends Component {
@@ -17,12 +16,9 @@ export default class SliderEntry extends Component {
       data: {illustration},
     } = this.props;
 
-    return (
-      <Image source={{uri: illustration}} style={styles.image} />
-    );
+    return <Image source={{uri: illustration}} style={styles.image} />;
   }
 
-  
   render() {
     const {
       data: {title, subtitle},
@@ -38,14 +34,14 @@ export default class SliderEntry extends Component {
     ) : (
       false
     );
-    const {click} = this.props
+    const {click} = this.props;
     return (
       <TouchableOpacity
         activeOpacity={1}
         style={styles.slideInnerContainer}
         onPress={() => {
           // eslint-disable-next-line no-alert
-          click()
+          click();
         }}>
         <View style={styles.shadow} />
         <View
