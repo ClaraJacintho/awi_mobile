@@ -32,7 +32,6 @@ export default class CoursePage extends React.Component {
                      {key:'Lucy', prof:'unknown'}];
         return (
             <View style={styles.container}>
-<<<<<<< HEAD
               <View >
               <Image style={{ width: "100%", height:150, resizeMode: 'stretch', alignContent:"center" }}  source={{uri:"https://i.ytimg.com/vi/WiTxwdGWLoY/maxresdefault.jpg"}}/>
                     <Text style={styles.courseTitle}>
@@ -56,24 +55,7 @@ export default class CoursePage extends React.Component {
                 ItemSeparatorComponent={()=><View style={{height:0.5,backgroundColor:'#E5E5E5'}}/>}
                  />
                 ):(
-=======
-            
-            { data.characters.length > 0 ? 
-                <FlatList data={data.characters}
-                    renderItem={({item})=> (
-                <View style={{borderBottomColor:'#999', padding:10}}>
-            <Text style={{fontSize:60, fontWeight:'bold', color:'#333'}}>
-                {item.id}
-            </Text>
-            <Text style={{fontSize:36, color:'#999'}}>
-                {item.profession}
-            </Text>
-        </View>
-                    
-            )} />
-            
-            :
->>>>>>> master
+
                 <Text style={{fontSize: 48, color:'red'}}>
                     Sorry. No Videos Available.
                 </Text>
