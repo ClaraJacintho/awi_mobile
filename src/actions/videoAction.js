@@ -4,6 +4,7 @@ import {
 } from './actionTypes';
 
 import axios from 'axios';
+import mockVideos from '../assets/mockVideos'
 
 const apiUrl = 'https://polyteach-back.igpolytech.fr';
 
@@ -12,10 +13,11 @@ export const fetchVideosForCourse = courseId => {
     return axios
       .get(`${apiUrl}/${courseId}/videos`)
       .then(response => {
-        dispatch(fetchVideoSuccess(response.data));
+        dispatch(fetchVideoSuccess(mockVideos));
       })
       .catch(error => {
-        dispatch(fetchVideoFailure(error));
+        dispatch(fetchVideoSuccess(mockVideos));
+        //dispatch(fetchVideoFailure(error));
       });
   }
   thunk.interceptInOffline = true;

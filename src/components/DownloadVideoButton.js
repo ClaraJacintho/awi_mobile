@@ -45,5 +45,10 @@ export default class DownloadVideoButton extends React.Component {
         onPress={this.downloadVideo}
       />
     );
-  }
+  } 
 }
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(DownloadVideoButton);

@@ -1,5 +1,6 @@
 import {FETCH_COURSE_SUCCESS, FETCH_COURSE_FAILURE} from './actionTypes';
 import axios from 'axios';
+import mockCourses from '../assets/mockCourses'
 
 const apiUrl = 'https://polyteach-back.igpolytech.fr';
 
@@ -8,10 +9,11 @@ export const fetchCourse = () => {
     return axios
       .get(`${apiUrl}/courses`)
       .then(response => {
-        dispatch(fetchCourseSuccess(response.data));
+        dispatch(fetchCourseSuccess(mockCourses));
       })
       .catch(error => {
-        dispatch(fetchCourseFailure(error));
+        dispatch(fetchCourseSuccess(mockCourses));
+        //dispatch(fetchCourseFailure(error));
       });
   }
   thunk.interceptInOffline = true;

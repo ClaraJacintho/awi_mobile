@@ -24,19 +24,19 @@ export default class VideoItem extends Component {
             <View style={styles.container}>
                 <View style={styles.descContainer}>
                     <View style={styles.videoDetails, {marginRight: 100}, {flexDirection:"row"}}>
-                    <View style={{width:"60%"}}> 
-                    <ReadMore
-                        numberOfLines={2}
-                        renderTruncatedFooter={this._renderTruncatedFooter}
-                        renderRevealedFooter={this._renderRevealedFooter}>
-                            <Text numberOfLines={2} style={styles.videoTitle}>{video.name}</Text>
-                          </ReadMore>
-                          </View>
-                    <View style={{width:"20%"}, {marginRight:"30%"}}>
-                        <DownloadVideoButton/>
+                        <View style={{width:"60%"}}> 
+                        <ReadMore
+                            numberOfLines={2}
+                            renderTruncatedFooter={this._renderTruncatedFooter}
+                            renderRevealedFooter={this._renderRevealedFooter}>
+                                <Text numberOfLines={2} style={styles.videoTitle}>{video.name}</Text>
+                            </ReadMore>
+                        </View>
+                        <View style={{width:"20%"}, {marginRight:"30%"}}>
+                                <DownloadVideoButton videoURI={video.videoURI}/>
+                        </View>
                     </View>
-        </View>
-        </View>
+            </View>
         </View>
         )
     }
