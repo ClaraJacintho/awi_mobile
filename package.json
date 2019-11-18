@@ -35,6 +35,10 @@
     "react-test-renderer": "16.9.0"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(react-native|react-navigation|react-navigation-tabs|react-native-snap-carousel)/)"
+    ]
+    
   }
 }

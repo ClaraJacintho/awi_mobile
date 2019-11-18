@@ -8,8 +8,8 @@ import DownloadedVideos from '../pages/DownloadedVideos.js';
 
 const CourseNavigator = createStackNavigator(
   {
-    Home: Home,
-    CoursePage: CoursePage
+    CoursePage: CoursePage,
+    Home: Home
   },
   {
     initialRouteName: 'Home',
@@ -17,7 +17,7 @@ const CourseNavigator = createStackNavigator(
 );
 
 const TabNavigator  = createBottomTabNavigator({
-  Home: {
+  Courses: {
     screen: CourseNavigator,
     navigationOptions: {
       tabBarLabel: 'Home',
@@ -29,5 +29,8 @@ const TabNavigator  = createBottomTabNavigator({
       tabBarLabel: 'Downloads',
     },
   },
-});
+  },
+    {
+      initialRouteName: 'Courses',
+    });
 export default TabNavigator;

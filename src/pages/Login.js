@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {StyleSheet, Text, View, Button} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 import {colors, fonts, padding, dimensions} from './../styles/base.js';
@@ -75,7 +75,7 @@ export default class Login extends React.Component {
         {
           // why u no work??
         }
-        <FormButton lablel={'Login'} onPress={() => navigate('Home')} />
+        <FormButton lablel={'Login'} onPress={() => navigate('App')} />
       </View>
     );
   }
