@@ -5,10 +5,14 @@ import {
     Text,
     View,
     Image,
+    Button,
+    Icon,
     TouchableOpacity
 } from 'react-native';
 import ReadMore from 'react-native-read-more-text';
-import {styles} from '../styles/VideoItemStyle'
+import styles from '../styles/VideoItemStyle'
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+
 
 
 export default class VideoItem extends Component {
@@ -17,24 +21,25 @@ export default class VideoItem extends Component {
         console.log(video)
         return (
             <View style={styles.container}>
-                <Image source={{ uri: video.image }} style={{ height: 200 }} />
                 <View style={styles.descContainer}>
-                    <View style={styles.videoDetails}>
+                    <View style={styles.videoDetails, {marginRight: 100}, {flexDirection:"row"}}>
+                    <View style={{width:"60%"}}> 
                     <ReadMore
-                            numberOfLines={2}
-                            renderTruncatedFooter={this._renderTruncatedFooter}
-                            renderRevealedFooter={this._renderRevealedFooter}>
-                        <Text numberOfLines={2} style={styles.videoTitle}>{video.name}</Text>
-                        </ReadMore>
-                        <ReadMore
-                            numberOfLines={2}
-                            renderTruncatedFooter={this._renderTruncatedFooter}
-                            renderRevealedFooter={this._renderRevealedFooter}>
-                        <Text style={styles.descContainer}>{video.description}</Text>
-                        </ReadMore>
+                        numberOfLines={2}
+                        renderTruncatedFooter={this._renderTruncatedFooter}
+                        renderRevealedFooter={this._renderRevealedFooter}>
+                            <Text numberOfLines={2} style={styles.videoTitle}>{video.name}</Text>
+                          </ReadMore>
+                          </View>
+                    <View style={{width:"20%"}, {marginRight:"30%"}}>
+                        <Button
+                        color={Colors.red}
+                        title="Download"
+                        />
                     </View>
-                </View>
-            </View>
+        </View>
+        </View>
+        </View>
         )
     }
 }

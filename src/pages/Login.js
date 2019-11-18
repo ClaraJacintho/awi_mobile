@@ -41,7 +41,7 @@ export default class Login extends React.Component {
         alert(this.props.error)
       )
       */
-     navigate('CoursePage', {user: this.state.username })
+     navigate('Home', {user: this.state.username })
     }
   };
 

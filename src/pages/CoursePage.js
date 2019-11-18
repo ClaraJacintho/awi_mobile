@@ -31,17 +31,20 @@ export default class CoursePage extends React.Component {
                      {key:'Lucy', prof:'unknown'}];
         return (
             <View style={styles.container}>
+              <View >
+              <Image style={{ width: "100%", height:150, resizeMode: 'stretch', alignContent:"center" }}  source={{uri:"https://i.ytimg.com/vi/WiTxwdGWLoY/maxresdefault.jpg"}}/>
                     <Text style={styles.courseTitle}>
                         Statstiques et Regression
                     </Text>
-                    <ReadMore
+              <ReadMore
               numberOfLines={3}
               renderTruncatedFooter={this._renderTruncatedFooter}
               renderRevealedFooter={this._renderRevealedFooter}>
               <Text style={styles.courseDescription}>
                 This course is about statistics, it is held in 5th year of engineer school in the departement of Polytech Montpellier
               </Text>
-                </ReadMore>   
+                </ReadMore> 
+              </View>   
                 { 
                 data.videos.length > 0 ? (
                 <FlatList

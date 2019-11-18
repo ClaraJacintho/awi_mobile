@@ -19,6 +19,18 @@ export default StyleSheet.create({
     videoStats: {
         fontSize: 15,
         paddingTop: 3
-    }
-
+    },
+      title: {
+        textAlign: 'center',
+        marginVertical: 8,
+      },
+      fixToText: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+      },
+      separator: {
+        marginVertical: 8,
+        borderBottomColor: '#737373',
+        borderBottomWidth: StyleSheet.hairlineWidth,
+      }
 });
