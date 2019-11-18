@@ -55,7 +55,6 @@ export default class SliderEntry extends Component {
       false
     );
     //const {click} = this.props.click
-    console.log(this.props)
     return (
       <TouchableOpacity
         activeOpacity={1}
