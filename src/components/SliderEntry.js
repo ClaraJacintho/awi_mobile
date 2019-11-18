@@ -38,6 +38,7 @@ export default class SliderEntry extends Component {
     );
   }
 
+  
   render() {
     const {
       data: {title, subtitle},
@@ -53,16 +54,14 @@ export default class SliderEntry extends Component {
     ) : (
       false
     );
-
+    //const {click} = this.props.click
     return (
       <TouchableOpacity
         activeOpacity={1}
         style={styles.slideInnerContainer}
         onPress={() => {
           // eslint-disable-next-line no-alert
-          //alert(`You've clicked '${title}'`);
-          const {navigate} = this.props.navigation;
-          navigate('CoursePage', {user: this.state.username});
+          alert(`You've clicked '${title}'`);
         }}>
         <View style={styles.shadow} />
         <View

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {StyleSheet, Text, View, Button} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 import FormButton from '../components/FormButton';
@@ -31,7 +31,7 @@ export default class Login extends React.Component {
       alert('Please fill your username and password!');
     } else {
       // auth
-      console.log('a');
+      console.log('login in');
       /*
       await connexionAction.askToken(this.state.username, this.state.password)
       const { token } = this.props
@@ -41,7 +41,7 @@ export default class Login extends React.Component {
         alert(this.props.error)
       )
       */
-     navigate('Home', {user: this.state.username })
+     navigate('App', {user: this.state.username })
     }
   };
 
@@ -73,7 +73,7 @@ export default class Login extends React.Component {
         {
           // why u no work??
         }
-        <FormButton lablel={'Login'} onPress={() => navigate('Home')} />
+        <FormButton lablel={'Login'} onPress={() => navigate('App')} />
       </View>
     );
   }
