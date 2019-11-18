@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {View, StyleSheet} from 'react-native';
-import Video from 'react-native-video';
 import SaveVideosContainer from '../containers/SaveVideosContainer';
+import VideoPlayerContainer from '../containers/VideoPlayerContainer';
 
 const styles = StyleSheet.create({
   container: {
@@ -22,34 +22,16 @@ const styles = StyleSheet.create({
   },
 });
 
-const videoURI =
-  'https://rawgit.com/mediaelement/mediaelement-files/master/big_buck_bunny.mp4';
-
 export default class VideoPage extends React.Component {
   constructor(props) {
     super(props);
-    this.printState = this.printState.bind(this);
   }
-
-  printState = () => {
-    console.log(this.state);
-  };
 
   render() {
     return (
       <View style={styles.container}>
-        <Video
-          source={{uri: videoURI}}
-          style={styles.video}
-          ref={ref => {
-            this.player = ref;
-          }}
-          controls={true}
-          playWhenInactive={true}
-          resizeMode={'contain'}
-          fullScreen={'true'}
-        />
-        <SaveVideosContainer videoURI={videoURI} />
+        <VideoPlayerContainer style={styles.video} />
+        <SaveVideosContainer />
       </View>
     );
   }

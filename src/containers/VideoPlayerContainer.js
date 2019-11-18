@@ -1,14 +1,5 @@
-import DownloadVideoButton from '../components/DownloadVideoButton';
+import VideoPlayer from '../components/VideoPlayer';
 import {connect} from 'react-redux';
-import {saveVideo} from '../actions/savedVideosAction';
-
-const mapDispatchToProps = dispatch => {
-  return {
-    addVideo: (videoName, subtitlesName) => {
-      dispatch(saveVideo(videoName, subtitlesName));
-    },
-  };
-};
 
 const mapStateToProps = store => {
   return {
@@ -23,7 +14,4 @@ const mapStateToProps = store => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(DownloadVideoButton);
+export default connect(mapStateToProps)(VideoPlayer);
