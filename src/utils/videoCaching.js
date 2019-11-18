@@ -1,68 +1,129 @@
 import * as RNFS from 'react-native-fs';
 
-function storeVideo(videoURL) {
-  return new Promise((resolve, reject) => {
-    const filename = videoURL.substring(
-      videoURL.lastIndexOf('/') + 1,
-      videoURL.length,
+/**
+ * Stores a video along with its VTT file.
+ * @param videoURI the video to download
+ * @param subtitlesURI the subtitles to download
+ * @return {Promise<{videoName: String, subtitlesName: null}|{videoName: String, subtitlesName: String}>} The resulting names to store.
+ */
+async function storeVideo(videoURI, subtitlesURI = null) {
+  const videoName = videoURI.substring(
+    videoURI.lastIndexOf('/') + 1,
+    videoURI.length,
+  );
+  const videoPath = (RNFS.DocumentDirectoryPath + '/' + videoName).replace(
+    /%20/g,
+    '_',
+  );
+
+  const download = (uri, path) => {
+    return RNFS.downloadFile({
+      fromUrl: uri,
+      toFile: path,
+      background: true,
+    }).promise;
+  };
+  console.log('Downloading');
+  const exists = await RNFS.exists(videoPath);
+  if (exists) {
+    throw new Error('Already downloaded');
+  } else if (subtitlesURI == null) {
+    const resVideo = await download(videoURI, videoPath);
+    console.log(resVideo);
+    return {
+      videoName: videoName,
+      subtitlesName: null,
+    };
+  } else {
+    const subName = subtitlesURI.substring(
+      subtitlesURI.lastIndexOf('/') + 1,
+      subtitlesURI.length,
     );
-    const path_name = (RNFS.DocumentDirectoryPath + '/' + filename).replace(
+    const subPath = (RNFS.DocumentDirectoryPath + '/' + subName).replace(
       /%20/g,
       '_',
     );
 
-    RNFS.exists(path_name)
-      .then(exists => {
-        if (exists) {
-          reject(Error('Already downloaded'));
-        } else {
-          console.log('Downloading');
-          RNFS.downloadFile({
-            fromUrl: videoURL,
-            toFile: path_name,
-            background: true,
-          })
-            .promise.then(res => {
-              console.log(res);
-              resolve(filename);
-            })
-            .catch(err => {
-              reject(err);
+    const res = await Promise.all([
+      download(videoURI, videoPath),
+      download(subtitlesURI, subPath),
+    ]);
+    console.log(res);
+    return {
+      videoName: videoName,
+      subtitlesName: subName,
+    };
+  }
+}
+
+/**
+ * Retrieved the video and subtitles paths.
+ * @param {{videoName: String, subtitlesName: String}} video object containing the video name and the subtitles name file.
+ * @returns {Promise<{videoURI: String, subtitlesURI: null}|{videoURI: String, subtitlesURI: String}>} The different results.
+ */
+async function retrieveVideoPath(video) {
+  return new Promise((resolve, reject) => {
+    const videoPath =
+      RNFS.DocumentDirectoryPath + '/' + video.videoName.replace(/%20/g, '_');
+    const subPath =
+      video.subtitlesName !== null
+        ? RNFS.DocumentDirectoryPath +
+          '/' +
+          video.subtitlesName.replace(/%20/g, '_')
+        : null;
+
+    RNFS.exists(videoPath)
+      .then(videoExists => {
+        if (videoExists) {
+          if (video.subtitlesName !== null) {
+            return RNFS.exists(subPath);
+          } else {
+            resolve({
+              videoURI: videoPath,
+              subtitlesURI: null,
             });
+          }
+        } else {
+          reject(new Error('File is not present'));
         }
       })
-      .catch(err => {
-        reject(err);
-      });
-  });
-}
-
-function retrieveVideoPath(filename) {
-  return new Promise((resolve, reject) => {
-    const path =
-      RNFS.DocumentDirectoryPath + '/' + filename.replace(/%20/g, '_');
-    RNFS.exists(path).then(exists => {
-      if (exists) {
-        resolve(path);
-      } else {
-        reject(new Error('File is not present'));
-      }
-    });
-  });
-}
-
-function deleteVideo(filename) {
-  return new Promise((resolve, reject) => {
-    const path =
-      RNFS.DocumentDirectoryPath + '/' + filename.replace(/%20/g, '_');
-
-    return RNFS.unlink(path)
-      .then(() => {
-        resolve(true);
+      .then(subExists => {
+        if (subExists) {
+          resolve({
+            videoURI: videoPath,
+            subtitlesURI: subPath,
+          });
+        } else {
+          reject(new Error('File is not present'));
+        }
       })
-      .catch(err => {
-        reject(err);
-      });
+      .catch(err => reject(err));
+  });
+}
+
+/**
+ * Deletes a video from the cache, and if applicable, its subtitles file.
+ * @param  {{videoName: String, subtitlesName: String}} video object containing the video name and the subtitles name file.
+ * @returns {Promise<Boolean>} True if complete, false if error.
+ */
+function deleteVideo(video) {
+  return new Promise((resolve, reject) => {
+    const videoPath =
+      RNFS.DocumentDirectoryPath + '/' + video.videoName.replace(/%20/g, '_');
+
+    if (video.subtitlesName !== null) {
+      const subPath =
+        RNFS.DocumentDirectoryPath +
+        '/' +
+        video.subtitlesName.replace(/%20/g, '_');
+      Promise.all([RNFS.unlink(videoPath), RNFS.unlink(subPath)])
+        .then(() => resolve(true))
+        .catch(err => reject(err));
+    } else {
+      RNFS.unlink(videoPath)
+        .then(() => resolve(true))
+        .catch(err => reject(err));
+    }
   });
 }
 

@@ -5,6 +5,7 @@ import course from './courseReducer';
 import user from './userReducer';
 import video from './videoReducer';
 import savedVideos from './savedVideosReducer';
+import currentVideo from './currentVideoReducer';
 
 export default combineReducers({
   network,
@@ -12,4 +13,5 @@ export default combineReducers({
   user,
   video,
   savedVideos,
+  currentVideo
 });

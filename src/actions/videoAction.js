@@ -1,13 +1,16 @@
-import {FETCH_VIDEO_SUCCESS, FETCH_VIDEO_FAILURE} from './actionTypes';
+import {
+  FETCH_COURSE_VIDEO_SUCCESS,
+  FETCH_COURSE_VIDEO_FAILURE,
+} from './actionTypes';
 
 import axios from 'axios';
 
 const apiUrl = 'https://polyteach-back.igpolytech.fr';
 
-export const fetchVideo = () => {
+export const fetchVideosForCourse = courseId => {
   function thunk(dispatch) {
     return axios
-      .get(`${apiUrl}/videos`)
+      .get(`${apiUrl}/${courseId}/videos`)
       .then(response => {
         dispatch(fetchVideoSuccess(response.data));
       })
@@ -21,14 +24,14 @@ export const fetchVideo = () => {
 
 export const fetchVideoSuccess = videos => {
   return {
-    type: FETCH_VIDEO_SUCCESS,
+    type: FETCH_COURSE_VIDEO_SUCCESS,
     videos,
   };
 };
 
 export const fetchVideoFailure = error => {
   return {
-    type: FETCH_VIDEO_FAILURE,
+    type: FETCH_COURSE_VIDEO_FAILURE,
     payload: {
       error,
     },

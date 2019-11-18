@@ -4,8 +4,8 @@ import {saveVideo} from '../actions/savedVideosAction';
 
 const mapDispatchToProps = dispatch => {
   return {
-    addVideo: videoName => {
-      dispatch(saveVideo(videoName));
+    addVideo: (videoName, subtitlesName) => {
+      dispatch(saveVideo(videoName, subtitlesName));
     },
   };
 };
@@ -13,9 +13,13 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = store => {
   return {
     videoURI:
-      store.videoURI !== undefined
-        ? store.videoURI
+      store.currentVideo.videoURI !== undefined
+        ? store.currentVideo.videoURI
         : 'https://rawgit.com/mediaelement/mediaelement-files/master/big_buck_bunny.mp4',
+    subtitlesURI:
+      store.currentVideo.subtitlesURI !== undefined
+        ? store.currentVideo.subtitlesURI
+        : null,
   };
 };
 

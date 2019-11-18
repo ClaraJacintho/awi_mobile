@@ -4,7 +4,13 @@ import {offlineActionTypes} from 'react-native-offline';
 export default function savedVideosReducer(state = [], action) {
   switch (action.type) {
     case SAVE_DDL_VIDEO:
-      return [...state, action.videoName];
+      return [
+        ...state,
+        {
+          videoName: action.payload.videoName,
+          subtitlesName: action.payload.subtitlesName,
+        },
+      ];
     case REMOVE_DDL_VIDEO:
       return state.filter(video => video !== action.videoName);
     case offlineActionTypes.FETCH_OFFLINE_MODE:

@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
     right: 0,
   },
 });
+
 export default class VideoPage extends React.Component {
   constructor(props) {
     super(props);
