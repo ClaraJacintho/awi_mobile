@@ -1,18 +1,21 @@
 import { connect } from 'react-redux';
 import { CoursePage } from '../pages/CoursePage';
-import { fetchCourse } from '../actions/courseAction';
+import { fetchVideos } from '../actions/videoAction';
 
 const mapStateToProps = (state, ownprops) => {
-    let courseId = ownprops.courseId;
+    const { navigation } = this.props;
+    let courseId = navigation.getParam('courseId');
+    console.log(courseId)
   return {
-    videos: state.videos.filter(video => video.courseId === courseId)
+    videos: state.videos.filter(video => video.courseId === courseId),
+    course: state.courses.filter(course => course.courseId === courseId)
   }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onFetchCourse: courseId => {
-      dispatch(fetchCourse());
+    onFetchVideos: courseId => {
+      dispatch(fetchVideos());
     }
   };
 };

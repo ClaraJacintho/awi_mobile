@@ -16,10 +16,7 @@ import DownloadVideoButton from './DownloadVideoButton'
 
 
 
-export default class VideoItem extends Component {
-    render() {
-        let video = this.props.video.item;
-        console.log(video)
+export default ({video : {videoName, videoURL, subtitle}}) => {
         return (
             <View style={styles.container}>
                 <View style={styles.descContainer}>
@@ -29,17 +26,16 @@ export default class VideoItem extends Component {
                             numberOfLines={2}
                             renderTruncatedFooter={this._renderTruncatedFooter}
                             renderRevealedFooter={this._renderRevealedFooter}>
-                                <Text numberOfLines={2} style={styles.videoTitle}>{video.name}</Text>
-                            </ReadMore>
+                            <Text style={styles.videoTitle}>{videoName}</Text>
+                        </ReadMore>
                         </View>
                         <View style={{width:"20%"}, {marginRight:"30%"}}>
-                                <DownloadVideoButton videoURI={video.videoURI}/>
+                                <DownloadVideoButton videoURI={videoURL} subtitle={subtitle}/>
                         </View>
                     </View>
             </View>
         </View>
         )
-    }
 }
 
 _renderTruncatedFooter = (handlePress) => {

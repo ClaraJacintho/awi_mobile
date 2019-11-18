@@ -7,37 +7,36 @@ import styles from '../styles/CoursePageStyle'
 
 
 export default class CoursePage extends React.Component {
-  componentDidMount() {
-    const { videos } = this.props
-    this.props.onFetch()
-  }
+    componentDidMount() {
+      this.props.onFetchVideos()
+    }
     render() {
+      const { course,videos } = this.props
         return (
             <View style={styles.container}>
               <View >
               <Image style={{ width: "100%", height:150, resizeMode: 'stretch', alignContent:"center" }}  source={{uri:"https://i.ytimg.com/vi/WiTxwdGWLoY/maxresdefault.jpg"}}/>
                     <Text style={styles.courseTitle}>
-                        Statstiques et Regression
+                        {course.courseName}
                     </Text>
               <ReadMore
               numberOfLines={3}
               renderTruncatedFooter={this._renderTruncatedFooter}
               renderRevealedFooter={this._renderRevealedFooter}>
               <Text style={styles.courseDescription}>
-                This course is about statistics, it is held in 5th year of engineer school in the departement of Polytech Montpellier
-              </Text>
+              {course.courseDesc}
+                </Text>
                 </ReadMore> 
               </View>   
                 { 
-                data.videos.length > 0 ? (
+                videos.length > 0 ? (
                 <FlatList
-                data={data.videos}
+                data={videos}
                 renderItem={(video)=><VideoItem video={video} />}
-                keyExtractor={(item)=>item.id}
+                keyExtractor={(item)=>item.videoId}
                 ItemSeparatorComponent={()=><View style={{height:0.5,backgroundColor:'#E5E5E5'}}/>}
                  />
                 ):(
-
                 <Text style={{fontSize: 48, color:'red'}}>
                     Sorry. No Videos Available.
                 </Text>

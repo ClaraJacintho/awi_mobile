@@ -3,7 +3,7 @@ import { createBottomTabNavigator, BottomTabBar } from 'react-navigation-tabs';
 import {createStackNavigator} from 'react-navigation-stack';
 
 import Home from '../pages/Home.js';
-import CoursePage from '../pages/CoursePage.js';
+import CoursePage from '../containers/CoursePageContainer';
 import DownloadedVideos from '../pages/DownloadedVideos.js';
 
 const CourseNavigator = createStackNavigator(

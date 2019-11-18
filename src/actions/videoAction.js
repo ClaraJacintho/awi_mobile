@@ -4,7 +4,7 @@ import {
 } from './actionTypes';
 
 import axios from 'axios';
-import mockVideos from '../assets/mockVideos'
+import mockVideos from '../assets/mockVideos.js'
 
 const apiUrl = 'https://polyteach-back.igpolytech.fr';
 
