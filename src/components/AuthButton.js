@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Button, Linking, Platform} from 'react-native';
-import {getConnectionURI, getToken} from '../utils/auth';
+import {getConnectionURI, getToken, decodeToken} from '../utils/auth';
 
 export default class AuthButton extends React.Component {
   constructor(props) {
@@ -28,20 +28,26 @@ export default class AuthButton extends React.Component {
   }
 
   handleOpenURL = e => {
-    console.log('Handle open URL ' + e.url);
     this.retrieveTokens(e.url);
   };
 
-  retrieveTokens = url => {
+  retrieveTokens = async url => {
     if (url !== null) {
-      const {navigate} = this.props.navigation;
-      getToken(url, this.state.authState)
-        .then(tokens => {
-          console.log(tokens);
-          this.props.setToken(tokens.access_token, tokens.refresh_token);
-          navigate('Courses');
-        })
-        .catch(e => console.log(e));
+      try {
+        const {navigate} = this.props.navigation;
+        const tokens = await getToken(url, this.state.authState);
+        const payload = await decodeToken(tokens.access_token);
+        const username = payload.firstname + '.' + payload.lastname;
+        this.props.updateUser(
+          username,
+          payload.role,
+          tokens.access_token,
+          tokens.refresh_token,
+        );
+        navigate('Courses');
+      } catch (e) {
+        console.log(e);
+      }
     } else {
       console.log('Not yet not yet');
     }

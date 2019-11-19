@@ -1,7 +1,7 @@
 import {
   FETCH_USER_SUCCESS,
   FETCH_USER_FAILURE,
-  SET_USER_TOKEN,
+  UPDATE_USER_DATA,
 } from './actionTypes';
 import axios from 'axios';
 
@@ -39,11 +39,13 @@ export const fetchUserFailure = error => {
   };
 };
 
-export const setUserToken = (token, refreshToken) => {
+export const updateUserData = (username, role, accessToken, refreshToken) => {
   return {
-    type: SET_USER_TOKEN,
+    type: UPDATE_USER_DATA,
     payload: {
-      token,
+      username,
+      role,
+      accessToken,
       refreshToken,
     },
   };

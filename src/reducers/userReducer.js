@@ -1,7 +1,7 @@
 import {
   FETCH_USER_FAILURE,
   FETCH_USER_SUCCESS,
-  SET_USER_TOKEN,
+  UPDATE_USER_DATA,
 } from '../actions/actionTypes';
 import {offlineActionTypes} from 'react-native-offline';
 
@@ -12,11 +12,12 @@ export default function coursesReducer(state = {}, action) {
     }
     case FETCH_USER_FAILURE:
       return action.error;
-    case SET_USER_TOKEN:
+    case UPDATE_USER_DATA:
       return {
-        userId: state.userId,
-        token: action.token,
-        userName: state.userName,
+        accessToken: action.payload.accessToken,
+        refreshToken: action.payload.refreshToken,
+        username: action.payload.username,
+        role: action.payload.role,
       };
     case offlineActionTypes.FETCH_OFFLINE_MODE:
       return state;

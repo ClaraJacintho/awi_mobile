@@ -27,7 +27,12 @@ The general store looks like this:
         courseDesc: String,
         courseImgLink: String
     }],
-    user: { userId: Number, token: String, userName: String },
+    user: {
+        accessToken: String,
+        refreshToken: String,
+        username: String, 
+        role: String
+    },
     isConnected: Boolean
 
 }

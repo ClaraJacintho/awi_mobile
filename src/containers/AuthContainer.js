@@ -1,17 +1,18 @@
 import {connect} from 'react-redux';
 import AuthButton from '../components/AuthButton';
-import {setUserToken} from '../actions/userAction';
+import {updateUserData} from '../actions/userAction';
 
 const mapStateToProps = store => {
   return {
-    token: store.user.token,
+    accessToken: store.user.accessToken,
+    refreshToken: store.user.refreshToken,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    setToken: (token, refreshToken) => {
-      dispatch(setUserToken(token, refreshToken));
+    updateUser: (username, role, accessToken, refreshToken) => {
+      dispatch(updateUserData(username, role, accessToken, refreshToken));
     },
   };
 };

@@ -1,6 +1,6 @@
 export const FETCH_USER_SUCCESS = 'fetch_user_success';
 export const FETCH_USER_FAILURE = 'fetch_user_failure';
-export const SET_USER_TOKEN = 'set_user_token';
+export const UPDATE_USER_DATA = 'update_user_data';
 export const FETCH_COURSE_SUCCESS = 'fetch_course_success';
 export const FETCH_COURSE_FAILURE = 'fetch_course_failure';
 export const FETCH_COURSE_VIDEO_FAILURE = 'fetch_course_video_failure';

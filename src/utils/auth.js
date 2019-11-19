@@ -1,6 +1,7 @@
 import {CLIENT_ID, CLIENT_SECRET} from 'react-native-dotenv';
 import axios from 'axios';
 import queryString from 'query-string';
+import jwt from 'react-native-pure-jwt';
 
 function createSecret(length) {
   let result = '';
@@ -55,4 +56,14 @@ export function getToken(url, state) {
         .catch(err => reject(err));
     }
   });
+}
+
+/**
+ * Decodes the given token, with the client secret.
+ * @param {String} token the token to decode
+ * @returns {JSON} the payload.
+ */
+export async function decodeToken(token) {
+  const tok = await jwt.decode(token, CLIENT_SECRET, {skipValidation: false});
+  return tok.payload;
 }
