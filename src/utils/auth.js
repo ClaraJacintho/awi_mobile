@@ -1,5 +1,6 @@
 import {CLIENT_ID, CLIENT_SECRET} from 'react-native-dotenv';
 import axios from 'axios';
+import queryString from 'query-string';
 
 function createSecret(length) {
   let result = '';
@@ -30,45 +31,28 @@ export function getConnectionURI() {
 }
 
 /**
- * Parses the input URL and gets the params
- * @param {String} url the input URL
- * @return {Map<String, String>} the params in key value.
- */
-function parseAuthURL(url) {
-  let regex = /[?&]([^=#]+)=([^&#]*)/g,
-    params = {};
-  let match = [];
-  while (match === regex.exec(url)) {
-    params[match[1]] = match[2];
-    console.log(match[1], match[2]);
-  }
-  return params;
-}
-
-/**
  * Gets the token from the auth.
  * @param {String} url the received URL.
  * @param {String} state the input state
- * @return {{access_token: String, refresh_token: String}} The tokens
+ * @return {Promise<{access_token: String, refresh_token: String}>} The tokens
  */
 export function getToken(url, state) {
-  console.log(state);
-  const params = parseAuthURL(url);
-  console.log(params);
-  const code = params.code,
-    receivedState = params.state;
-  if (state !== receivedState) {
-    throw new Error('States are not corresponding');
-  } else {
-    axios
-      .post('https://oauth.igpolytech.fr/token', {
-        code: code,
-        client_id: CLIENT_ID,
-      })
-      .then(res => {
-        console.log(res);
-        return res.data;
-      })
-      .catch(err => console.log(err));
-  }
+  return new Promise((resolve, reject) => {
+    const params = queryString.parse(
+      url.substring(url.indexOf('?'), url.length),
+    );
+    const code = params.code;
+    const receivedState = params.state;
+    if (state !== receivedState) {
+      throw new Error('States are not corresponding');
+    } else {
+      axios
+        .post('https://oauth.igpolytech.fr/token', {
+          code: code,
+          client_id: CLIENT_ID,
+        })
+        .then(res => resolve(res.data))
+        .catch(err => reject(err));
+    }
+  });
 }

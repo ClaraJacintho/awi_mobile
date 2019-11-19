@@ -27,21 +27,21 @@ export default class AuthButton extends React.Component {
     Linking.removeEventListener('url', this.handleOpenURL);
   }
 
-  handleOpenURL = e => this.retrieveTokens(e.url);
+  handleOpenURL = e => {
+    console.log('Handle open URL ' + e.url);
+    this.retrieveTokens(e.url);
+  };
 
   retrieveTokens = url => {
-    console.log(url);
     if (url !== null) {
-      console.log('coucou');
-      try {
-        const {navigate} = this.props.navigation;
-        const tokens = getToken(url, this.state.authState);
-        console.log(tokens.access_token + '\n' + tokens.refresh_token);
-        this.props.setToken(tokens.access_token, tokens.refresh_token);
-        navigate('App/');
-      } catch (e) {
-        console.log(e);
-      }
+      const {navigate} = this.props.navigation;
+      getToken(url, this.state.authState)
+        .then(tokens => {
+          console.log(tokens);
+          this.props.setToken(tokens.access_token, tokens.refresh_token);
+          navigate('Courses');
+        })
+        .catch(e => console.log(e));
     } else {
       console.log('Not yet not yet');
     }
@@ -58,13 +58,8 @@ export default class AuthButton extends React.Component {
   };*/
   connectWithOAuth = () => {
     const conn = getConnectionURI();
-    console.log(this.state);
-    console.log(conn.state);
     this.setState({authState: conn.state});
-    console.log(this.state);
     Linking.openURL(conn.URI);
-    const {navigate} = this.props.navigation;
-    navigate('Login');
   };
 
   render() {

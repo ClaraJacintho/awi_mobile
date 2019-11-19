@@ -5,7 +5,6 @@ import {
 } from './actionTypes';
 import axios from 'axios';
 
-
 const apiUrl = 'https://polyteach-back.igpolytech.fr';
 
 export const fetchUser = () => {
