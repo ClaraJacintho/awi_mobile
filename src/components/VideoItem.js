@@ -1,11 +1,22 @@
 import React, {Component} from 'react';
 import {Text, View} from 'react-native';
 import ReadMore from 'react-native-read-more-text';
-import styles from '../styles/VideoItemStyle' ;
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import styles from '../styles/VideoItemStyle';
 import DownloadVideoButton from './DownloadVideoButton';
 
 export default class VideoItem extends Component {
+  constructor(props) {
+    super(props);
+    this.handleTextPress = this.handleTextPress.bind(this);
+  }
+
+  handleTextPress = () => {
+    if (this.props.onItemPress) {
+      const {navigation} = this.props.onItemPress;
+      navigation.navigate('VideoPage');
+    }
+  };
+
   render() {
     let video = this.props.video.item;
     console.log(video);
@@ -17,11 +28,11 @@ export default class VideoItem extends Component {
               (styles.videoDetails, {marginRight: 100}, {flexDirection: 'row'})
             }>
             <View style={{width: '60%'}}>
-              <ReadMore
-                numberOfLines={2}
-                renderTruncatedFooter={this._renderTruncatedFooter}
-                renderRevealedFooter={this._renderRevealedFooter}>
-                <Text numberOfLines={2} style={styles.videoTitle}>
+              <ReadMore numberOfLines={2} >
+                <Text
+                  numberOfLines={2}
+                  style={styles.videoTitle}
+                  onPress={this.handleTextPress}>
                   {video.name}
                 </Text>
               </ReadMore>
@@ -35,23 +46,3 @@ export default class VideoItem extends Component {
     );
   }
 }
-
-_renderTruncatedFooter = handlePress => {
-  return (
-    <RegularText
-      style={{color: Colors.Blue, marginTop: 5}}
-      onPress={handlePress}>
-      Read more
-    </RegularText>
-  );
-} ;
-
-_renderRevealedFooter = handlePress => {
-  return (
-    <RegularText
-      style={{color: Colors.tintColor, marginTop: 5}}
-      onPress={handlePress}>
-      Show less
-    </RegularText>
-  );
-};

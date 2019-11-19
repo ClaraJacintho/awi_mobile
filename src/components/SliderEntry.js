@@ -40,7 +40,6 @@ export default class SliderEntry extends Component {
         activeOpacity={1}
         style={styles.slideInnerContainer}
         onPress={() => {
-          // eslint-disable-next-line no-alert
           click();
         }}>
         <View style={styles.shadow} />

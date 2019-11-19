@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {Alert, Button} from 'react-native';
 import videoCaching from '../utils/videoCaching';
+import {colors} from './../styles/base.js';
 
 export default class DownloadVideoButton extends React.Component {
   constructor(props) {
@@ -43,6 +44,7 @@ export default class DownloadVideoButton extends React.Component {
         title={this.state.buttonTitle}
         disabled={this.state.isDisabled}
         onPress={this.downloadVideo}
+        color={colors.purple}
       />
     );
   }

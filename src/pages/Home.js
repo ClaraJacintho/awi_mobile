@@ -22,7 +22,7 @@ export default class Home extends React.Component {
 
   onPress() {
     const {navigation} = this.props;
-    navigation.navigate('CoursePage');
+    navigation.navigate('CoursePage', {courseTitle: "Stats"});
   }
 
   _renderItem({item, index}) {
@@ -44,10 +44,6 @@ export default class Home extends React.Component {
     //const {navigate} = this.props.navigation;
     return (
       <ScrollView style={componentStyles.container}>
-        <Text style={componentStyles.header}>
-          {' '}
-          Welcome {navigation.getParam('user', 'user')}
-        </Text>
         <Text style={componentStyles.listTitle}>Recently watched</Text>
         <Carousel
           ref={c => (this._slider1Ref = c)}
@@ -108,17 +104,12 @@ const componentStyles = StyleSheet.create({
   container: {
     backgroundColor: colors.background,
   },
-  header: {
-    textAlign: 'center',
-    fontSize: fonts.lg,
-    fontFamily: fonts.primary,
-    color: colors.primary,
-    paddingBottom: padding.md,
-  },
   listTitle: {
+    marginTop: padding.sm,
     fontSize: fonts.lg,
     fontFamily: fonts.primary,
+    fontWeight:'bold',
     color: colors.primary,
-    paddingBottom: padding.md,
+    paddingBottom: padding.sm,
   },
 });
