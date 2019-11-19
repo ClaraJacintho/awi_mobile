@@ -12,6 +12,11 @@ import ReadMore from 'react-native-read-more-text';
 import styles from '../styles/CoursePageStyle';
 
 export default class CoursePage extends React.Component {
+    static navigationOptions = ({ navigation }) => {
+      return {
+        title: navigation.getParam('courseTitle', 'Course'),
+      };
+    };
   constructor(props) {
     super(props);
     this._renderTruncatedFooter = this._renderTruncatedFooter.bind(this);

@@ -21,7 +21,7 @@ export default class Home extends React.Component {
 
   onPress() {
     const {navigation} = this.props;
-    navigation.navigate('CoursePage');
+    navigation.navigate('CoursePage', {courseTitle: "Stats"});
   }
 
   _renderItem({item, index}) {

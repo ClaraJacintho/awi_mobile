@@ -10,7 +10,6 @@ import Settings from '../pages/Settings.js';
 import VideoPage from '../pages/Video.js';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faHome, faDownload, faCog } from '@fortawesome/free-solid-svg-icons'
-import AppNavigator from './AppNavigator.js';
 
 const icon_color = colors.white
 
@@ -27,7 +26,17 @@ const CourseNavigator = createStackNavigator(
     },
     {
         initialRouteName: 'Home',
+        defaultNavigationOptions: {
+          headerStyle: {
+            backgroundColor: colors.dark_grey,
+          },
+          headerTintColor: colors.white,
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        },
     },
+    
 );
 
 
