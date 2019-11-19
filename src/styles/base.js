@@ -10,10 +10,6 @@ export const colors = {
   primary: '#F5F5F5',
   secondary: '#475B63',
   tertiary: '#729B79', //#BACDB0,
-<<<<<<< HEAD
-=======
-  background: '#2a2a2a',
->>>>>>> 4a6ba95cb20db432d0c347624686aab0798dd3f8
   black: '#1a1917',
   gray: '#888888',
   dark: '#171818',
