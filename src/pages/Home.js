@@ -6,6 +6,7 @@ import SliderEntry from '../components/SliderEntry';
 import styles from '../styles/sliderBaseStyle.js';
 import {ENTRIES1} from './../assets/entries';
 import {colors, fonts, padding} from './../styles/base.js';
+import Orientation from 'react-native-orientation';
 
 const SLIDER_1_FIRST_ITEM = 1;
 
@@ -32,6 +33,10 @@ export default class Home extends React.Component {
         click={this.onPress}
       />
     );
+  }
+
+  componentDidMount() {
+    Orientation.lockToPortrait();
   }
 
   render() {

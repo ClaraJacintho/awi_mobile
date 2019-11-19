@@ -1,8 +1,14 @@
 import React from 'react';
 import {Text, View, FlatList} from 'react-native';
 import styles from '../styles/CoursePageStyle';
+import Orientation from 'react-native-orientation';
 
 export default class CoursePage extends React.Component {
+
+  componentDidMount() {
+    Orientation.lockToPortrait();
+  }
+
   render() {
     const data = {
       characters: [

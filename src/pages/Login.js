@@ -1,8 +1,8 @@
 import React from 'react';
 import {Text, View, Button, Linking, Platform} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
-import FormButton from '../components/FormButton';
 import styles from '../styles/LoginStyles';
+import Orientation from 'react-native-orientation';
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -54,6 +54,8 @@ export default class Login extends React.Component {
     } else {
       Linking.addEventListener('url', this.handleOpenURL);
     }
+
+    Orientation.lockToPortrait();
   }
 
   componentWillUnmount() {
@@ -75,7 +77,6 @@ export default class Login extends React.Component {
   };
 
   render() {
-    const {navigate} = this.props.navigation;
     return (
       <View style={styles.container}>
         <Text style={styles.header}>Twiddle</Text>
@@ -97,10 +98,6 @@ export default class Login extends React.Component {
         />
 
         <Button onPress={this.handleSubmit} title="Login" />
-        {
-          // why u no work??
-        }
-        <FormButton lablel={'Login'} onPress={() => navigate('App')} />
       </View>
     );
   }
