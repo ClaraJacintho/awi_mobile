@@ -10,7 +10,7 @@ export const colors = {
   primary: '#F5F5F5',
   secondary: '#475B63',
   tertiary: '#729B79', //#BACDB0,
-  background: '#475B63',
+  background: '#2a2a2a',
   black: '#1a1917',
   gray: '#888888',
 };
@@ -26,5 +26,6 @@ export const fonts = {
   sm: 12,
   md: 18,
   lg: 28,
-  // primary: 'Cochin'
 };
+
+

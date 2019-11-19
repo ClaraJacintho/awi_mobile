@@ -1,17 +1,40 @@
 import React from 'react';
-import {RegularText, Text, Image, View, FlatList} from 'react-native';
+import {
+  RegularText,
+  Text,
+  Image,
+  View,
+  FlatList,
+  StyleSheet,
+} from 'react-native';
 import VideoItem from '../components/VideoItem';
 import ReadMore from 'react-native-read-more-text';
 import styles from '../styles/CoursePageStyle';
 
 export default class CoursePage extends React.Component {
+  constructor(props) {
+    super(props);
+    this._renderTruncatedFooter = this._renderTruncatedFooter.bind(this);
+    this._renderRevealedFooter = this._renderRevealedFooter.bind(this);
+  }
 
+  _renderTruncatedFooter = handlePress => {
+    return (
+      <RegularText style={styles.linkItem} onPress={handlePress}>
+        Read more
+      </RegularText>
+    );
+  };
 
-    constructor(props) {
-        super(props);
-    }
+  _renderRevealedFooter = handlePress => {
+    return (
+      <RegularText style={styles.linkItem} onPress={handlePress}>
+        Show less
+      </RegularText>
+    );
+  };
 
-    render() {
+  render() {
     const data = {
       videos: [
         {
@@ -99,38 +122,16 @@ export default class CoursePage extends React.Component {
         {data.videos.length > 0 ? (
           <FlatList
             data={data.videos}
-            renderItem={video => <VideoItem video={video} onItemPress={this.props} />}
-            keyExtractor={item => item.id}
-            ItemSeparatorComponent={() => (
-              <View style={{height: 0.5, backgroundColor: '#E5E5E5'}} />
+            renderItem={video => (
+              <VideoItem video={video} onItemPress={this.props} />
             )}
+            keyExtractor={item => item.id}
+            ItemSeparatorComponent={() => <View style={styles.separatorView} />}
           />
         ) : (
-          <Text style={{fontSize: 48, color: 'red'}}>
-            Sorry. No Videos Available.
-          </Text>
+          <Text style={styles.textNoVideo}>Sorry. No Videos Available.</Text>
         )}
       </View>
     );
   }
 }
-
-_renderTruncatedFooter = handlePress => {
-  return (
-    <RegularText
-      style={{color: Colors.Blue, marginTop: 5}}
-      onPress={handlePress}>
-      Read more
-    </RegularText>
-  );
-};
-
-_renderRevealedFooter = handlePress => {
-  return (
-    <RegularText
-      style={{color: Colors.tintColor, marginTop: 5}}
-      onPress={handlePress}>
-      Show less
-    </RegularText>
-  );
-};
