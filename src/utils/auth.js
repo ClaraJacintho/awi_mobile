@@ -52,7 +52,9 @@ function parseAuthURL(url) {
  * @return {{access_token: String, refresh_token: String}} The tokens
  */
 export function getToken(url, state) {
+  console.log(state);
   const params = parseAuthURL(url);
+  console.log(params);
   const code = params.code,
     receivedState = params.state;
   if (state !== receivedState) {

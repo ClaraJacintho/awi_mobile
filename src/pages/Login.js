@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, Linking, Platform} from 'react-native';
+import {Text, View} from 'react-native';
 import AuthContainer from '../containers/AuthContainer';
 import styles from '../styles/LoginStyles';
 
@@ -12,7 +12,7 @@ export default class Login extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.header}>Polyteach</Text>
-        <AuthContainer />
+        <AuthContainer navigation={this.props.navigation} />
       </View>
     );
   }
