@@ -1,5 +1,6 @@
 import axios from 'axios';
 import apiconfig from '../config/connexion_config';
+import {OAUTH_STATE_SAVE} from './actionTypes';
 
 export const askToken = ({email, password}) => {
   return async dispatch => {
@@ -32,4 +33,11 @@ export const askTokenFailure = error => {
       error: error,
     },
   };
+};
+
+export const saveOAuthState = OAuthState => {
+  return {
+    type : OAUTH_STATE_SAVE,
+    oAuthState: OAuthState,
+  }
 };

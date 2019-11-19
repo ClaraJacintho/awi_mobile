@@ -8,3 +8,4 @@ export const FETCH_COURSE_VIDEO_SUCCESS = 'fetch_course_video_success';
 export const SET_CURR_VIDEO = 'set_curr_video';
 export const SAVE_DDL_VIDEO = 'save_ddl_video';
 export const REMOVE_DDL_VIDEO = 'remove_ddl_video';
+export const OAUTH_STATE_SAVE = 'oauth_state_save';

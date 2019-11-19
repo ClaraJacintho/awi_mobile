@@ -6,7 +6,7 @@ export default class AuthButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      authState: '',
+      authState:this.props.oauthState,
     };
     this.connectWithOAuth = this.connectWithOAuth.bind(this);
     this.retrieveTokens = this.retrieveTokens.bind(this);
@@ -53,19 +53,13 @@ export default class AuthButton extends React.Component {
     }
   };
 
-  /*navigate = url => {
-    const {navigate} = this.props.navigation;
-    const route = url.replace(/.*?:\/\//g, '');
-    const routeName = route.split('/')[0];
-
-    if (routeName === 'app') {
-      navigate('App/Home');
-    }
-  };*/
   connectWithOAuth = () => {
     const conn = getConnectionURI();
-    this.setState({authState: conn.state});
-    Linking.openURL(conn.URI);
+    this.setState({authState: conn.state}, function () {
+      this.props.saveState(this.state.authState);
+      Linking.openURL(conn.URI);
+    });
+
   };
 
   render() {
