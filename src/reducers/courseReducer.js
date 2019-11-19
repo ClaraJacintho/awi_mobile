@@ -7,7 +7,7 @@ import {offlineActionTypes} from 'react-native-offline';
 const courses = [
   {
       "courseId": 3,
-      "courseName": "DevOps",
+      "courseName": "DevyyyyyyyyyyyyyyOps",
       "courseDesc": "description 3",
       "courseImageLink": "https://static1.squarespace.com/static/559dc415e4b0fcb781ceca92/55b6c5f7e4b08c3f4b9f3f83/5c51551e4ae23755fa90f088/1548890390219/jason-leung-479251-unsplash.jpg?format=2500w"
   },
@@ -49,11 +49,11 @@ const courses = [
   }
 ]
 
-export default function coursesReducer(state = {courses :courses}, action) {
+export default function coursesReducer(state = [], action) {
   switch (action.type) {
     case FETCH_COURSE_SUCCESS:
       console.log("reducer course")
-      return state;
+      return action.courses;
     case FETCH_COURSE_FAILURE:
       return action.error;
     case offlineActionTypes.FETCH_OFFLINE_MODE:

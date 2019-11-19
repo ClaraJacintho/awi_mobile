@@ -1,7 +1,7 @@
 export default mockCourses = [
     {
-        "courseId": 3,
-        "courseName": "DevOps",
+        "courseId": 12,
+        "courseName": "DevbbvxcOps",
         "courseDesc": "description 3",
         "courseImageLink": "https://static1.squarespace.com/static/559dc415e4b0fcb781ceca92/55b6c5f7e4b08c3f4b9f3f83/5c51551e4ae23755fa90f088/1548890390219/jason-leung-479251-unsplash.jpg?format=2500w"
     },

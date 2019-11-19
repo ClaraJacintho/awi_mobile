@@ -17,6 +17,7 @@ import DownloadVideoButton from './DownloadVideoButton'
 
 
 export default ({video : {videoName, videoURL, subtitle}}) => {
+        console.log("name"+videoName)
         return (
             <View style={styles.container}>
                 <View style={styles.descContainer}>
