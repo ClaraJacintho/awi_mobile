@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc88686c-4dac-4714-aa1d-66afd9232756" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/courseAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/courseAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/videoAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/videoAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/mockVideo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/mockVideo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DownloadVideoButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DownloadVideoButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SliderEntry.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SliderEntry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/VideoItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/VideoItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/CoursePageContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/CoursePageContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/TabNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/TabNavigator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/CoursePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/CoursePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FormButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FormButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/sliderBaseStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/sliderBaseStyle.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,7 +20,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
+            <state relative-caret-position="578">
               <caret line="34" selection-start-line="34" selection-end-line="34" />
             </state>
           </provider>
@@ -74,17 +64,18 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="240" />
     <option name="y" value="130" />
     <option name="width" value="1440" />
-    <option name="height" value="774" />
+    <option name="height" value="775" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -97,7 +88,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -131,7 +121,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="193" y="104" width="1152" height="618" extended-state="1" />
+    <frame x="192" y="104" width="1152" height="619" extended-state="0" />
     <layout>
       <window_info id="Captures" order="0" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.329148" />
@@ -154,7 +144,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
+        <state relative-caret-position="578">
           <caret line="34" selection-start-line="34" selection-end-line="34" />
         </state>
       </provider>

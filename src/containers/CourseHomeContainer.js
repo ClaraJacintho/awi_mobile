@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { CoursePage } from '../pages/CoursePage';
+import Home from '../pages/Home';
 import { fetchCourse } from '../actions/courseAction';
 
 const mapStateToProps = (state, ownprops) => {
@@ -13,8 +13,8 @@ const mapDispatchToProps = dispatch => {
     onFetchCourses: courseId => {
       dispatch(fetchCourse());
     }
+    }
   };
-};
 
 const CoursesList = connect(
   mapStateToProps,

@@ -17,6 +17,7 @@ export default class Home extends React.Component {
     };
     this._renderItem = this._renderItem.bind(this)
     this.onPress = this.onPress.bind(this);
+    this.props.onFetchCourses()
   }
 
   onPress() {
