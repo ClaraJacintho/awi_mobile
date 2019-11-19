@@ -3,8 +3,12 @@ import {colors} from './base';
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: colors.background,
     paddingTop: 20,
+    paddingBottom: 20,
+  },
+  pageContainer: {
+    backgroundColor: colors.background,
     paddingBottom: 20,
   },
   listitem: {
@@ -15,10 +19,11 @@ export default StyleSheet.create({
     borderBottomColor: '#999',
   },
   courseTitle: {
+    color: colors.white,
     marginBottom: 10,
     textAlign: 'center',
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: 26,
     borderBottomWidth: 2,
     borderBottomRightRadius: 1,
     borderBottomColor: '#999',
@@ -27,7 +32,9 @@ export default StyleSheet.create({
     marginBottom: 10,
     marginLeft: 10,
     fontWeight: '100',
+    fontSize: 16,
     borderBottomColor: '#999',
+    color: colors.white,
   },
   title: {
     textAlign: 'center',
@@ -40,11 +47,12 @@ export default StyleSheet.create({
   separator: {
     marginVertical: 8,
     borderBottomColor: '#737373',
-    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomWidth: 1,
   },
   linkItem: {
     color: colors.tertiary,
     marginTop: 5,
+    fontSize: 15,
   },
   textNoVideo: {
     fontSize: 48,

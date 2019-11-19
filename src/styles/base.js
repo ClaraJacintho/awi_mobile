@@ -9,14 +9,14 @@ export const dimensions = {
 export const colors = {
   primary: '#F5F5F5',
   secondary: '#475B63',
-  tertiary: '#729B79', //#BACDB0,
+  tertiary: '#729B79',
   black: '#1a1917',
   gray: '#888888',
   dark: '#171818',
   background: '#111111',
-  background_modal:' #000000',
+  background_modal: ' #000000',
   white: '#dddada',
-  green: '#1cb831', 
+  green: '#1cb831',
   green_modal: '#5cdf5c',
   modal_grey:'#acabab',
   modal_grey_2: 'rgb(122, 122, 122)',
@@ -45,5 +45,3 @@ export const fonts = {
   md: 18,
   lg: 28,
 };
-
-
