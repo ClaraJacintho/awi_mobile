@@ -95,12 +95,12 @@ export default class CoursePage extends React.Component {
       {key: 'Lucy', prof: 'unknown'},
     ];
     return (
-      <View style={styles.container}>
+      <View style={styles.pageContainer}>
         <View>
           <Image
             style={{
               width: '100%',
-              height: 150,
+              height: 175,
               resizeMode: 'stretch',
               alignContent: 'center',
             }}
