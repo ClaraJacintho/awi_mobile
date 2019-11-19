@@ -10,7 +10,12 @@ const CourseNavigator = createStackNavigator(
     {
         CoursePage: CoursePage,
         VideoPage: VideoPage,
-        Home: Home
+        Home: {
+          screen: Home,
+          navigationOptions: {
+            header: null,
+          }
+        },
     },
     {
         initialRouteName: 'Home',

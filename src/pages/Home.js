@@ -39,10 +39,6 @@ export default class Home extends React.Component {
     //const {navigate} = this.props.navigation;
     return (
       <ScrollView style={componentStyles.container}>
-        <Text style={componentStyles.header}>
-          {' '}
-          Welcome {navigation.getParam('user', 'user')}
-        </Text>
         <Text style={componentStyles.listTitle}>Recently watched</Text>
         <Carousel
           ref={c => (this._slider1Ref = c)}
@@ -111,6 +107,7 @@ const componentStyles = StyleSheet.create({
     paddingBottom: padding.md,
   },
   listTitle: {
+    marginTop: padding.sm,
     fontSize: fonts.lg,
     fontFamily: fonts.primary,
     color: colors.primary,

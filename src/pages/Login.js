@@ -1,8 +1,8 @@
 import React from 'react';
-import {Text, View, Button, Linking, Platform} from 'react-native';
+import {Image, View, Button, Linking, Platform, StyleSheet} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 import FormButton from '../components/FormButton';
-import styles from '../styles/LoginStyles';
+import {colors, fonts, padding, dimensions} from './../styles/base.js';
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -78,7 +78,7 @@ export default class Login extends React.Component {
     const {navigate} = this.props.navigation;
     return (
       <View style={styles.container}>
-        <Text style={styles.header}>Twiddle</Text>
+        <Image source={require("../assets/PolyTeach_Logo_RGB.png")} style={styles.header}/>
         <TextInput
           style={styles.textField}
           placeholder="username"
@@ -105,3 +105,23 @@ export default class Login extends React.Component {
     );
   }
 }
+
+const styles =  StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: dimensions.fullWidth,
+    backgroundColor: colors.background,
+  },
+  header: {
+    width: dimensions.fullWidth / 2,
+    height: dimensions.fullHeight / 8 
+
+  },
+  textField: {
+    width: dimensions.fullWidth / 2,
+    backgroundColor: colors.primary,
+    marginBottom: padding.sm,
+  },
+});
