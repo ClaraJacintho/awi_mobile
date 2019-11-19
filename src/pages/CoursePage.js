@@ -3,8 +3,13 @@ import {RegularText, Text, Image, View, FlatList} from 'react-native';
 import VideoItem from '../components/VideoItem';
 import ReadMore from 'react-native-read-more-text';
 import styles from '../styles/CoursePageStyle';
+import Orientation from 'react-native-orientation';
 
 export default class CoursePage extends React.Component {
+  componentDidMount() {
+    Orientation.lockToPortrait();
+  }
+
   render() {
     const data = {
       videos: [
