@@ -67,3 +67,33 @@ export async function decodeToken(token) {
   const tok = await jwt.decode(token, CLIENT_SECRET, {skipValidation: false});
   return tok.payload;
 }
+
+/**
+ * Checks if the current access token is valid, and if not, tries to ask for another one.
+ * If none are valid, an error is thrown.
+ * @param {String} accessToken the current access token.
+ * @param {String} refreshToken the current refresh token.
+ * @return {Promise<{validity:Boolean, token: String}>} The validity, and the current valid token.
+ */
+export async function checkTokenValidity(accessToken, refreshToken) {
+  jwt
+    .decode(accessToken, CLIENT_SECRET, {skipValidation: false})
+    .then(() => ({validity: true, token: accessToken}))
+    .catch(() => {
+      axios
+        .post('https://oauth.igpolytech.fr/refresh', {
+          client_id: CLIENT_ID,
+          refresh_token: refreshToken,
+        })
+        .then(res => {
+          if (res.data.access_token !== null) {
+            return {
+              validity: false,
+              token: res.data.access_token,
+            };
+          } else {
+            throw new TypeError('Refresh token is invalid!');
+          }
+        });
+    });
+}
