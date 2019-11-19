@@ -9,8 +9,9 @@ const AppNavigator = createSwitchNavigator({
   Loading: {
     screen: Example,
   },
-  Auth: {
+  Auth:{
     screen: Login,
+    path: 'app',
   },
   App: {
     screen: TabNavigator,

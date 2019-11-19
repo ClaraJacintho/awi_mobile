@@ -38,7 +38,7 @@ export default class AuthButton extends React.Component {
         const tokens = getToken(url, this.state.authState);
         console.log(tokens.access_token + '\n' + tokens.refresh_token);
         this.props.setToken(tokens.access_token, tokens.refresh_token);
-        //navigate('App/Home');
+        navigate('App/');
       } catch (e) {
         console.log(e);
       }
@@ -58,10 +58,13 @@ export default class AuthButton extends React.Component {
   };*/
   connectWithOAuth = () => {
     const conn = getConnectionURI();
+    console.log(this.state);
     console.log(conn.state);
     this.setState({authState: conn.state});
-    console.log(this.state.authState);
+    console.log(this.state);
     Linking.openURL(conn.URI);
+    const {navigate} = this.props.navigation;
+    navigate('Login');
   };
 
   render() {

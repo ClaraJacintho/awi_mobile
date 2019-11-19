@@ -1,11 +1,14 @@
 import {createStackNavigator} from 'react-navigation-stack';
 import Login from '../pages/Login.js';
-import TabNavigator from './TabNavigator.js'
+import TabNavigator from './TabNavigator.js';
 
 const AppNavigator = createStackNavigator(
   {
-    Login: Login,
-    App: TabNavigator
+    Login: {
+      screen: Login,
+      path: 'app',
+    },
+    App: TabNavigator,
   },
   {
     initialRouteName: 'Login',
