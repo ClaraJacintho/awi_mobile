@@ -99,18 +99,12 @@ const componentStyles = StyleSheet.create({
   container: {
     backgroundColor: colors.background,
   },
-  header: {
-    textAlign: 'center',
-    fontSize: fonts.lg,
-    fontFamily: fonts.primary,
-    color: colors.primary,
-    paddingBottom: padding.md,
-  },
   listTitle: {
     marginTop: padding.sm,
     fontSize: fonts.lg,
     fontFamily: fonts.primary,
+    fontWeight:'bold',
     color: colors.primary,
-    paddingBottom: padding.md,
+    paddingBottom: padding.sm,
   },
 });

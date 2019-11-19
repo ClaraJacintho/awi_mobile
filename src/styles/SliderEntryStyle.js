@@ -40,7 +40,7 @@ export default StyleSheet.create({
   imageContainer: {
     flex: 1,
     marginBottom: IS_IOS ? 0 : -1, // Prevent a random Android rendering issue
-    backgroundColor: colors.purple,
+    backgroundColor: 'white',
     borderTopLeftRadius: entryBorderRadius,
     borderTopRightRadius: entryBorderRadius,
   },
@@ -61,7 +61,7 @@ export default StyleSheet.create({
     left: 0,
     right: 0,
     height: entryBorderRadius,
-    backgroundColor: colors.purple,
+    backgroundColor: 'white',
   },
   radiusMaskEven: {
     backgroundColor: colors.black,
@@ -71,12 +71,12 @@ export default StyleSheet.create({
     paddingTop: 20 - entryBorderRadius,
     paddingBottom: 20,
     paddingHorizontal: 16,
-    backgroundColor: colors.purple,
+    backgroundColor: 'white',
     borderBottomLeftRadius: entryBorderRadius,
     borderBottomRightRadius: entryBorderRadius,
   },
   textContainerEven: {
-    backgroundColor: colors.black,
+    backgroundColor: colors.dark_purple,
   },
   title: {
     color: colors.black,
