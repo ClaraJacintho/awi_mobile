@@ -2,9 +2,8 @@ import React from 'react';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import {createStackNavigator} from 'react-navigation-stack';
 
-import {colors} from './../styles/base.js';
-import Home from '../pages/Home.js';
-import CoursePage from '../pages/CoursePage.js';
+import Home from '../containers/CourseHomeContainer';
+import CoursePageContainer from '../containers/CoursePageContainer';
 import DownloadedVideos from '../pages/DownloadedVideos.js';
 import Settings from '../pages/Settings.js';
 import VideoPage from '../pages/Video.js';
@@ -15,7 +14,7 @@ const icon_color = colors.white;
 
 const CourseNavigator = createStackNavigator(
   {
-    CoursePage: CoursePage,
+    CoursePage: CoursePageContainer,
     VideoPage: VideoPage,
     Home: {
       screen: Home,

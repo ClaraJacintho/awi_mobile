@@ -47,5 +47,5 @@ export default class DownloadVideoButton extends React.Component {
         color={colors.purple}
       />
     );
-  }
+  } 
 }

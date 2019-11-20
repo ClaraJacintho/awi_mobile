@@ -16,6 +16,7 @@ export default class VideoItem extends Component {
       navigation.navigate('VideoPage');
     }
   };
+                                
 
   render() {
     let video = this.props.video.item;
@@ -38,7 +39,7 @@ export default class VideoItem extends Component {
               </ReadMore>
             </View>
             <View style={({width: '20%'}, {marginRight: '30%'})}>
-              <DownloadVideoButton />
+              <DownloadVideoButton videoURI={videoURL} subtitle={subtitle} courseId={courseId}/>
             </View>
           </View>
         </View>
@@ -46,3 +47,18 @@ export default class VideoItem extends Component {
     );
   }
 }
+_renderTruncatedFooter = (handlePress) => {
+    return (
+      <RegularText style={{color: Colors.Blue, marginTop: 5}} onPress={handlePress}>
+        Read more
+      </RegularText>
+    );
+  }
+ 
+  _renderRevealedFooter = (handlePress) => {
+    return (
+      <RegularText style={{color: Colors.tintColor, marginTop: 5}} onPress={handlePress}>
+        Show less
+      </RegularText>
+    );
+  }
