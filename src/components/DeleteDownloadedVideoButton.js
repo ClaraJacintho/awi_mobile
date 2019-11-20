@@ -1,15 +1,16 @@
-import * as React from 'react';
+import React from 'react';
 import {Button} from 'react-native';
 import videoCaching from '../utils/videoCaching';
+import {colors} from '../styles/base';
 
-export default DeleteDownloadedVideoButton extends React.Component {
+export default class DeleteDownloadedVideoButton extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             buttonTitle: 'Delete',
         };
         this.deleteVideo = this.deleteVideo.bind(this);
-    }
+    };
 
     deleteVideo =() => {
         videoCahing.deleteVideo(this.props.video, this.props.subtitles)
