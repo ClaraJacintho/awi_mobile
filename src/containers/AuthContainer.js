@@ -5,7 +5,7 @@ import {
   updateUserToken,
   deleteUserData,
 } from '../actions/userAction';
-import {saveOAuthState} from '../actions/connexionActions';
+import {saveOAuthState} from '../actions/connectionActions';
 
 const mapStateToProps = store => {
   return {

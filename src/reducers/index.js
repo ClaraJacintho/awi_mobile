@@ -6,7 +6,7 @@ import user from './userReducer';
 import video from './videoReducer';
 import savedVideos from './savedVideosReducer';
 import currentVideo from './currentVideoReducer';
-import connection from './connexionReducer';
+import connection from './connectionReducer';
 
 export default combineReducers({
   network,
@@ -15,5 +15,5 @@ export default combineReducers({
   video,
   savedVideos,
   currentVideo,
-  connection
+  connection,
 });
