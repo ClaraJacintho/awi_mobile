@@ -21,7 +21,7 @@ export default class Settings extends React.Component {
         
         return(
             <ScrollView contentContainerStyle={styles.container}>
-                <Button onPress={() => this.logout() } title="Sign Out"/>
+                <Button onPress={() => this.logout() } title="Sign Out" color={colors.purple}/>
             </ScrollView>
             
         )

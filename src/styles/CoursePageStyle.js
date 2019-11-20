@@ -1,10 +1,10 @@
 import {StyleSheet} from 'react-native';
-import {colors} from './base';
+import {colors, dimensions, fonts} from './base';
 
 export default StyleSheet.create({
   container: {
+    height: dimensions.fullHeight,
     backgroundColor: colors.background,
-    paddingTop: 20,
     paddingBottom: 20,
   },
   pageContainer: {
@@ -50,12 +50,12 @@ export default StyleSheet.create({
     borderBottomWidth: 1,
   },
   linkItem: {
-    color: colors.tertiary,
+    color: colors.purple,
     marginTop: 5,
     fontSize: 15,
   },
   textNoVideo: {
-    fontSize: 48,
+    fontSize: fonts.lg,
     color: 'red',
   },
   separatorView: {

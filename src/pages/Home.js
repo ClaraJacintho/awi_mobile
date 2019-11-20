@@ -61,7 +61,7 @@ export default class Home extends React.Component {
   onPress(id) {
     const {navigation} = this.props;
     const course = this.props.courses.filter(c => c.id === id)[0];
-    navigation.navigate('CoursePage', {course: course});
+    navigation.navigate('CoursePage', {course: course, title: course.name});
   }
 
   _renderItem({item, index}) {
@@ -76,8 +76,8 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <SafeAreaView>
-        <ScrollView style={componentStyles.container}>
+      <SafeAreaView style={componentStyles.container}>
+        <ScrollView>
           <Text style={componentStyles.listTitle}>Recently watched</Text>
           <Carousel
             ref={c => (this._slider1Ref = c)}

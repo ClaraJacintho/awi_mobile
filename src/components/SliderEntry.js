@@ -35,6 +35,7 @@ export default class SliderEntry extends Component {
       false
     );
     const {click} = this.props;
+    const avgRating = averageRating ? averageRating : "?"
     return (
       <TouchableOpacity
         activeOpacity={1}
@@ -66,16 +67,15 @@ export default class SliderEntry extends Component {
               {description}
             </Text>
             <Text
-              style={[styles.prof, even ? styles.subtitleEven : {}]}
+              style={[styles.prof, even ? styles.profEven : {}]}
               numberOfLines={2}>
               {teacher.firstName + ' ' + teacher.lastName}
             </Text>
           </View>
-          <View>
+          <View styles={styles.ratingsContainer}>
             <Text
-              style={[styles.prof, even ? styles.subtitleEven : {}]}
-              numberOfLines={2}>
-              {averageRating + '/10'}
+              style={[styles.ratings, even ? styles.ratingsEven : {}]}>
+              {avgRating  + '/10'}
             </Text>
           </View>
         </View>

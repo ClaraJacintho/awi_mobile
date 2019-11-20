@@ -1,5 +1,5 @@
 import {StyleSheet, Dimensions, Platform} from 'react-native';
-import {colors} from './base.js';
+import {colors, dimensions, fonts} from './base.js';
 
 const IS_IOS = Platform.OS === 'ios';
 const {width: viewportWidth, height: viewportHeight} = Dimensions.get('window');
@@ -31,7 +31,7 @@ export default StyleSheet.create({
     left: itemHorizontalMargin,
     right: itemHorizontalMargin,
     bottom: 18,
-    shadowColor: colors.black,
+    shadowColor: colors.dark_purple,
     shadowOpacity: 0.25,
     shadowOffset: {width: 0, height: 10},
     shadowRadius: 10,
@@ -64,13 +64,14 @@ export default StyleSheet.create({
     backgroundColor: 'white',
   },
   radiusMaskEven: {
-    backgroundColor: colors.black,
+    backgroundColor: colors.dark_purple,
   },
   columnContainer: {
     flexDirection: 'row', 
     flex: 1,
-    paddingTop: 20 - entryBorderRadius,
-    paddingBottom: 20,
+    justifyContent: "space-evenly",
+    alignItems: "center",
+    height: slideHeight / 3,
     paddingHorizontal: 16,
     backgroundColor: 'white',
     borderBottomLeftRadius: entryBorderRadius,
@@ -78,13 +79,18 @@ export default StyleSheet.create({
   },
   textContainer: {
     justifyContent: 'center',
+    width: (2 * slideWidth)/ 3
   },
   columnContainerEven: {
     backgroundColor: colors.dark_purple,
   },
+  ratingsContainer:{
+    justifyContent: 'center',
+    width: slideWidth/ 3
+  },
   title: {
     color: colors.black,
-    fontSize: 13,
+    fontSize: fonts.md,
     fontWeight: 'bold',
     letterSpacing: 0.5,
   },
@@ -94,10 +100,25 @@ export default StyleSheet.create({
   subtitle: {
     marginTop: 6,
     color: colors.gray,
-    fontSize: 12,
+    fontSize: fonts.sm,
     fontStyle: 'italic',
   },
   subtitleEven: {
     color: 'rgba(255, 255, 255, 0.7)',
   },
+  prof:{
+    marginTop: 6,
+    color: colors.black,
+    fontSize: fonts.sm,
+  },
+  profEven:{
+    color: 'rgba(255, 255, 255, 0.7)',
+  },
+  ratings:{
+    fontSize: fonts.lg,
+    color: colors.gray
+  },
+  ratingsEven:{
+    color: 'rgba(255, 255, 255, 0.7)',
+  }
 });
