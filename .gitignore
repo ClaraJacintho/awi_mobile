@@ -10,9 +10,13 @@ npm-debug.*
 web-build/
 web-report/
 
-.idea
 android/app/build
-android/.gradle
+android/.gradle/
+android/.gradle/5.5/fileChanges/last-build.bin
+android/.gradle/5.5/fileContent/fileContent.lock
+android/.gradle/buildOutputCleanup/outputFiles.bin
+android/.gradle/buildOutputCleanup/cache.properties
+android/local.properties
 
 ios/build
 ios/DerivedData
