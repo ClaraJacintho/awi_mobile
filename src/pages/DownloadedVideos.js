@@ -2,15 +2,23 @@ import React from 'react';
 import {Text, View, FlatList} from 'react-native';
 import styles from '../styles/CoursePageStyle';
 import Orientation from 'react-native-orientation';
+import { saveVideo } from '../actions/savedVideosAction';
 import DeletionButton from '../containers/DeleteVideoContainer';
 
 export default class CoursePage extends React.Component {
+  constructor(props) {
+      super(props)
+      this.setState = {
+        savedVideos : this.props.savedVideos
+      }
+  }
 
   componentDidMount() {
     Orientation.lockToPortrait();
   }
 
   render() {
+    const savedVideos = this.state.savedVideo
     const data = [
         {
           courseName: 123,
