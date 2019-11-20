@@ -101,19 +101,20 @@ async function retrieveVideoPath(video) {
 
 /**
  * Deletes a video from the cache, and if applicable, its subtitles file.
- * @param  {{videoName: String, subtitlesName: String}} video object containing the video name and the subtitles name file.
+ * @param  {String}  videoName video the video name as stored in the cache.
+ * @param {String} subtitlesName the subtitles as stored in the cache.
  * @return {Promise<Boolean>} True if complete, false if error.
  */
-function deleteVideo(video) {
+function deleteVideo(videoName, subtitlesName) {
   return new Promise((resolve, reject) => {
     const videoPath =
-      RNFS.DocumentDirectoryPath + '/' + video.videoName.replace(/%20/g, '_');
+      RNFS.DocumentDirectoryPath + '/' + videoName.replace(/%20/g, '_');
 
     if (video.subtitlesName !== null) {
       const subPath =
         RNFS.DocumentDirectoryPath +
         '/' +
-        video.subtitlesName.replace(/%20/g, '_');
+        subtitlesName.replace(/%20/g, '_');
       Promise.all([RNFS.unlink(videoPath), RNFS.unlink(subPath)])
         .then(() => resolve(true))
         .catch(err => reject(err));
