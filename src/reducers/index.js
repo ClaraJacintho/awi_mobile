@@ -1,18 +1,18 @@
 import {combineReducers} from 'redux';
 import {reducer as network} from 'react-native-offline';
 
-import course from './courseReducer';
+import courses from './courseReducer';
 import user from './userReducer';
-import video from './videoReducer';
+import videos from './videoReducer';
 import savedVideos from './savedVideosReducer';
 import currentVideo from './currentVideoReducer';
 import connection from './connectionReducer';
 
 export default combineReducers({
   network,
-  course,
+  courses,
   user,
-  video,
+  videos,
   savedVideos,
   currentVideo,
   connection,
