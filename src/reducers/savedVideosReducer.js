@@ -9,13 +9,15 @@ export default function savedVideosReducer(state = [], action) {
         {
           videoName: action.payload.videoName,
           subtitlesName: action.payload.subtitlesName,
+          courseName: action.payload.courseName,
         },
       ];
     case REMOVE_DDL_VIDEO:
       return state.filter(
         item =>
           item.videoName !== action.payload.videoName &&
-          item.subtitlesName !== action.payload.subtitlesName,
+          item.subtitlesName !== action.payload.subtitlesName &&
+          item.courseName !== action.payload.courseName,
       );
     case offlineActionTypes.FETCH_OFFLINE_MODE:
       return state;

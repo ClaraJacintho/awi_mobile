@@ -22,7 +22,11 @@ export default class DownloadVideoButton extends React.Component {
     videoCaching
       .storeVideo(this.props.videoURI, this.props.subtitlesURI)
       .then(result => {
-        this.props.addVideo(result.videoName, result.subtitlesName);
+        this.props.addVideo(
+          result.videoName,
+          result.subtitlesName,
+          this.props.courseName,
+        );
         Alert.alert('Success', 'Downloaded!');
         this.setState({
           buttonTitle: 'Downloaded',
