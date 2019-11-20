@@ -64,8 +64,8 @@ export function getToken(url, state) {
  * @returns {JSON} the payload.
  */
 export async function decodeToken(token) {
-  const tok = await jwt.decode(token, CLIENT_SECRET, {skipValidation: false});
-  return tok.payload;
+  return (await jwt.decode(token, CLIENT_SECRET, {skipValidation: false}))
+    .payload;
 }
 
 /**
@@ -73,37 +73,57 @@ export async function decodeToken(token) {
  * If none are valid, a TypeError is thrown.
  * @param {String} accessToken the current access token.
  * @param {String} refreshToken the current refresh token.
+ * @param {Boolean} networkStatus If the user is online or not.
  * @return {Promise<{validity:Boolean, accessToken: String, refreshToken: String}>} The validity, and the current valid tokens.
  */
-export function checkTokenValidity(accessToken, refreshToken) {
+export function checkTokenValidity(accessToken, refreshToken, networkStatus) {
   return new Promise((resolve, reject) => {
-    jwt
-      .decode(accessToken, CLIENT_SECRET, {skipValidation: false})
-      .then(() => {
-        resolve({
-          validity: true,
-          accessToken: accessToken,
-          refreshToken: refreshToken,
-        });
-      })
-      .catch(() => {
-        axios
-          .post('https://oauth.igpolytech.fr/refresh', {
-            client_id: CLIENT_ID,
-            refresh_token: refreshToken,
-          })
-          .then(res => {
-            if (res.data.access_token !== null) {
-              resolve({
-                validity: false,
-                accessToken: res.data.access_token,
-                refreshToken: res.data.refresh_token,
-              });
-            } else {
-              reject(new TypeError('Refresh token is invalid!'));
-            }
+    if (networkStatus) {
+      jwt
+        .decode(accessToken, CLIENT_SECRET, {skipValidation: false})
+        .then(() => {
+          resolve({
+            validity: true,
+            accessToken: accessToken,
+            refreshToken: refreshToken,
           });
-      })
-      .catch(err => reject(err));
+        })
+        .catch(() => {
+          axios
+            .post('https://oauth.igpolytech.fr/refresh', {
+              client_id: CLIENT_ID,
+              refresh_token: refreshToken,
+            })
+            .then(res => {
+              if (res.data.access_token !== null) {
+                resolve({
+                  validity: false,
+                  accessToken: res.data.access_token,
+                  refreshToken: res.data.refresh_token,
+                });
+              } else {
+                reject(new TypeError('Refresh token is invalid!'));
+              }
+            });
+        })
+        .catch(err => reject(err));
+    } else {
+      jwt
+        .decode(refreshToken, CLIENT_SECRET, {skipValidation: false})
+        .then(() => {
+          resolve({
+            validity: true,
+            accessToken: accessToken,
+            refreshToken: refreshToken,
+          });
+        })
+        .catch(() => {
+          resolve({
+            validity: true,
+            accessToken: accessToken,
+            refreshToken: refreshToken,
+          });
+        });
+    }
   });
 }

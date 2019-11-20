@@ -12,6 +12,7 @@ const mapStateToProps = store => {
     accessToken: store.user.accessToken,
     refreshToken: store.user.refreshToken,
     oauthState: store.connection,
+    networkState: store.isConnected,
   };
 };
 

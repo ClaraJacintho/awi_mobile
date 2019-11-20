@@ -58,7 +58,7 @@ export const updateUserToken = (accessToken, refreshToken) => {
     type: UPDATE_USER_TOKEN,
     payload: {
       accessToken,
-      refreshToken
+      refreshToken,
     },
   };
 };
