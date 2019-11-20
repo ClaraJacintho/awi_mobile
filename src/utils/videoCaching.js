@@ -28,8 +28,7 @@ async function storeVideo(videoURI, subtitlesURI = null) {
   if (exists) {
     throw new Error('Already downloaded');
   } else if (subtitlesURI == null) {
-    const resVideo = await download(videoURI, videoPath);
-    console.log(resVideo);
+    await download(videoURI, videoPath);
     return {
       videoName: videoName,
       subtitlesName: null,
@@ -44,11 +43,10 @@ async function storeVideo(videoURI, subtitlesURI = null) {
       '_',
     );
 
-    const res = await Promise.all([
+    await Promise.all([
       download(videoURI, videoPath),
       download(subtitlesURI, subPath),
     ]);
-    console.log(res);
     return {
       videoName: videoName,
       subtitlesName: subName,

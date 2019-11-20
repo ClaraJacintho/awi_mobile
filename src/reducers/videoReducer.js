@@ -6,7 +6,7 @@ import {offlineActionTypes} from 'react-native-offline';
 //import mockVideos from '../actions/mockVideo'
 
 const mockVideos =  [
-  { 
+  {
       "id": 9,
       "videoName": "Dvwcwcttttttttttttttttxvps",
       "subtitle": "description 3",
@@ -36,11 +36,10 @@ const mockVideos =  [
   }
 ]
 
-export default function coursesReducer(state = [] , action) {
+export default function coursesReducer(state = [], action) {
   switch (action.type) {
     case FETCH_COURSE_VIDEO_SUCCESS:
-      console.log("return reducer videos "+ action.payload.videos)
-      return action.payload.videos
+      return action.payload.videos;
     case FETCH_COURSE_VIDEO_FAILURE:
       return action.error;
     case offlineActionTypes.FETCH_OFFLINE_MODE:

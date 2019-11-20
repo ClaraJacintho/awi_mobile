@@ -17,7 +17,10 @@ export default class AuthButton extends React.Component {
 
   //Deep linking
   componentDidMount() {
-    if (this.props.accessToken !== null && this.props.refreshToken !== null) {
+    if (
+      this.props.accessToken !== undefined &&
+      this.props.refreshToken !== undefined
+    ) {
       this.checkToken();
     }
     if (Platform.OS === 'android') {

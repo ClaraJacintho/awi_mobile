@@ -2,7 +2,7 @@ import {FETCH_COURSE_SUCCESS, FETCH_COURSE_FAILURE} from './actionTypes';
 import axios from 'axios';
 //import {mockCourses} from './mockCourses';
 
-const apiUrl = 'https://polyteach-back.igpolytech.fr';
+const apiUrl = 'https://polyteach-back-staging.igpolytech.fr';
 
 export const fetchCourse = () => {
   function thunk(dispatch) {
@@ -12,6 +12,7 @@ export const fetchCourse = () => {
         dispatch(fetchCourseSuccess(response.data));
       })
       .catch(error => {
+        console.log(error);
         dispatch(fetchCourseFailure(error));
       });
   }

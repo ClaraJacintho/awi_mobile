@@ -11,7 +11,6 @@ const apiUrl = 'https://polyteach-back.igpolytech.fr';
 
 export const fetchUser = () => {
   function thunk(dispatch) {
-    console.log('action');
     return axios
       .get(`${apiUrl}/ping`)
       .then(response => {

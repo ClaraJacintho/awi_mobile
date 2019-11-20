@@ -18,12 +18,12 @@ export default class Home extends React.Component {
     };
     this._renderItem = this._renderItem.bind(this);
     this.onPress = this.onPress.bind(this);
-    this.props.onFetchCourses()
+    this.props.onFetchCourses();
   }
 
   onPress() {
     const {navigation} = this.props;
-    navigation.navigate('CoursePage', {courseTitle: "Stats"});
+    navigation.navigate('CoursePage', {courseTitle: 'Stats'});
   }
 
   _renderItem({item, index}) {
