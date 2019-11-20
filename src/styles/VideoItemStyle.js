@@ -3,6 +3,7 @@ import {colors} from './base';
 
 export default StyleSheet.create({
   container: {
+    color: colors.black,
     padding: 15,
   },
   descContainer: {
@@ -32,7 +33,7 @@ export default StyleSheet.create({
   separator: {
     marginVertical: 8,
     borderBottomColor: colors.white,
-    borderBottomWidth: 1,
+    borderBottomWidth: 5,
   },
   linkItem: {
     color: colors.tertiary,

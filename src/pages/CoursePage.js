@@ -1,23 +1,47 @@
 import React from 'react';
 import {Text, Image, View, FlatList} from 'react-native';
-import VideoItem from '../components/VideoItem';
+import VideoItem from '../containers/VideoItemContainer';
 import ReadMore from 'react-native-read-more-text';
 import styles from '../styles/CoursePageStyle';
 import Orientation from 'react-native-orientation';
+import {checkTokenValidity} from '../utils/auth';
 
 export default class CoursePage extends React.Component {
   constructor(props) {
     super(props);
     this._renderTruncatedFooter = this._renderTruncatedFooter.bind(this);
     this._renderRevealedFooter = this._renderRevealedFooter.bind(this);
+    this.retrieveVideos = this.retrieveVideos.bind(this);
   }
 
   componentDidMount() {
     Orientation.lockToPortrait();
-    const courseId = this.props.navigation.getParam('courseId')
-    console.log("couseId: " + String(courseId))
-    this.props.onFetchVideos(courseId);
+    this.retrieveVideos();
   }
+
+  retrieveVideos = () => {
+    checkTokenValidity(
+      this.props.userData.accessToken,
+      this.props.userData.refreshToken,
+      this.props.isConnected,
+    )
+      .then(response => {
+        if (!response.validity) {
+          this.props.updateTokens(
+            this.props.userData.accessToken,
+            this.props.userData.refreshToken,
+          );
+        }
+        this.props.onFetchVideos(this.props.course.id);
+      })
+      .catch(err => {
+        if (err instanceof TypeError) {
+          this.props.deleteUserData();
+          const {navigate} = this.props.navigation;
+          navigate('Auth');
+        }
+      });
+  };
 
   static navigationOptions = ({navigation}) => {
     return {
@@ -69,7 +93,13 @@ export default class CoursePage extends React.Component {
         {this.props.videos.length > 0 ? (
           <FlatList
             data={this.props.videos}
-            renderItem={video => <VideoItem video={video} />}
+            renderItem={video => (
+              <VideoItem
+                video={video}
+                courseName={this.props.course.name}
+                onItemPress={this.props}
+              />
+            )}
             keyExtractor={item => item.videoId}
             ItemSeparatorComponent={() => (
               <View style={{height: 0.5, backgroundColor: '#E5E5E5'}} />

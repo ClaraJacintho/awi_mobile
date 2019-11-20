@@ -10,7 +10,7 @@ const apiUrl = 'https://polyteach-back.igpolytech.fr';
 export const fetchVideosForCourse = courseId => {
   function thunk(dispatch) {
     return axios
-      .get(`${apiUrl}/${courseId}/videos`)
+      .get(`${apiUrl}/course/${courseId}/videos`)
       .then(response => {
         dispatch(fetchVideoSuccess(response.data));
       })

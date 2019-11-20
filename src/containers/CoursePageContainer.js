@@ -1,13 +1,12 @@
 import {connect} from 'react-redux';
 import CoursePage from '../pages/CoursePage';
 import {fetchVideosForCourse} from '../actions/videoAction';
+import {deleteUserData, updateUserToken} from '../actions/userAction';
 
-const mapStateToProps = (state, ownprops) => {
-  const courseId = ownprops.navigation.getParam('courseId');
+const mapStateToProps = state => {
   return {
-    videos: state.videos.filter(video => video.courseId === courseId),
-    course: state.courses.filter(course => course.courseId === courseId),
-    isConnected: state.isConnected,
+    isConnected: state.network.isConnected,
+    userData: state.user,
   };
 };
 
@@ -15,6 +14,12 @@ const mapDispatchToProps = dispatch => {
   return {
     onFetchVideos: courseId => {
       dispatch(fetchVideosForCourse(courseId));
+    },
+    updateTokens: (accessToken, refreshToken) => {
+      dispatch(updateUserToken(accessToken, refreshToken));
+    },
+    deleteUserData: () => {
+      dispatch(deleteUserData());
     },
   };
 };

@@ -3,54 +3,57 @@ import {Text, View} from 'react-native';
 import ReadMore from 'react-native-read-more-text';
 import styles from '../styles/VideoItemStyle';
 import Colors from 'react-native/Libraries/NewAppScreen/components/Colors';
-import SaveVideosContainer from '../containers/SaveVideosContainer';
+import DeletionButton from '../containers/DeleteVideoContainer';
 
 export default class VideoItem extends Component {
   constructor(props) {
     super(props);
     this.handleTextPress = this.handleTextPress.bind(this);
+    this.state = {
+      video: this.props.video
+    }
   }
 
   handleTextPress = () => {
     if (this.props.onItemPress) {
-      this.props.setCurrentVideo(
-        this.props.video.hashserver,
-        this.props.video.hashvtt,
-      );
       const {navigation} = this.props.onItemPress;
       navigation.navigate('VideoPage');
     }
   };
 
-
   render() {
-    const video = this.props.video.item;
+    const video = this.state.video;
     console.log(video);
     return (
+      
       <View style={styles.container}>
         <View style={styles.descContainer}>
-          <View
-            style={Object.assign(
-              styles.videoDetails,
-              {marginRight: 100},
-              {flexDirection: 'row'},
-            )}>
-            <View style={{width: '60%'}}>
+        <View style={{width: '30%'}}>
               <ReadMore numberOfLines={2}>
                 <Text
                   numberOfLines={2}
                   style={styles.videoTitle}
                   onPress={this.handleTextPress}>
-                  {video.name}
+                  {video.courseName}
+                </Text>
+              </ReadMore>
+            </View>
+          <View
+            style={
+              (styles.videoDetails, {marginRight: 100}, {flexDirection: 'row'})
+            }>
+            <View style={{width: '50%'}}>
+              <ReadMore numberOfLines={2}>
+                <Text
+                  numberOfLines={2}
+                  style={styles.videoTitle}
+                  onPress={this.handleTextPress}>
+                  {video.videoName}
                 </Text>
               </ReadMore>
             </View>
             <View style={{width: '20%', marginRight: '30%'}}>
-              <SaveVideosContainer
-                videoURI={video.videoURL}
-                subtitle={video.subtitles}
-                courseId={this.props.courseName}
-              />
+            <DeletionButton video={video.videoName} subtitles={video.subtsubtitlesNameitles} />
             </View>
           </View>
         </View>
@@ -58,3 +61,4 @@ export default class VideoItem extends Component {
     );
   }
 }
+

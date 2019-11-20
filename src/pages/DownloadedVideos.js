@@ -2,87 +2,71 @@ import React from 'react';
 import {Text, View, FlatList} from 'react-native';
 import styles from '../styles/CoursePageStyle';
 import Orientation from 'react-native-orientation';
+import SavedVideoItem from '../components/SavedVideoItem'
 
-export default class CoursePage extends React.Component {
 
+export default class DownloadPage extends React.Component {
+  constructor(props) {
+      super(props)
+      this.setState = {
+        savedVideos : this.props.savedVideos
+      }
+  }
+er
   componentDidMount() {
     Orientation.lockToPortrait();
   }
 
   render() {
-    const data = {
-      characters: [
+    //const savedVideos = this.state.savedVideo
+    const data = [
         {
-          id: 123,
-          name: 'Sheldon',
-          profession: 'Theoretical Physicist',
-          image: '../assets/youtube.jpg',
+          courseName: "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+          videoName: 'Shefgdsgfsdgfdsgdfshdshjgsgsfhdshdsgfggsldfdsqqqqqqqqdddddddddddddddddddddddddon',
+          subtitlesName: 'Theoretical Physicist',
         },
         {
-          id: 234,
-          name: 'Leonard',
-          profession: 'Experimental Physicist',
-          image: '../assets/youtube.jpg',
+          courseName: 234,
+          videoName: 'Leonard',
+          subtitlesName: 'Experimental Physicist',
         },
         {
-          id: 345,
-          name: 'Howard',
-          profession: 'Mechanical Engineer',
-          image: '../assets/youtube.jpg',
+          courseName: 345,
+          videoName: 'Howard',
+          subtitlesName: 'Mechanical Engineer',
         },
         {
-          id: 456,
-          name: 'Raj',
-          profession: 'Astro-Physicist',
-          image: '../assets/youtube.jpg',
+          courseName: 456,
+          videoName: 'Raj',
+          subtitlesName: 'Astro-Physicist',
         },
         {
-          id: 567,
-          name: 'Amy',
-          profession: 'Neurobiologist',
-          image: '../assets/youtube.jpg',
+          courseName: 567,
+          videoName: 'Amy',
+          subtitlesName: 'Neurobiologist',
         },
         {
-          id: 678,
-          name: 'Bernadette',
-          profession: 'Microbiologist',
-          image: '../assets/youtube.jpg',
+          courseName: 678,
+          videoName: 'Bernadette',
+          subtitlesName: 'Microbiologist',
         },
-      ],
-    };
-    const list = [
-      {key: 'Sheldon', prof: 'Theoretical Physicist'},
-      {key: 'Leonard', prof: 'Experimental Physicist'},
-      {key: 'Howard', prof: 'Mechanical Engineer'},
-      {key: 'Raj', prof: 'Astro-Physicist'},
-      {key: 'Amy', prof: 'Neurobiologist'},
-      {key: 'Bernadette', prof: 'Microbiologist'},
-      {key: 'Penny', prof: 'Actress'},
-      {key: 'Dr. Gabelhauser', prof: 'Dean'},
-      {key: 'Stuart', prof: 'comic store owner'},
-      {key: 'Barry', prof: 'Engineer'},
-      {key: 'Leslie', prof: 'Physicist'},
-      {key: 'Priya', prof: 'Lawyer'},
-      {key: 'Lucy', prof: 'unknown'},
-    ];
+      ];
+
+
     return (
       <View style={styles.container}>
-        {data.characters.length > 0 ? (
+        {data.length > 0 ? (
           <FlatList
-            data={data.characters}
-            renderItem={({item}) => (
-              <View style={{borderBottomColor: '#999', padding: 10}}>
-                <Text style={{fontSize: 60, fontWeight: 'bold', color: '#333'}}>
-                  {item.id}
-                </Text>
-                <Text style={{fontSize: 36, color: '#999'}}>
-                  {item.profession}
-                </Text>
-              </View>
+            data={data}
+            renderItem={({item}) => <SavedVideoItem video={item}/>}
+            keyExtractor={item => item.videoName}
+            ItemSeparatorComponent={() => (
+              <View style={{height: 0.5, backgroundColor: '#E5E5E5'}} />
+
             )}
           />
         ) : (
-          <Text style={{fontSize: 48, color: 'red'}}>
+          <Text style={{fontSize: 40, color: 'red'}}>
             Sorry. No Videos Available.
           </Text>
         )}
