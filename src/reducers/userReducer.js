@@ -13,7 +13,7 @@ export default function coursesReducer(state = {}, action) {
       return action.key;
     }
     case FETCH_USER_FAILURE:
-      return action.error;
+      return state;
     case UPDATE_USER_DATA:
       return {
         accessToken: action.payload.accessToken,

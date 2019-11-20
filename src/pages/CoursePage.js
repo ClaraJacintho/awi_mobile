@@ -14,7 +14,9 @@ export default class CoursePage extends React.Component {
 
   componentDidMount() {
     Orientation.lockToPortrait();
-    this.props.onFetchVideos(this.props.courseId);
+    const courseId = this.props.navigation.getParam('courseId')
+    console.log("couseId: " + String(courseId))
+    this.props.onFetchVideos(courseId);
   }
 
   static navigationOptions = ({navigation}) => {

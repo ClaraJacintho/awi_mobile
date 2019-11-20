@@ -2,7 +2,7 @@ export const ENTRIES1 = [
   {
       "id": 1,
       "name": "AWI",
-      "description": "description",
+      "description": "Cras a arcu ipsum. Maecenas dui lectus, tincidunt eget maximus vitae, finibus et quam. Aenean fringilla aliquam dolor et finibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris quis porttitor purus. Donec scelerisque diam a interdum rhoncus.",
       "picture": "https://img.buzzfeed.com/buzzfeed-static/static/campaign_images/webdr06/2013/7/11/12/35-random-corners-of-the-internet-you-should-visi-1-10632-1373560090-0_big.jpg",
       "idteacher": 1,
       "creationdate": 1,
@@ -13,8 +13,8 @@ export const ENTRIES1 = [
           "id": 1,
           "email": "prof.prof@umontpellier.fr",
           "role": 1,
-          "firstName": "prof",
-          "lastName": "prof"
+          "firstName": "Ronald",
+          "lastName": "McDonald"
       },
       "rating": 7,
       "averageRating": 7
@@ -59,7 +59,7 @@ export const ENTRIES1 = [
       "rating": null
   },
   {
-    "id": 1,
+    "id": 69,
     "name": "Semantics",
     "description": "??? i dont know",
     "picture": "https://img.buzzfeed.com/buzzfeed-static/static/campaign_images/webdr06/2013/7/11/12/35-random-corners-of-the-internet-you-should-visi-1-10632-1373560090-0_big.jpg",
@@ -79,7 +79,7 @@ export const ENTRIES1 = [
     "averageRating": 7
 },
 {
-  "id": 1,
+  "id": 420,
   "name": "Compilers",
   "description": "make your own language!",
   "picture": "https://img.buzzfeed.com/buzzfeed-static/static/campaign_images/webdr06/2013/7/11/12/35-random-corners-of-the-internet-you-should-visi-1-10632-1373560090-0_big.jpg",
@@ -98,7 +98,7 @@ export const ENTRIES1 = [
   "rating": 7,
   "averageRating": 7
 },{
-  "id": 1,
+  "id": 42069,
   "name": "Networks",
   "description": "prepare to die",
   "picture": "https://img.buzzfeed.com/buzzfeed-static/static/campaign_images/webdr06/2013/7/11/12/35-random-corners-of-the-internet-you-should-visi-1-10632-1373560090-0_big.jpg",
@@ -117,7 +117,7 @@ export const ENTRIES1 = [
   "rating": 7,
   "averageRating": 7
 },{
-  "id": 1,
+  "id": 42,
   "name": "CCI",
   "description": "build circuits and stuff",
   "picture": "https://img.buzzfeed.com/buzzfeed-static/static/campaign_images/webdr06/2013/7/11/12/35-random-corners-of-the-internet-you-should-visi-1-10632-1373560090-0_big.jpg",
@@ -136,7 +136,7 @@ export const ENTRIES1 = [
   "rating": 7,
   "averageRating": 7
 },{
-  "id": 1,
+  "id": 7734,
   "name": "Thing",
   "description": "A thing!",
   "picture": "https://img.buzzfeed.com/buzzfeed-static/static/campaign_images/webdr06/2013/7/11/12/35-random-corners-of-the-internet-you-should-visi-1-10632-1373560090-0_big.jpg",

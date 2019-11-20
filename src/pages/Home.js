@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, StyleSheet, ScrollView} from 'react-native';
+import {Text, StyleSheet, ScrollView, SafeAreaView} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import {sliderWidth, itemWidth} from '../styles/SliderEntryStyle.js';
 import SliderEntry from '../components/SliderEntry';
@@ -8,22 +8,30 @@ import {colors, fonts, padding} from './../styles/base.js';
 import Orientation from 'react-native-orientation';
 
 
-const SLIDER_1_FIRST_ITEM = 1;
+const SLIDER_FIRST_ITEM = 1;
 
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
+    const {courses} = this.props
+    const itemsPerCarousel = courses.length / 3
+    const recentylWatched = courses.slice(0, itemsPerCarousel)
+    const all = courses
+    const finished = courses.slice(itemsPerCarousel)
     this.state = {
-      slider1ActiveSlide: SLIDER_1_FIRST_ITEM,
+      slider1ActiveSlide: SLIDER_FIRST_ITEM,
+      recentylWatched: recentylWatched, 
+      all: all, 
+      finished: finished
     };
     this._renderItem = this._renderItem.bind(this);
     this.onPress = this.onPress.bind(this);
     this.props.onFetchCourses();
   }
 
-  onPress() {
+  onPress(id, name) {
     const {navigation} = this.props;
-    navigation.navigate('CoursePage', {courseTitle: 'Stats'});
+    navigation.navigate('CoursePage', {courseTitle: name, courseId: id});
   }
 
   _renderItem({item, index}) {
@@ -38,19 +46,12 @@ export default class Home extends React.Component {
 
   componentDidMount() {
     Orientation.lockToPortrait();
-    this.divideCourses()
   }
-  divideCourses(){
-    const {courses} = this.props
-    const itemsPerCarousel = courses.length / 3
-    const recentylWatched = courses.slice(0, itemsPerCarousel)
-    const all = courses
-    const finished = courses.slice(itemsPerCarousel)
-    this.setState({recentylWatched: recentylWatched, all: all, finished: finished})
-  }
+ 
 
   render() {
     return (
+      <SafeAreaView>
       <ScrollView style={componentStyles.container}>
         <Text style={componentStyles.listTitle}>Recently watched</Text>
         <Carousel
@@ -60,7 +61,7 @@ export default class Home extends React.Component {
           sliderWidth={sliderWidth}
           itemWidth={itemWidth}
           hasParallaxImages={false}
-          firstItem={this.props.courses}
+          firstItem={SLIDER_FIRST_ITEM}
           inactiveSlideScale={0.94}
           inactiveSlideOpacity={0.7}
           containerCustomStyle={styles.slider}
@@ -77,7 +78,7 @@ export default class Home extends React.Component {
           sliderWidth={sliderWidth}
           itemWidth={itemWidth}
           hasParallaxImages={false}
-          firstItem={SLIDER_1_FIRST_ITEM}
+          firstItem={SLIDER_FIRST_ITEM}
           inactiveSlideScale={0.94}
           inactiveSlideOpacity={0.7}
           containerCustomStyle={styles.slider}
@@ -94,7 +95,7 @@ export default class Home extends React.Component {
           sliderWidth={sliderWidth}
           itemWidth={itemWidth}
           hasParallaxImages={false}
-          firstItem={SLIDER_1_FIRST_ITEM}
+          firstItem={SLIDER_FIRST_ITEM}
           inactiveSlideScale={0.94}
           inactiveSlideOpacity={0.7}
           containerCustomStyle={styles.slider}
@@ -104,6 +105,7 @@ export default class Home extends React.Component {
           onSnapToItem={index => this.setState({slider1ActiveSlide: index})}
         />
       </ScrollView>
+      </SafeAreaView>
     );
   }
 }

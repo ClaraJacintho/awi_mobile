@@ -9,7 +9,7 @@ export default function coursesReducer(state = [], action) {
     case FETCH_COURSE_SUCCESS:
       return action.courses;
     case FETCH_COURSE_FAILURE:
-      return action.error;
+      return state;
     case offlineActionTypes.FETCH_OFFLINE_MODE:
       return state;
     default:

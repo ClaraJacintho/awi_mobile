@@ -66,8 +66,9 @@ export default StyleSheet.create({
   radiusMaskEven: {
     backgroundColor: colors.black,
   },
-  textContainer: {
-    justifyContent: 'center',
+  columnContainer: {
+    flexDirection: 'row', 
+    flex: 1,
     paddingTop: 20 - entryBorderRadius,
     paddingBottom: 20,
     paddingHorizontal: 16,
@@ -75,7 +76,10 @@ export default StyleSheet.create({
     borderBottomLeftRadius: entryBorderRadius,
     borderBottomRightRadius: entryBorderRadius,
   },
-  textContainerEven: {
+  textContainer: {
+    justifyContent: 'center',
+  },
+  columnContainerEven: {
     backgroundColor: colors.dark_purple,
   },
   title: {
