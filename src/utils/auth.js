@@ -70,30 +70,40 @@ export async function decodeToken(token) {
 
 /**
  * Checks if the current access token is valid, and if not, tries to ask for another one.
- * If none are valid, an error is thrown.
+ * If none are valid, a TypeError is thrown.
  * @param {String} accessToken the current access token.
  * @param {String} refreshToken the current refresh token.
- * @return {Promise<{validity:Boolean, token: String}>} The validity, and the current valid token.
+ * @return {Promise<{validity:Boolean, accessToken: String, refreshToken: String}>} The validity, and the current valid tokens.
  */
-export async function checkTokenValidity(accessToken, refreshToken) {
-  jwt
-    .decode(accessToken, CLIENT_SECRET, {skipValidation: false})
-    .then(() => ({validity: true, token: accessToken}))
-    .catch(() => {
-      axios
-        .post('https://oauth.igpolytech.fr/refresh', {
-          client_id: CLIENT_ID,
-          refresh_token: refreshToken,
-        })
-        .then(res => {
-          if (res.data.access_token !== null) {
-            return {
-              validity: false,
-              token: res.data.access_token,
-            };
-          } else {
-            throw new TypeError('Refresh token is invalid!');
-          }
+export function checkTokenValidity(accessToken, refreshToken) {
+  return new Promise((resolve, reject) => {
+    jwt
+      .decode(accessToken, CLIENT_SECRET, {skipValidation: false})
+      .then(() => {
+        resolve({
+          validity: true,
+          accessToken: accessToken,
+          refreshToken: refreshToken,
         });
-    });
+      })
+      .catch(() => {
+        axios
+          .post('https://oauth.igpolytech.fr/refresh', {
+            client_id: CLIENT_ID,
+            refresh_token: refreshToken,
+          })
+          .then(res => {
+            if (res.data.access_token !== null) {
+              resolve({
+                validity: false,
+                accessToken: res.data.access_token,
+                refreshToken: res.data.refresh_token,
+              });
+            } else {
+              reject(new TypeError('Refresh token is invalid!'));
+            }
+          });
+      })
+      .catch(err => reject(err));
+  });
 }

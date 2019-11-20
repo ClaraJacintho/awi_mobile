@@ -1,6 +1,10 @@
 import {connect} from 'react-redux';
 import AuthButton from '../components/AuthButton';
-import {updateUserData} from '../actions/userAction';
+import {
+  updateUserData,
+  updateUserToken,
+  deleteUserData,
+} from '../actions/userAction';
 import {saveOAuthState} from '../actions/connexionActions';
 
 const mapStateToProps = store => {
@@ -18,7 +22,13 @@ const mapDispatchToProps = dispatch => {
     },
     saveState: state => {
       dispatch(saveOAuthState(state));
-    }
+    },
+    updateTokens: (accessToken, refreshToken) => {
+      dispatch(updateUserToken(accessToken, refreshToken));
+    },
+    deleteUserData: () => {
+      dispatch(deleteUserData());
+    },
   };
 };
 
