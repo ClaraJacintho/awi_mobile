@@ -12,6 +12,7 @@ export default class CoursePage extends React.Component {
     this._renderTruncatedFooter = this._renderTruncatedFooter.bind(this);
     this._renderRevealedFooter = this._renderRevealedFooter.bind(this);
     this.retrieveVideos = this.retrieveVideos.bind(this);
+    this.state = this.props.navigation.getParam('course');
   }
 
   componentDidMount() {
@@ -32,7 +33,7 @@ export default class CoursePage extends React.Component {
             this.props.userData.refreshToken,
           );
         }
-        this.props.onFetchVideos(this.props.course.id);
+        this.props.onFetchVideos(this.state.id);
       })
       .catch(err => {
         if (err instanceof TypeError) {
@@ -43,11 +44,11 @@ export default class CoursePage extends React.Component {
       });
   };
 
-  static navigationOptions = ({navigation}) => {
+  /*static navigationOptions = ({navigation}) => {
     return {
       title: navigation.getParam('courseTitle', 'Course'),
     };
-  };
+  };*/
 
   _renderTruncatedFooter = handlePress => {
     return (
@@ -80,13 +81,13 @@ export default class CoursePage extends React.Component {
               uri: 'https://i.ytimg.com/vi/WiTxwdGWLoY/maxresdefault.jpg',
             }}
           />
-          <Text style={styles.courseTitle}>{this.props.course.courseName}</Text>
+          <Text style={styles.courseTitle}>{this.state.name}</Text>
           <ReadMore
             numberOfLines={3}
             renderTruncatedFooter={this._renderTruncatedFooter}
             renderRevealedFooter={this._renderRevealedFooter}>
             <Text style={styles.courseDescription}>
-              {this.props.course.courseDesc}
+              {this.state.description}
             </Text>
           </ReadMore>
         </View>
@@ -96,7 +97,7 @@ export default class CoursePage extends React.Component {
             renderItem={video => (
               <VideoItem
                 video={video}
-                courseName={this.props.course.name}
+                courseName={this.state.name}
                 onItemPress={this.props}
               />
             )}

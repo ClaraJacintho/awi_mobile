@@ -12,7 +12,6 @@ export const fetchCourse = () => {
         dispatch(fetchCourseSuccess(response.data));
       })
       .catch(error => {
-        console.log(error);
         dispatch(fetchCourseFailure(error));
       });
   }

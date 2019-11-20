@@ -8,22 +8,21 @@ import {colors, fonts, padding} from './../styles/base.js';
 import Orientation from 'react-native-orientation';
 import {checkTokenValidity} from '../utils/auth';
 
-
 const SLIDER_FIRST_ITEM = 1;
 
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
-    const {courses} = this.props
-    const itemsPerCarousel = courses.length / 3
-    const recentylWatched = courses.slice(0, itemsPerCarousel)
-    const all = courses
-    const finished = courses.slice(itemsPerCarousel)
+    const courses = this.props.courses;
+    const itemsPerCarousel = courses.length / 3;
+    const recentlyWatched = courses.slice(0, itemsPerCarousel);
+    const all = courses;
+    const finished = courses.slice(itemsPerCarousel);
     this.state = {
       slider1ActiveSlide: SLIDER_FIRST_ITEM,
-      recentylWatched: recentylWatched, 
-      all: all, 
-      finished: finished
+      recentlyWatched: recentlyWatched,
+      all: all,
+      finished: finished,
     };
     this._renderItem = this._renderItem.bind(this);
     this.onPress = this.onPress.bind(this);
@@ -42,7 +41,6 @@ export default class Home extends React.Component {
       this.props.isConnected,
     )
       .then(response => {
-        console.log(response);
         if (!response.validity) {
           this.props.updateTokens(
             this.props.userData.accessToken,
@@ -52,7 +50,6 @@ export default class Home extends React.Component {
         this.props.onFetchCourses();
       })
       .catch(err => {
-        console.log(err);
         if (err instanceof TypeError) {
           this.props.deleteUserData();
           const {navigate} = this.props.navigation;
@@ -61,9 +58,10 @@ export default class Home extends React.Component {
       });
   };
 
-  onPress(id, name) {
+  onPress(id) {
     const {navigation} = this.props;
-    navigation.navigate('CoursePage', {courseTitle: name, courseId: id});
+    const course = this.props.courses.filter(c => c.id === id)[0];
+    navigation.navigate('CoursePage', {course: course});
   }
 
   _renderItem({item, index}) {
@@ -79,59 +77,59 @@ export default class Home extends React.Component {
   render() {
     return (
       <SafeAreaView>
-      <ScrollView style={componentStyles.container}>
-        <Text style={componentStyles.listTitle}>Recently watched</Text>
-        <Carousel
-          ref={c => (this._slider1Ref = c)}
-          data={this.state.recentylWatched}
-          renderItem={this._renderItem}
-          sliderWidth={sliderWidth}
-          itemWidth={itemWidth}
-          hasParallaxImages={false}
-          firstItem={SLIDER_FIRST_ITEM}
-          inactiveSlideScale={0.94}
-          inactiveSlideOpacity={0.7}
-          containerCustomStyle={styles.slider}
-          contentContainerCustomStyle={styles.sliderContentContainer}
-          loop={true}
-          loopClonesPerSide={2}
-          onSnapToItem={index => this.setState({slider1ActiveSlide: index})}
-        />
-        <Text style={componentStyles.listTitle}>All courses</Text>
-        <Carousel
-          ref={c => (this._slider2Ref = c)}
-          data={this.state.all}
-          renderItem={this._renderItem}
-          sliderWidth={sliderWidth}
-          itemWidth={itemWidth}
-          hasParallaxImages={false}
-          firstItem={SLIDER_FIRST_ITEM}
-          inactiveSlideScale={0.94}
-          inactiveSlideOpacity={0.7}
-          containerCustomStyle={styles.slider}
-          contentContainerCustomStyle={styles.sliderContentContainer}
-          loop={true}
-          loopClonesPerSide={2}
-          onSnapToItem={index => this.setState({slider1ActiveSlide: index})}
-        />
-        <Text style={componentStyles.listTitle}>Finished</Text>
-        <Carousel
-          ref={c => (this._slider3Ref = c)}
-          data={this.state.finished}
-          renderItem={this._renderItem}
-          sliderWidth={sliderWidth}
-          itemWidth={itemWidth}
-          hasParallaxImages={false}
-          firstItem={SLIDER_FIRST_ITEM}
-          inactiveSlideScale={0.94}
-          inactiveSlideOpacity={0.7}
-          containerCustomStyle={styles.slider}
-          contentContainerCustomStyle={styles.sliderContentContainer}
-          loop={true}
-          loopClonesPerSide={2}
-          onSnapToItem={index => this.setState({slider1ActiveSlide: index})}
-        />
-      </ScrollView>
+        <ScrollView style={componentStyles.container}>
+          <Text style={componentStyles.listTitle}>Recently watched</Text>
+          <Carousel
+            ref={c => (this._slider1Ref = c)}
+            data={this.state.recentlyWatched}
+            renderItem={this._renderItem}
+            sliderWidth={sliderWidth}
+            itemWidth={itemWidth}
+            hasParallaxImages={false}
+            firstItem={SLIDER_FIRST_ITEM}
+            inactiveSlideScale={0.94}
+            inactiveSlideOpacity={0.7}
+            containerCustomStyle={styles.slider}
+            contentContainerCustomStyle={styles.sliderContentContainer}
+            loop={true}
+            loopClonesPerSide={2}
+            onSnapToItem={index => this.setState({slider1ActiveSlide: index})}
+          />
+          <Text style={componentStyles.listTitle}>All courses</Text>
+          <Carousel
+            ref={c => (this._slider2Ref = c)}
+            data={this.state.all}
+            renderItem={this._renderItem}
+            sliderWidth={sliderWidth}
+            itemWidth={itemWidth}
+            hasParallaxImages={false}
+            firstItem={SLIDER_FIRST_ITEM}
+            inactiveSlideScale={0.94}
+            inactiveSlideOpacity={0.7}
+            containerCustomStyle={styles.slider}
+            contentContainerCustomStyle={styles.sliderContentContainer}
+            loop={true}
+            loopClonesPerSide={2}
+            onSnapToItem={index => this.setState({slider1ActiveSlide: index})}
+          />
+          <Text style={componentStyles.listTitle}>Finished</Text>
+          <Carousel
+            ref={c => (this._slider3Ref = c)}
+            data={this.state.finished}
+            renderItem={this._renderItem}
+            sliderWidth={sliderWidth}
+            itemWidth={itemWidth}
+            hasParallaxImages={false}
+            firstItem={SLIDER_FIRST_ITEM}
+            inactiveSlideScale={0.94}
+            inactiveSlideOpacity={0.7}
+            containerCustomStyle={styles.slider}
+            contentContainerCustomStyle={styles.sliderContentContainer}
+            loop={true}
+            loopClonesPerSide={2}
+            onSnapToItem={index => this.setState({slider1ActiveSlide: index})}
+          />
+        </ScrollView>
       </SafeAreaView>
     );
   }
@@ -145,7 +143,7 @@ const componentStyles = StyleSheet.create({
     marginTop: padding.sm,
     fontSize: fonts.lg,
     fontFamily: fonts.primary,
-    fontWeight:'bold',
+    fontWeight: 'bold',
     color: colors.primary,
     paddingBottom: padding.sm,
   },

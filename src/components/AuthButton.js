@@ -45,7 +45,6 @@ export default class AuthButton extends React.Component {
         this.props.refreshToken,
         this.props.networkState,
       );
-      console.log(valid)
       const {navigate} = this.props.navigation;
       if (!valid.validity) {
         this.props.updateTokens(valid.accessToken, valid.refreshToken);

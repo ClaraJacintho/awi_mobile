@@ -36,12 +36,12 @@ const mockVideos =  [
   }
 ]
 
-export default function coursesReducer(state = [], action) {
+export default function videosReducer(state = [], action) {
   switch (action.type) {
     case FETCH_COURSE_VIDEO_SUCCESS:
       return action.payload.videos;
     case FETCH_COURSE_VIDEO_FAILURE:
-      return action.error;
+      return [];
     case offlineActionTypes.FETCH_OFFLINE_MODE:
       return state;
     default:

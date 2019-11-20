@@ -6,6 +6,7 @@ import {deleteUserData, updateUserToken} from '../actions/userAction';
 const mapStateToProps = state => {
   return {
     isConnected: state.network.isConnected,
+    videos: state.videos,
     userData: state.user,
   };
 };

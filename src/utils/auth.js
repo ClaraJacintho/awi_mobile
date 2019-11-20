@@ -68,14 +68,6 @@ export async function decodeToken(token) {
     .payload;
 }
 
-function addBearerToken(token) {
-  axios.interceptors.request.use(config => {
-    config.headers.Authorization = token;
-    console.log(config);
-    return config;
-  });
-}
-
 /**
  * Checks if the current access token is valid, and if not, tries to ask for another one.
  * If none are valid, a TypeError is thrown.
@@ -90,7 +82,6 @@ export function checkTokenValidity(accessToken, refreshToken, networkStatus) {
       jwt
         .decode(accessToken, CLIENT_SECRET, {skipValidation: false})
         .then(() => {
-          console.log(accessToken);
           axios.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
           resolve({
             validity: true,

@@ -40,7 +40,7 @@ export default class SliderEntry extends Component {
         activeOpacity={1}
         style={styles.slideInnerContainer}
         onPress={() => {
-          click(id, name);
+          click(id);
         }}>
         <View style={styles.shadow} />
         <View
@@ -53,8 +53,12 @@ export default class SliderEntry extends Component {
             style={[styles.radiusMask, even ? styles.radiusMaskEven : {}]}
           />
         </View>
-        <View style={[styles.columnContainer, even ? styles.columnContainerEven : {}]}>
-          <View style={styles.textContainer }>
+        <View
+          style={[
+            styles.columnContainer,
+            even ? styles.columnContainerEven : {},
+          ]}>
+          <View style={styles.textContainer}>
             {uppercaseTitle}
             <Text
               style={[styles.description, even ? styles.subtitleEven : {}]}
@@ -64,16 +68,16 @@ export default class SliderEntry extends Component {
             <Text
               style={[styles.prof, even ? styles.subtitleEven : {}]}
               numberOfLines={2}>
-              {teacher.firstName + " " + teacher.lastName}
+              {teacher.firstName + ' ' + teacher.lastName}
             </Text>
           </View>
           <View>
             <Text
               style={[styles.prof, even ? styles.subtitleEven : {}]}
               numberOfLines={2}>
-              {averageRating+"/10"}
+              {averageRating + '/10'}
             </Text>
-        </View>
+          </View>
         </View>
       </TouchableOpacity>
     );

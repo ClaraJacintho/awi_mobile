@@ -3,7 +3,6 @@ import Settings from '../pages/Settings';
 import {deleteUserData} from '../actions/userAction';
 
 const mapDispatchToProps = dispatch => {
-  console.log("heh")
   return {
     onLogout: () => {
       dispatch(deleteUserData());
@@ -11,4 +10,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Settings);
+export default connect(
+  null,
+  mapDispatchToProps,
+)(Settings);
