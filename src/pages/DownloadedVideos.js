@@ -2,6 +2,7 @@ import React from 'react';
 import {Text, View, FlatList} from 'react-native';
 import styles from '../styles/CoursePageStyle';
 import Orientation from 'react-native-orientation';
+import deletionButoon from '../containers/DeleteVideoContainer';
 
 export default class CoursePage extends React.Component {
 
@@ -78,11 +79,12 @@ export default class CoursePage extends React.Component {
                 <Text style={{fontSize: 36, color: '#999'}}>
                   {item.profession}
                 </Text>
+                <DeletionButton video={item.videoName} subtitles={item.subtitlesName} />
               </View>
             )}
           />
         ) : (
-          <Text style={{fontSize: 48, color: 'red'}}>
+          <Text style={{fontSize: 40, color: 'red'}}>
             Sorry. No Videos Available.
           </Text>
         )}
