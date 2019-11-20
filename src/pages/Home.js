@@ -7,6 +7,7 @@ import styles from '../styles/sliderBaseStyle.js';
 import {ENTRIES1} from './../assets/entries';
 import {colors, fonts, padding} from './../styles/base.js';
 import Orientation from 'react-native-orientation';
+import {checkTokenValidity} from '../utils/auth';
 
 const SLIDER_1_FIRST_ITEM = 1;
 
@@ -18,8 +19,39 @@ export default class Home extends React.Component {
     };
     this._renderItem = this._renderItem.bind(this);
     this.onPress = this.onPress.bind(this);
-    this.props.onFetchCourses();
+    this.retrieveCourses = this.retrieveCourses.bind(this);
   }
+
+  componentDidMount() {
+    Orientation.lockToPortrait();
+    this.retrieveCourses();
+  }
+
+  retrieveCourses = () => {
+    checkTokenValidity(
+      this.props.userData.accessToken,
+      this.props.userData.refreshToken,
+      this.props.isConnected,
+    )
+      .then(response => {
+        console.log(response);
+        if (!response.validity) {
+          this.props.updateTokens(
+            this.props.userData.accessToken,
+            this.props.userData.refreshToken,
+          );
+        }
+        this.props.onFetchCourses();
+      })
+      .catch(err => {
+        console.log(err);
+        if (err instanceof TypeError) {
+          this.props.deleteUserData();
+          const {navigate} = this.props.navigation;
+          navigate('Auth');
+        }
+      });
+  };
 
   onPress() {
     const {navigation} = this.props;
@@ -34,10 +66,6 @@ export default class Home extends React.Component {
         click={this.onPress}
       />
     );
-  }
-
-  componentDidMount() {
-    Orientation.lockToPortrait();
   }
 
   render() {
