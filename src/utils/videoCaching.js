@@ -59,7 +59,7 @@ async function storeVideo(videoURI, subtitlesURI = null) {
 /**
  * Retrieved the video and subtitles paths.
  * @param {{videoName: String, subtitlesName: String}} video object containing the video name and the subtitles name file.
- * @returns {Promise<{videoURI: String, subtitlesURI: null}|{videoURI: String, subtitlesURI: String}>} The different results.
+ * @return {Promise<{videoURI: String, subtitlesURI: null}|{videoURI: String, subtitlesURI: String}>} The different results.
  */
 async function retrieveVideoPath(video) {
   return new Promise((resolve, reject) => {
@@ -104,7 +104,7 @@ async function retrieveVideoPath(video) {
 /**
  * Deletes a video from the cache, and if applicable, its subtitles file.
  * @param  {{videoName: String, subtitlesName: String}} video object containing the video name and the subtitles name file.
- * @returns {Promise<Boolean>} True if complete, false if error.
+ * @return {Promise<Boolean>} True if complete, false if error.
  */
 function deleteVideo(video) {
   return new Promise((resolve, reject) => {

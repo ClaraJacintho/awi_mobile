@@ -16,12 +16,9 @@ export default class SliderEntry extends Component {
       data: {illustration},
     } = this.props;
 
-    return (
-      <Image source={{uri: illustration}} style={styles.image} />
-    );
+    return <Image source={{uri: illustration}} style={styles.image} />;
   }
 
-  
   render() {
     const {
       data: {title, subtitle},
@@ -37,14 +34,13 @@ export default class SliderEntry extends Component {
     ) : (
       false
     );
-    const {click} = this.props
+    const {click} = this.props;
     return (
       <TouchableOpacity
         activeOpacity={1}
         style={styles.slideInnerContainer}
         onPress={() => {
-          // eslint-disable-next-line no-alert
-          click()
+          click();
         }}>
         <View style={styles.shadow} />
         <View

@@ -1,50 +1,52 @@
-import React, { Component } from 'react';
-import {
-    Platform,
-    StyleSheet,
-    Text,
-    View,
-    Image,
-    Button,
-    Icon,
-    TouchableOpacity
-} from 'react-native';
+import React, {Component} from 'react';
+import {Text, View} from 'react-native';
 import ReadMore from 'react-native-read-more-text';
-import styles from '../styles/VideoItemStyle'
-import { Colors } from 'react-native/Libraries/NewAppScreen';
-import DownloadVideoButton from './DownloadVideoButton'
+import styles from '../styles/VideoItemStyle';
+import DownloadVideoButton from './DownloadVideoButton';
 
+export default class VideoItem extends Component {
+  constructor(props) {
+    super(props);
+    this.handleTextPress = this.handleTextPress.bind(this);
+  }
 
+  handleTextPress = () => {
+    if (this.props.onItemPress) {
+      const {navigation} = this.props.onItemPress;
+      navigation.navigate('VideoPage');
+    }
+  };
+                                
 
-export default ({video : {videoName, videoURL, subtitle}}, {isConnected}, {courseId}) => {
-        console.log("name"+videoName)
-        return (
-            <View style={styles.container}>
-                <View style={styles.descContainer}>
-                    <View style={styles.videoDetails, {marginRight: 100}, {flexDirection:"row"}}>
-                        <View style={{width:"60%"}}> 
-                        if(isConnected){
-                          <Text>You are not connected </Text>
-                        }
-                        <ReadMore
-                            numberOfLines={2}
-                            renderTruncatedFooter={this._renderTruncatedFooter}
-                            renderRevealedFooter={this._renderRevealedFooter}>
-                            <Text style={styles.videoTitle}>{videoName}</Text>
-                        </ReadMore>
-                        </View>
-                        if(isConnected){
-                          <View style={{width:"20%"}, {marginRight:"30%"}}>
-                                <DownloadVideoButton videoURI={videoURL} subtitle={subtitle} courseId={courseId}/>
-                        </View>
-                        }
-                        
-                    </View>
+  render() {
+    let video = this.props.video.item;
+    console.log(video);
+    return (
+      <View style={styles.container}>
+        <View style={styles.descContainer}>
+          <View
+            style={
+              (styles.videoDetails, {marginRight: 100}, {flexDirection: 'row'})
+            }>
+            <View style={{width: '60%'}}>
+              <ReadMore numberOfLines={2} >
+                <Text
+                  numberOfLines={2}
+                  style={styles.videoTitle}
+                  onPress={this.handleTextPress}>
+                  {video.name}
+                </Text>
+              </ReadMore>
             </View>
+            <View style={({width: '20%'}, {marginRight: '30%'})}>
+              <DownloadVideoButton videoURI={videoURL} subtitle={subtitle} courseId={courseId}/>
+            </View>
+          </View>
         </View>
-        )
+      </View>
+    );
+  }
 }
-
 _renderTruncatedFooter = (handlePress) => {
     return (
       <RegularText style={{color: Colors.Blue, marginTop: 5}} onPress={handlePress}>
@@ -60,5 +62,3 @@ _renderTruncatedFooter = (handlePress) => {
       </RegularText>
     );
   }
-
-

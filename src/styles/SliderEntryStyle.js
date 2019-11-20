@@ -76,7 +76,7 @@ export default StyleSheet.create({
     borderBottomRightRadius: entryBorderRadius,
   },
   textContainerEven: {
-    backgroundColor: colors.black,
+    backgroundColor: colors.dark_purple,
   },
   title: {
     color: colors.black,

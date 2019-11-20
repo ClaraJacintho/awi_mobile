@@ -2,6 +2,26 @@ import * as React from 'react';
 import {View, StyleSheet} from 'react-native';
 import SaveVideosContainer from '../containers/SaveVideosContainer';
 import VideoPlayerContainer from '../containers/VideoPlayerContainer';
+import Orientation from 'react-native-orientation';
+
+export default class VideoPage extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    Orientation.unlockAllOrientations();
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <VideoPlayerContainer style={styles.video} />
+        <SaveVideosContainer />
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -21,18 +41,3 @@ const styles = StyleSheet.create({
     right: 0,
   },
 });
-
-export default class VideoPage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <VideoPlayerContainer style={styles.video} />
-        <SaveVideosContainer />
-      </View>
-    );
-  }
-}
