@@ -13,23 +13,23 @@ export default class SliderEntry extends Component {
 
   get image() {
     const {
-      data: {illustration},
+      data: {picture},
     } = this.props;
 
-    return <Image source={{uri: illustration}} style={styles.image} />;
+    return <Image source={{uri: picture}} style={styles.image} />;
   }
 
   render() {
     const {
-      data: {title, subtitle},
+      data: {name, description, id, teacher, averageRating},
       even,
     } = this.props;
 
-    const uppercaseTitle = title ? (
+    const uppercaseTitle = name ? (
       <Text
         style={[styles.title, even ? styles.titleEven : {}]}
         numberOfLines={2}>
-        {title.toUpperCase()}
+        {name.toUpperCase()}
       </Text>
     ) : (
       false
@@ -40,7 +40,7 @@ export default class SliderEntry extends Component {
         activeOpacity={1}
         style={styles.slideInnerContainer}
         onPress={() => {
-          click();
+          click(id, name);
         }}>
         <View style={styles.shadow} />
         <View
@@ -53,14 +53,27 @@ export default class SliderEntry extends Component {
             style={[styles.radiusMask, even ? styles.radiusMaskEven : {}]}
           />
         </View>
-        <View
-          style={[styles.textContainer, even ? styles.textContainerEven : {}]}>
-          {uppercaseTitle}
-          <Text
-            style={[styles.subtitle, even ? styles.subtitleEven : {}]}
-            numberOfLines={2}>
-            {subtitle}
-          </Text>
+        <View style={[styles.columnContainer, even ? styles.columnContainerEven : {}]}>
+          <View style={styles.textContainer }>
+            {uppercaseTitle}
+            <Text
+              style={[styles.description, even ? styles.subtitleEven : {}]}
+              numberOfLines={2}>
+              {description}
+            </Text>
+            <Text
+              style={[styles.prof, even ? styles.subtitleEven : {}]}
+              numberOfLines={2}>
+              {teacher.firstName + " " + teacher.lastName}
+            </Text>
+          </View>
+          <View>
+            <Text
+              style={[styles.prof, even ? styles.subtitleEven : {}]}
+              numberOfLines={2}>
+              {averageRating+"/10"}
+            </Text>
+        </View>
         </View>
       </TouchableOpacity>
     );

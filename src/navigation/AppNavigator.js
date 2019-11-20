@@ -6,9 +6,6 @@ import Example from '../pages/TestPage.js';
 import Login from '../pages/Login.js';
 
 const AppNavigator = createSwitchNavigator({
-  Loading: {
-    screen: Example,
-  },
   Auth: {
     screen: Login,
     path: 'app',
