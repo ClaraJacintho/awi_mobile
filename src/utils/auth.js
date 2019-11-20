@@ -82,6 +82,7 @@ export function checkTokenValidity(accessToken, refreshToken, networkStatus) {
       jwt
         .decode(accessToken, CLIENT_SECRET, {skipValidation: false})
         .then(() => {
+          axios.defaults.headers.common.Authorization = accessToken;
           resolve({
             validity: true,
             accessToken: accessToken,
@@ -96,6 +97,8 @@ export function checkTokenValidity(accessToken, refreshToken, networkStatus) {
             })
             .then(res => {
               if (res.data.access_token !== null) {
+                axios.defaults.headers.common.Authorization =
+                  res.data.access_token;
                 resolve({
                   validity: false,
                   accessToken: res.data.access_token,

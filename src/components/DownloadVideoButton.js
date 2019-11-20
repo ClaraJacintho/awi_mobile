@@ -18,16 +18,9 @@ export default class DownloadVideoButton extends React.Component {
       buttonTitle: 'Downloading',
       isDisabled: true,
     });
-    const video =
-      this.props.videoURI === undefined
-        ? this.props.currentVideo
-        : this.props.videoURI;
-    const subtitles =
-      this.props.subtitlesURI === undefined
-        ? this.props.currentSubs
-        : this.props.subtitlesURI;
+
     videoCaching
-      .storeVideo(video, subtitles)
+      .storeVideo(this.props.videoURI, this.props.subtitlesURI)
       .then(result => {
         this.props.addVideo(result.videoName, result.subtitlesName);
         Alert.alert('Success', 'Downloaded!');
@@ -55,5 +48,5 @@ export default class DownloadVideoButton extends React.Component {
         color={colors.purple}
       />
     );
-  } 
+  }
 }

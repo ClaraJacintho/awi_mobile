@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {Text, View} from 'react-native';
 import ReadMore from 'react-native-read-more-text';
 import styles from '../styles/VideoItemStyle';
-import DownloadVideoButton from './DownloadVideoButton';
+import Colors from 'react-native/Libraries/NewAppScreen/components/Colors';
+import SaveVideosContainer from '../containers/SaveVideosContainer';
 
 export default class VideoItem extends Component {
   constructor(props) {
@@ -16,10 +17,26 @@ export default class VideoItem extends Component {
       navigation.navigate('VideoPage');
     }
   };
-                                
 
+  _renderTruncatedFooter = handlePress => {
+    return (
+      <Text style={{color: Colors.primary, marginTop: 5}} onPress={handlePress}>
+        Read more
+      </Text>
+    );
+  };
+
+  _renderRevealedFooter = handlePress => {
+    return (
+      <Text
+        style={{color: Colors.tintColor, marginTop: 5}}
+        onPress={handlePress}>
+        Show less
+      </Text>
+    );
+  };
   render() {
-    let video = this.props.video.item;
+    const video = this.props.video.item;
     console.log(video);
     return (
       <View style={styles.container}>
@@ -29,7 +46,7 @@ export default class VideoItem extends Component {
               (styles.videoDetails, {marginRight: 100}, {flexDirection: 'row'})
             }>
             <View style={{width: '60%'}}>
-              <ReadMore numberOfLines={2} >
+              <ReadMore numberOfLines={2}>
                 <Text
                   numberOfLines={2}
                   style={styles.videoTitle}
@@ -38,8 +55,12 @@ export default class VideoItem extends Component {
                 </Text>
               </ReadMore>
             </View>
-            <View style={({width: '20%'}, {marginRight: '30%'})}>
-              <DownloadVideoButton videoURI={videoURL} subtitle={subtitle} courseId={courseId}/>
+            <View style={{width: '20%', marginRight: '30%'}}>
+              <SaveVideosContainer
+                videoURI={video.videoURL}
+                subtitle={video.subtitles}
+                courseId={video.courseId}
+              />
             </View>
           </View>
         </View>
@@ -47,18 +68,4 @@ export default class VideoItem extends Component {
     );
   }
 }
-_renderTruncatedFooter = (handlePress) => {
-    return (
-      <RegularText style={{color: Colors.Blue, marginTop: 5}} onPress={handlePress}>
-        Read more
-      </RegularText>
-    );
-  }
- 
-  _renderRevealedFooter = (handlePress) => {
-    return (
-      <RegularText style={{color: Colors.tintColor, marginTop: 5}} onPress={handlePress}>
-        Show less
-      </RegularText>
-    );
-  }
+

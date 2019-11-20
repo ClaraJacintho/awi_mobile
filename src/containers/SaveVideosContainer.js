@@ -10,16 +10,16 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const mapStateToProps = store => {
+const mapStateToProps = (state, props) => {
   return {
-    currentVideo:
-      store.currentVideo.videoURI !== undefined
-        ? store.currentVideo.videoURI
-        : 'https://rawgit.com/mediaelement/mediaelement-files/master/big_buck_bunny.mp4',
-    currentSubs:
-      store.currentVideo.subtitlesURI !== undefined
-        ? store.currentVideo.subtitlesURI
-        : null,
+    videoURI:
+      state.currentVideo.videoURI !== undefined
+        ? state.currentVideo.videoURI
+        : props.videoURI,
+    subtitlesURI:
+      state.currentVideo.subtitlesURI !== undefined
+        ? state.currentVideo.subtitlesURI
+        : props.subtitlesURI,
   };
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import {createStackNavigator} from 'react-navigation-stack';
-
+import {colors} from '../styles/base';
 import Home from '../containers/CourseHomeContainer';
 import CoursePageContainer from '../containers/CoursePageContainer';
 import DownloadedVideos from '../pages/DownloadedVideos.js';

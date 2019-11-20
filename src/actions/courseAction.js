@@ -5,7 +5,7 @@ import axios from 'axios';
 const apiUrl = 'https://polyteach-back.igpolytech.fr';
 
 export const fetchCourse = () => {
-   function thunk(dispatch) {
+  function thunk(dispatch) {
     return axios
       .get(`${apiUrl}/courses`)
       .then(response => {
