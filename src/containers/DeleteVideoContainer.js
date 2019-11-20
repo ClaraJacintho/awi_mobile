@@ -3,15 +3,14 @@ import {connect} from 'react-redux';
 import {saveVideo, removeVideo} from '../actions/savedVideosAction';
 
 const mapDispatchToProps = dispatch => {
-    return {
-        deleteVideo: (videoName, subtitlesName) => {
-            dispatch(removeVideo(videoName, subtitlesName));
-        },
-    };
+  return {
+    deleteVideo: (videoName, subtitlesName, courseName) => {
+      dispatch(removeVideo(videoName, subtitlesName, courseName));
+    },
+  };
 };
 
-
 export default connect(
-    null,
-    mapDispatchToProps,
+  null,
+  mapDispatchToProps,
 )(DeleteVideoButton);

@@ -13,6 +13,10 @@ export default class VideoItem extends Component {
 
   handleTextPress = () => {
     if (this.props.onItemPress) {
+      this.props.setCurrentVideo(
+        this.props.video.hashserver,
+        this.props.video.hashvtt,
+      );
       const {navigation} = this.props.onItemPress;
       navigation.navigate('VideoPage');
     }
@@ -26,9 +30,11 @@ export default class VideoItem extends Component {
       <View style={styles.container}>
         <View style={styles.descContainer}>
           <View
-            style={
-              (styles.videoDetails, {marginRight: 100}, {flexDirection: 'row'})
-            }>
+            style={Object.assign(
+              styles.videoDetails,
+              {marginRight: 100},
+              {flexDirection: 'row'},
+            )}>
             <View style={{width: '60%'}}>
               <ReadMore numberOfLines={2}>
                 <Text
@@ -43,7 +49,7 @@ export default class VideoItem extends Component {
               <SaveVideosContainer
                 videoURI={video.videoURL}
                 subtitle={video.subtitles}
-                courseId={video.courseId}
+                courseId={this.props.courseName}
               />
             </View>
           </View>
@@ -52,4 +58,3 @@ export default class VideoItem extends Component {
     );
   }
 }
-

@@ -5,14 +5,14 @@ import Orientation from 'react-native-orientation';
 import SavedVideoItem from '../components/SavedVideoItem'
 
 
-export default class CoursePage extends React.Component {
+export default class DownloadPage extends React.Component {
   constructor(props) {
       super(props)
       this.setState = {
         savedVideos : this.props.savedVideos
       }
   }
-
+er
   componentDidMount() {
     Orientation.lockToPortrait();
   }
@@ -52,6 +52,7 @@ export default class CoursePage extends React.Component {
         },
       ];
 
+
     return (
       <View style={styles.container}>
         {data.length > 0 ? (
@@ -61,6 +62,7 @@ export default class CoursePage extends React.Component {
             keyExtractor={item => item.videoName}
             ItemSeparatorComponent={() => (
               <View style={{height: 0.5, backgroundColor: '#E5E5E5'}} />
+
             )}
           />
         ) : (

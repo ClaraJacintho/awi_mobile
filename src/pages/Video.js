@@ -1,6 +1,5 @@
 import * as React from 'react';
-import {View, StyleSheet} from 'react-native';
-import SaveVideosContainer from '../containers/SaveVideosContainer';
+import {View, StyleSheet, Text} from 'react-native';
 import VideoPlayerContainer from '../containers/VideoPlayerContainer';
 import Orientation from 'react-native-orientation';
 
@@ -17,7 +16,6 @@ export default class VideoPage extends React.Component {
     return (
       <View style={styles.container}>
         <VideoPlayerContainer style={styles.video} />
-        <SaveVideosContainer />
       </View>
     );
   }

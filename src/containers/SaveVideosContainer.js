@@ -4,26 +4,13 @@ import {saveVideo} from '../actions/savedVideosAction';
 
 const mapDispatchToProps = dispatch => {
   return {
-    addVideo: (videoName, subtitlesName) => {
-      dispatch(saveVideo(videoName, subtitlesName));
+    addVideo: (videoName, subtitlesName, courseName) => {
+      dispatch(saveVideo(videoName, subtitlesName, courseName));
     },
   };
 };
 
-const mapStateToProps = (state, props) => {
-  return {
-    videoURI:
-      state.currentVideo.videoURI !== undefined
-        ? state.currentVideo.videoURI
-        : props.videoURI,
-    subtitlesURI:
-      state.currentVideo.subtitlesURI !== undefined
-        ? state.currentVideo.subtitlesURI
-        : props.subtitlesURI,
-  };
-};
-
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps,
 )(DownloadVideoButton);
