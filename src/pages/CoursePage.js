@@ -18,10 +18,9 @@ export default class CoursePage extends React.Component {
     
      render() {
       console.log("chargé" + this.props.course)
-            const courses = this.props.course
-            console.log("rrrr"+JSON.stringify(courses))
+            const course = this.props.course
             const videos = this.props.videos
-            console.log("videos nat"+JSON.stringify(videos))
+            //console.log("videos nat"+JSON.stringify(course[0].courseImageLink))
             return (
               <View style={styles.container}>
                 <View>
@@ -33,23 +32,22 @@ export default class CoursePage extends React.Component {
                       alignContent: 'center',
                     }}
                     source={{
-                      uri: 'https://i.ytimg.com/vi/WiTxwdGWLoY/maxresdefault.jpg',
+                      uri: '',//course[0].courseImageLink,
                     }}
                   />
-                  <Text style={styles.courseTitle}>Le nommm du couuurs</Text>
+                  <Text style={styles.courseTitle}>{course[0].courseName}</Text>
                   <ReadMore
                     numberOfLines={3}
                     renderTruncatedFooter={this._renderTruncatedFooter}
                     renderRevealedFooter={this._renderRevealedFooter}>
                     <Text style={styles.courseDescription}>
-                      descriptioooonn
+                      {course[0].courseDesc} fsqdsq
                     </Text>
                   </ReadMore>
                 </View>
                 
                 {videos.length > 0 ? (
                   videos.map( video => {
-                    console.log("yovcwvcxwvyoyooy"+JSON.stringify(video) )
                     return (<VideoItem video={video} />)
                     }
                   )

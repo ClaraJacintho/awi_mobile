@@ -16,7 +16,7 @@ export default mockVideos =  [
     {
         "id": 5,
         "videoName": "zzzzzzzzz",
-        "courseId": 3,
+        "courseId": 1,
         "subtitle": "descrip 5",
         "videoURL": "https://rawgit.com/mediaelement/mediaelement-files/master/big_buck_bunny.mp4"
     },

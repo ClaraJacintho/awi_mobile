@@ -52,7 +52,7 @@ const mockCourses = [
       "courseId": 1,
       "courseName": "AWI",
       "courseDesc": "description",
-      "courseImageLink": "https://img.buzzfeed.com/buzzfeed-static/static/campaign_images/webdr06/2013/7/11/12/35-random-corners-of-the-internet-you-should-visi-1-10632-1373560090-0_big.jpg"
+      "courseImageLink": "https://i.ytimg.com/vi/WiTxwdGWLoY/maxresdefault.jpg"
   },
   {
       "courseId": 2,
