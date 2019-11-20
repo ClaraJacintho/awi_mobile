@@ -12,11 +12,11 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = store => {
   return {
-    videoURI:
+    currentVideo:
       store.currentVideo.videoURI !== undefined
         ? store.currentVideo.videoURI
         : 'https://rawgit.com/mediaelement/mediaelement-files/master/big_buck_bunny.mp4',
-    subtitlesURI:
+    currentSubs:
       store.currentVideo.subtitlesURI !== undefined
         ? store.currentVideo.subtitlesURI
         : null,
