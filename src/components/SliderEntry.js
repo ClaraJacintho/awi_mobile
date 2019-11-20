@@ -13,23 +13,23 @@ export default class SliderEntry extends Component {
 
   get image() {
     const {
-      data: {illustration},
+      data: {picture},
     } = this.props;
 
-    return <Image source={{uri: illustration}} style={styles.image} />;
+    return <Image source={{uri: picture}} style={styles.image} />;
   }
 
   render() {
     const {
-      data: {title, subtitle},
+      data: {name, description},
       even,
     } = this.props;
 
-    const uppercaseTitle = title ? (
+    const uppercaseTitle = name ? (
       <Text
         style={[styles.title, even ? styles.titleEven : {}]}
         numberOfLines={2}>
-        {title.toUpperCase()}
+        {name.toUpperCase()}
       </Text>
     ) : (
       false
@@ -59,7 +59,7 @@ export default class SliderEntry extends Component {
           <Text
             style={[styles.subtitle, even ? styles.subtitleEven : {}]}
             numberOfLines={2}>
-            {subtitle}
+            {description}
           </Text>
         </View>
       </TouchableOpacity>

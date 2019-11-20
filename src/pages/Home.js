@@ -41,6 +41,8 @@ export default class Home extends React.Component {
   }
 
   render() {
+    //console.log(this.state)
+    console.log(this.props)
     const {navigation} = this.props;
     return (
       <ScrollView style={componentStyles.container}>
