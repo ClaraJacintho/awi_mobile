@@ -13,8 +13,21 @@ import styles from '../styles/CoursePageStyle';
 import Orientation from 'react-native-orientation';
 
 export default class CoursePage extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this._renderTruncatedFooter = this._renderTruncatedFooter.bind(this);
+    this._renderRevealedFooter = this._renderRevealedFooter.bind(this);
+
+    this.setState={
+      course: this.props.course,
+      videos: this.props.videos,
+      isConnected: this.props.isConnected
+    }
+  }
   componentDidMount() {
     Orientation.lockToPortrait();
+    this.props.onfetchVideos()
   }
 
     static navigationOptions = ({ navigation }) => {
@@ -22,11 +35,7 @@ export default class CoursePage extends React.Component {
         title: navigation.getParam('courseTitle', 'Course'),
       };
     };
-  constructor(props) {
-    super(props);
-    this._renderTruncatedFooter = this._renderTruncatedFooter.bind(this);
-    this._renderRevealedFooter = this._renderRevealedFooter.bind(this);
-  }
+  
 
   _renderTruncatedFooter = handlePress => {
     return (
@@ -45,6 +54,9 @@ export default class CoursePage extends React.Component {
   };
 
   render() {
+    const videos = this.state.videos
+    const course = this.state.course
+    const isConnected = this.state.isConnected
     return (
       <View style={styles.container}>
               <View >
@@ -63,13 +75,12 @@ export default class CoursePage extends React.Component {
               </View> 
                 { 
                 videos.length > 0 ? (
-                  
                 <FlatList
                 data={videos}
-                renderItem={(video)=><VideoItem video={video} />}
+                renderItem={(video)=><VideoItem video={video} isConnected={isConnected} courseId={course.courseId}/>}
                 keyExtractor={(item)=>item.videoId}
                 ItemSeparatorComponent={()=><View style={{height:0.5,backgroundColor:'#E5E5E5'}}/>}
-                 /> : (
+                 />) : (
           <Text style={styles.textNoVideo}>Sorry. No Videos Available.</Text>
         )}
       </View>

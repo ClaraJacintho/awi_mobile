@@ -8,6 +8,11 @@ export default class VideoItem extends Component {
   constructor(props) {
     super(props);
     this.handleTextPress = this.handleTextPress.bind(this);
+    this.setState={
+      video: this.props.video.item,
+      isConnected: this.props.item,
+      videoId: this.props.item
+    }
   }
 
   handleTextPress = () => {
@@ -19,7 +24,9 @@ export default class VideoItem extends Component {
                                 
 
   render() {
-    let video = this.props.video.item;
+    let video = this.state.video;
+    let courseId = this.state.courseId
+    let isConnected = this.state.isConnected
     console.log(video);
     return (
       <View style={styles.container}>
