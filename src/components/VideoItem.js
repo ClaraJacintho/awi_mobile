@@ -16,13 +16,16 @@ import DownloadVideoButton from './DownloadVideoButton'
 
 
 
-export default ({video : {videoName, videoURL, subtitle}}) => {
+export default ({video : {videoName, videoURL, subtitle}}, {isConnected}, {courseId}) => {
         console.log("name"+videoName)
         return (
             <View style={styles.container}>
                 <View style={styles.descContainer}>
                     <View style={styles.videoDetails, {marginRight: 100}, {flexDirection:"row"}}>
                         <View style={{width:"60%"}}> 
+                        if(isConnected){
+                          <Text>You are not connected </Text>
+                        }
                         <ReadMore
                             numberOfLines={2}
                             renderTruncatedFooter={this._renderTruncatedFooter}
@@ -30,9 +33,12 @@ export default ({video : {videoName, videoURL, subtitle}}) => {
                             <Text style={styles.videoTitle}>{videoName}</Text>
                         </ReadMore>
                         </View>
-                        <View style={{width:"20%"}, {marginRight:"30%"}}>
-                                <DownloadVideoButton videoURI={videoURL} subtitle={subtitle}/>
+                        if(isConnected){
+                          <View style={{width:"20%"}, {marginRight:"30%"}}>
+                                <DownloadVideoButton videoURI={videoURL} subtitle={subtitle} courseId={courseId}/>
                         </View>
+                        }
+                        
                     </View>
             </View>
         </View>

@@ -9,17 +9,23 @@ import styles from '../styles/CoursePageStyle'
 export default class CoursePage extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      course : this.props.course,
+      videos : this.props.videos,
+      isConnected : this.props.isConnected
+    } = this.props
   }
   
     componentDidMount() {
       console.log("compo mount")
-      this.props.onFetchVideos()
+      this.props.onFetchVideos(this.state.course.courseId)
     }
     
      render() {
       console.log("chargé" + this.props.course)
-            const course = this.props.course
-            const videos = this.props.videos
+      const course = this.state.course
+      const videos = this.state.videos
+      const isConnected = this.state.isConnected
             //console.log("videos nat"+JSON.stringify(course[0].courseImageLink))
             return (
               <View style={styles.container}>
@@ -41,18 +47,18 @@ export default class CoursePage extends React.Component {
                     renderTruncatedFooter={this._renderTruncatedFooter}
                     renderRevealedFooter={this._renderRevealedFooter}>
                     <Text style={styles.courseDescription}>
-                      {course[0].courseDesc} fsqdsq
+                      {course[0].courseDesc}
                     </Text>
                   </ReadMore>
                 </View>
                 
                 {videos.length > 0 ? (
                   videos.map( video => {
-                    return (<VideoItem video={video} />)
+                    return (<VideoItem video={video} isConnected={isConnected} courseId={course[0].courseId} />)
                     }
                   )
                 ) : (
-                  <Text style={{fontSize: 48, color: 'red'}}>
+                  <Text style={{fontSize: 48, color: 'red', alignContent='center'}}>
                     Sorry. No Videos Available.
                   </Text>
                 )}

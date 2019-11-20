@@ -3,6 +3,7 @@ import Home from '../pages/Home';
 import { fetchCourse } from '../actions/courseAction';
 
 const mapStateToProps = (state, ownprops) => {
+  console.log("coursesss "+ JSON.stringify(state.course))
   return {
     courses: state.courses
   }
@@ -10,7 +11,7 @@ const mapStateToProps = (state, ownprops) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onFetchCourses: courseId => {
+    onFetchCourses: () => {
       dispatch(fetchCourse());
     }
     }
