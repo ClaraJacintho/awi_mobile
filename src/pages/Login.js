@@ -1,7 +1,7 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Image, View, StyleSheet} from 'react-native';
 import AuthContainer from '../containers/AuthContainer';
-import styles from '../styles/LoginStyles';
+import {colors, dimensions, padding} from '../styles/base';
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -11,14 +11,17 @@ export default class Login extends React.Component {
     // const {navigate} = this.props.navigation;
     return (
       <View style={styles.container}>
-        <Text style={styles.header}>Polyteach</Text>
+        <Image
+          source={require('../assets/PolyTeach_Logo_RGB.png')}
+          style={styles.header}
+        />
         <AuthContainer navigation={this.props.navigation} />
       </View>
     );
   }
 }
 
-const styles =  StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -28,8 +31,7 @@ const styles =  StyleSheet.create({
   },
   header: {
     width: dimensions.fullWidth / 2,
-    height: dimensions.fullHeight / 8 
-
+    height: dimensions.fullHeight / 8,
   },
   textField: {
     width: dimensions.fullWidth / 2,

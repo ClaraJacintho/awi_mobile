@@ -3,7 +3,6 @@ import WelcomeText from '../components/WelcomeText';
 
 const mapStateToProps = store => {
   return {
-    info: console.log(store),
     username: store.user.username,
   };
 };

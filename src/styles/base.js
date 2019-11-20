@@ -18,7 +18,7 @@ export const colors = {
   white: '#dddada',
   green: '#1cb831',
   green_modal: '#5cdf5c',
-  modal_grey:'#acabab',
+  modal_grey: '#acabab',
   modal_grey_2: 'rgb(122, 122, 122)',
   red: '#e21221',
   red_2: '#f80616de',
@@ -26,10 +26,9 @@ export const colors = {
   light_blue: '#0f3d81',
   light_blue_2: '#2b2da5',
   purple: '#2f48df',
-  dark_purple:'#4B0082',
-  light_purple:'#9370DB',
-  dark_grey:'#383838'
-
+  dark_purple: '#4B0082',
+  light_purple: '#9370DB',
+  dark_grey: '#383838',
 };
 
 export const padding = {
@@ -40,7 +39,7 @@ export const padding = {
 };
 
 export const fonts = {
-  primary:'roboto',
+  //primary: 'roboto',
   sm: 12,
   md: 18,
   lg: 28,
