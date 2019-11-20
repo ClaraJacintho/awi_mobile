@@ -22,3 +22,5 @@ ios/Pods
 ios/Polyteach.xcworkspace/xcuserdata/
 
 .idea/
+
+.env

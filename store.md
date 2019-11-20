@@ -27,8 +27,14 @@ The general store looks like this:
         courseDesc: String,
         courseImgLink: String
     }],
-    user: { userId: Number, token: String, userName: String },
-    isConnected: Boolean
+    user: {
+        accessToken: String,
+        refreshToken: String,
+        username: String, 
+        role: String
+    },
+    isConnected: Boolean,
+    connection: String
 
 }
 ```
@@ -73,10 +79,15 @@ It's an array containing the courses we retrieved from the backend. It contains 
 
 Simple object containing the user's information.
 
-- userId: Number. The user ID in the database.
-- token: String. The identification token.
-- userName: String. The user's name.
+- accessToken: String. The identification token.
+- refreshToken: String. The refresh token.
+- username: String. The user's name.
+- role: String. The user's role (student or teacher)
 
 ### isConnected
 
 A simple boolean to indicate if we are connected to the API or not.
+
+### connection
+
+Stores the random state we sent to the OAuth server.

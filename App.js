@@ -8,6 +8,9 @@ import {ReduxNetworkProvider} from 'react-native-offline';
 import {persistor, store} from './store';
 import '@react-native-community/netinfo';
 
+const prefix = 'polyteach://';
+
+
 const AppContainer = createAppContainer(AppNavigator);
 
 const Loading = () => <div>Loading...</div>;
@@ -26,7 +29,7 @@ export default class App extends React.Component {
             pingInBackground={false}
             httpMethod={'HEAD'}>
 
-            <AppContainer />
+            <AppContainer uriPrefix={prefix} />
 
           </ReduxNetworkProvider>
         </PersistGate>

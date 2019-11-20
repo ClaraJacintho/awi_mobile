@@ -1,4 +1,10 @@
-import {FETCH_USER_SUCCESS, FETCH_USER_FAILURE} from './actionTypes';
+import {
+  FETCH_USER_SUCCESS,
+  FETCH_USER_FAILURE,
+  UPDATE_USER_DATA,
+  UPDATE_USER_TOKEN,
+  DELETE_USER_DATA,
+} from './actionTypes';
 import axios from 'axios';
 
 const apiUrl = 'https://polyteach-back.igpolytech.fr';
@@ -32,5 +38,33 @@ export const fetchUserFailure = error => {
     payload: {
       error,
     },
+  };
+};
+
+export const updateUserData = (username, role, accessToken, refreshToken) => {
+  return {
+    type: UPDATE_USER_DATA,
+    payload: {
+      username,
+      role,
+      accessToken,
+      refreshToken,
+    },
+  };
+};
+
+export const updateUserToken = (accessToken, refreshToken) => {
+  return {
+    type: UPDATE_USER_TOKEN,
+    payload: {
+      accessToken,
+      refreshToken,
+    },
+  };
+};
+
+export const deleteUserData = () => {
+  return {
+    type: DELETE_USER_DATA,
   };
 };
