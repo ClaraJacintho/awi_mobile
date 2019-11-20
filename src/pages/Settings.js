@@ -6,11 +6,22 @@ import { faHome} from '@fortawesome/free-solid-svg-icons'
 import { ScrollView } from 'react-native-gesture-handler';
 
 export default class Settings extends React.Component {
-    render(){
+    constructor(props) {
+        super(props);
+        this.logout = this.logout.bind(this)
+    }
+
+    logout(){
         const {navigate} = this.props.navigation;
+        this.props.onLogout()
+        navigate("Auth")
+    }
+
+    render(){
+        
         return(
             <ScrollView contentContainerStyle={styles.container}>
-                <Button onPress={() => navigate("Auth")} title="Sign Out"/>
+                <Button onPress={() => this.logout() } title="Sign Out"/>
             </ScrollView>
             
         )

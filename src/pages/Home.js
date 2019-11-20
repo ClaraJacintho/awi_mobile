@@ -4,9 +4,9 @@ import Carousel from 'react-native-snap-carousel';
 import {sliderWidth, itemWidth} from '../styles/SliderEntryStyle.js';
 import SliderEntry from '../components/SliderEntry';
 import styles from '../styles/sliderBaseStyle.js';
-import {ENTRIES1} from './../assets/entries';
 import {colors, fonts, padding} from './../styles/base.js';
 import Orientation from 'react-native-orientation';
+
 
 const SLIDER_1_FIRST_ITEM = 1;
 
@@ -38,23 +38,29 @@ export default class Home extends React.Component {
 
   componentDidMount() {
     Orientation.lockToPortrait();
+    this.divideCourses()
+  }
+  divideCourses(){
+    const {courses} = this.props
+    const itemsPerCarousel = courses.length / 3
+    const recentylWatched = courses.slice(0, itemsPerCarousel)
+    const all = courses
+    const finished = courses.slice(itemsPerCarousel)
+    this.setState({recentylWatched: recentylWatched, all: all, finished: finished})
   }
 
   render() {
-    //console.log(this.state)
-    console.log(this.props)
-    const {navigation} = this.props;
     return (
       <ScrollView style={componentStyles.container}>
         <Text style={componentStyles.listTitle}>Recently watched</Text>
         <Carousel
           ref={c => (this._slider1Ref = c)}
-          data={ENTRIES1}
+          data={this.state.recentylWatched}
           renderItem={this._renderItem}
           sliderWidth={sliderWidth}
           itemWidth={itemWidth}
           hasParallaxImages={false}
-          firstItem={SLIDER_1_FIRST_ITEM}
+          firstItem={this.props.courses}
           inactiveSlideScale={0.94}
           inactiveSlideOpacity={0.7}
           containerCustomStyle={styles.slider}
@@ -66,7 +72,7 @@ export default class Home extends React.Component {
         <Text style={componentStyles.listTitle}>All courses</Text>
         <Carousel
           ref={c => (this._slider2Ref = c)}
-          data={ENTRIES1}
+          data={this.state.all}
           renderItem={this._renderItem}
           sliderWidth={sliderWidth}
           itemWidth={itemWidth}
@@ -83,7 +89,7 @@ export default class Home extends React.Component {
         <Text style={componentStyles.listTitle}>Finished</Text>
         <Carousel
           ref={c => (this._slider3Ref = c)}
-          data={ENTRIES1}
+          data={this.state.finished}
           renderItem={this._renderItem}
           sliderWidth={sliderWidth}
           itemWidth={itemWidth}
