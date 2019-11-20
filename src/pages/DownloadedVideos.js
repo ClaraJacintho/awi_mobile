@@ -2,8 +2,8 @@ import React from 'react';
 import {Text, View, FlatList} from 'react-native';
 import styles from '../styles/CoursePageStyle';
 import Orientation from 'react-native-orientation';
-import { saveVideo } from '../actions/savedVideosAction';
-import DeletionButton from '../containers/DeleteVideoContainer';
+import SavedVideoItem from '../components/SavedVideoItem'
+
 
 export default class CoursePage extends React.Component {
   constructor(props) {
@@ -18,11 +18,11 @@ export default class CoursePage extends React.Component {
   }
 
   render() {
-    const savedVideos = this.state.savedVideo
+    //const savedVideos = this.state.savedVideo
     const data = [
         {
-          courseName: 123,
-          videoName: 'Sheldon',
+          courseName: "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+          videoName: 'Shefgdsgfsdgfdsgdfshdshjgsgsfhdshdsgfggsldfdsqqqqqqqqdddddddddddddddddddddddddon',
           subtitlesName: 'Theoretical Physicist',
         },
         {
@@ -57,16 +57,10 @@ export default class CoursePage extends React.Component {
         {data.length > 0 ? (
           <FlatList
             data={data}
-            renderItem={({item}) => (
-              <View style={{borderBottomColor: '#999', padding: 10}}>
-                <Text style={{fontSize: 60, fontWeight: 'bold', color: '#333'}}>
-                  {item.courseName}
-                </Text>
-                <Text style={{fontSize: 36, color: '#999'}}>
-                  {item.videoName}
-                </Text>
-                <DeletionButton video={item.videoName} subtitles={item.subtitlesName} />
-              </View>
+            renderItem={({item}) => <SavedVideoItem video={item}/>}
+            keyExtractor={item => item.videoName}
+            ItemSeparatorComponent={() => (
+              <View style={{height: 0.5, backgroundColor: '#E5E5E5'}} />
             )}
           />
         ) : (

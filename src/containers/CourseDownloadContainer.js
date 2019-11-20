@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import CoursePage from '../pages/CoursePage';
+import DownloadedVideos from '../pages/DownloadedVideos';
 
 const mapStateToProps = (state) => {
   return {
@@ -7,8 +7,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-const CoursePageContainer = connect(
+const DownloadedVideosContainer = connect(
   mapStateToProps
-)(CoursePage);
+)(DownloadedVideos);
 
-export default CoursePageContainer;
+export default DownloadedVideosContainer;

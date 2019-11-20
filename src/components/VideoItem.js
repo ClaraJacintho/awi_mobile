@@ -18,23 +18,7 @@ export default class VideoItem extends Component {
     }
   };
 
-  _renderTruncatedFooter = handlePress => {
-    return (
-      <Text style={{color: Colors.primary, marginTop: 5}} onPress={handlePress}>
-        Read more
-      </Text>
-    );
-  };
 
-  _renderRevealedFooter = handlePress => {
-    return (
-      <Text
-        style={{color: Colors.tintColor, marginTop: 5}}
-        onPress={handlePress}>
-        Show less
-      </Text>
-    );
-  };
   render() {
     const video = this.props.video.item;
     console.log(video);
