@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, Image, View, FlatList} from 'react-native';
-import VideoItem from '../components/VideoItem';
+import VideoItem from '../containers/VideoItemContainer';
 import ReadMore from 'react-native-read-more-text';
 import styles from '../styles/CoursePageStyle';
 import Orientation from 'react-native-orientation';
@@ -67,7 +67,13 @@ export default class CoursePage extends React.Component {
         {this.props.videos.length > 0 ? (
           <FlatList
             data={this.props.videos}
-            renderItem={video => <VideoItem video={video} />}
+            renderItem={video => (
+              <VideoItem
+                video={video}
+                courseName={this.props.course.name}
+                onItemPress={this.props}
+              />
+            )}
             keyExtractor={item => item.videoId}
             ItemSeparatorComponent={() => (
               <View style={{height: 0.5, backgroundColor: '#E5E5E5'}} />
