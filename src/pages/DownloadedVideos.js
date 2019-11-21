@@ -18,7 +18,7 @@ er
   }
 
   render() {
-    //const savedVideos = this.state.savedVideo
+    const savedVideos = this.props.savedVideos
     const data = [
         {
           courseName: "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
@@ -55,18 +55,17 @@ er
 
     return (
       <View style={styles.container}>
-        {data.length > 0 ? (
+        {savedVideos.length > 0 ? (
           <FlatList
-            data={data}
-            renderItem={({item}) => <SavedVideoItem video={item}/>}
-            keyExtractor={item => item.videoName}
+            data={savedVideos}
+            renderItem={({video}) => <SavedVideoItem video={video}/>}
+            keyExtractor={video => video.videoName}
             ItemSeparatorComponent={() => (
               <View style={{height: 0.5, backgroundColor: '#E5E5E5'}} />
-
             )}
           />
         ) : (
-          <Text style={{fontSize: 40, color: 'red'}}>
+          <Text style={{fontSize: 20, textAlignVertical:'center', textAlign:'center', color: 'red'}}>
             Sorry. No Videos Available.
           </Text>
         )}
