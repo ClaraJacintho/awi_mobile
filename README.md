@@ -7,6 +7,8 @@ A web plateform meant to gather teaching video content and to facilitate the exc
 This application only manage the student part. A student logged-in can watch every videos of the courses he has access to.
 He can navigate offline and download videos.
 
+You have to connect on the web application in order to be seen as a user and be added to courses https://polyteach-staging.igpolytech.fr/dashboard
+
 ### Installation on Android
 
 Just open your browser, go to the APK file provided with the app rendering, and tap it – you should then be able to see it downloading on the top bar of your device.
