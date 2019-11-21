@@ -2,35 +2,32 @@ import React, {Component} from 'react';
 import {Text, View} from 'react-native';
 import ReadMore from 'react-native-read-more-text';
 import styles from '../styles/VideoItemStyle';
-import Colors from 'react-native/Libraries/NewAppScreen/components/Colors';
 import SaveVideosContainer from '../containers/SaveVideosContainer';
 
 export default class VideoItem extends Component {
   constructor(props) {
     super(props);
     this.handleTextPress = this.handleTextPress.bind(this);
+    this.state = this.props.video.item;
+    console.log('state');
+    console.log(this.state);
   }
 
   handleTextPress = () => {
     if (this.props.onItemPress) {
-      this.props.setCurrentVideo(
-        this.props.video.hashserver,
-        this.props.video.hashvtt,
-      );
+      this.props.setVideo(this.state.videoUrl, this.state.vttUrl);
       const {navigation} = this.props.onItemPress;
       navigation.navigate('VideoPage');
     }
   };
 
-
   render() {
-    const video = this.props.video.item;
-    console.log(video);
     return (
       <View style={styles.container}>
         <View style={styles.descContainer}>
           <View
             style={Object.assign(
+              {},
               styles.videoDetails,
               {marginRight: 100},
               {flexDirection: 'row'},
@@ -41,14 +38,14 @@ export default class VideoItem extends Component {
                   numberOfLines={2}
                   style={styles.videoTitle}
                   onPress={this.handleTextPress}>
-                  {video.name}
+                  {this.state.title}
                 </Text>
               </ReadMore>
             </View>
-            <View style={{width: '20%', marginRight: '30%'}}>
+            <View>
               <SaveVideosContainer
-                videoURI={video.videoURL}
-                subtitle={video.subtitles}
+                videoURI={this.state.videoUrl}
+                subtitle={this.state.vttUrl}
                 courseId={this.props.courseName}
               />
             </View>

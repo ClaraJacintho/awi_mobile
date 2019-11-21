@@ -2,6 +2,8 @@ import VideoPlayer from '../components/VideoPlayer';
 import {connect} from 'react-redux';
 
 const mapStateToProps = store => {
+  console.log('State before watching');
+  console.log(store);
   return {
     videoURI:
       store.currentVideo.videoURI !== undefined

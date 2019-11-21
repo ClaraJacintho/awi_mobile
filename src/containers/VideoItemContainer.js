@@ -4,7 +4,7 @@ import {setCurrentVideo} from '../actions/currentVideoAction';
 
 const mapDispatchToProps = dispatch => {
   return {
-    setCurrentVideo: (videoURI, subtitlesURI) => {
+    setVideo: (videoURI, subtitlesURI) => {
       dispatch(setCurrentVideo(videoURI, subtitlesURI));
     },
   };

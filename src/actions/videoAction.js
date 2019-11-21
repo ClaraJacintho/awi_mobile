@@ -5,12 +5,12 @@ import {
 
 import axios from 'axios';
 
-const apiUrl = 'https://polyteach-back.igpolytech.fr';
+const apiUrl = 'https://polyteach-back-staging.igpolytech.fr';
 
 export const fetchVideosForCourse = courseId => {
   function thunk(dispatch) {
     return axios
-      .get(`${apiUrl}/course/${courseId}/videos`)
+      .get(`${apiUrl}/courses/${courseId}/videos`)
       .then(response => {
         dispatch(fetchVideoSuccess(response.data));
       })

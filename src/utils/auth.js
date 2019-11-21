@@ -80,7 +80,7 @@ export function checkTokenValidity(accessToken, refreshToken, networkStatus) {
   return new Promise((resolve, reject) => {
     if (networkStatus) {
       jwt
-        .decode(accessToken, CLIENT_SECRET, {skipValidation: false})
+        .decode(accessToken, CLIENT_SECRET, {skipValidation: true})
         .then(() => {
           axios.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
           resolve({
