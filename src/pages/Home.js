@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, StyleSheet, ScrollView, SafeAreaView} from 'react-native';
+import {Text, StyleSheet, ScrollView, SafeAreaView, Alert} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import {sliderWidth, itemWidth} from '../styles/SliderEntryStyle.js';
 import SliderEntry from '../components/SliderEntry';
@@ -13,20 +13,12 @@ const SLIDER_FIRST_ITEM = 1;
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
-    const courses = this.props.courses;
-    const itemsPerCarousel = courses.length / 3;
-    const bookmarked = courses.filter(course => course.bookmarked);
-    const all = courses;
-    const finished = courses.slice(itemsPerCarousel);
-    this.state = {
-      slider1ActiveSlide: SLIDER_FIRST_ITEM,
-      bookmarked: bookmarked,
-      all: all,
-      finished: finished,
-    };
     this._renderItem = this._renderItem.bind(this);
     this.onPress = this.onPress.bind(this);
     this.retrieveCourses = this.retrieveCourses.bind(this);
+    this.state = {
+      slider1ActiveSlide: SLIDER_FIRST_ITEM,
+    };
   }
 
   componentDidMount() {
@@ -61,8 +53,11 @@ export default class Home extends React.Component {
   onPress(id) {
     const {navigation} = this.props;
     const course = this.props.courses.filter(c => c.id === id)[0];
-    if(!this.props.isConnected){
-      alert("You are offline, please connect to internet in order to watch videos or go into the saved one.")
+    if (!this.props.isConnected) {
+      Alert.alert(
+        'Alert',
+        'You are offline, please connect to internet in order to watch videos or go into the saved one.',
+      );
     }
     navigation.navigate('CoursePage', {course: course, title: course.name});
   }
@@ -78,13 +73,17 @@ export default class Home extends React.Component {
   }
 
   render() {
+    const courses = this.props.courses;
+    const itemsPerCarousel = courses.length / 3;
+    const bookmarked = courses.filter(course => course.bookmarked);
+    const finished = courses.slice(itemsPerCarousel);
     return (
       <SafeAreaView style={componentStyles.container}>
         <ScrollView>
           <Text style={componentStyles.listTitle}>Bookmarked courses</Text>
           <Carousel
             ref={c => (this._slider1Ref = c)}
-            data={this.state.bookmarked}
+            data={bookmarked}
             renderItem={this._renderItem}
             sliderWidth={sliderWidth}
             itemWidth={itemWidth}
@@ -101,7 +100,7 @@ export default class Home extends React.Component {
           <Text style={componentStyles.listTitle}>All courses</Text>
           <Carousel
             ref={c => (this._slider2Ref = c)}
-            data={this.state.all}
+            data={courses}
             renderItem={this._renderItem}
             sliderWidth={sliderWidth}
             itemWidth={itemWidth}
@@ -118,7 +117,7 @@ export default class Home extends React.Component {
           <Text style={componentStyles.listTitle}>Finished</Text>
           <Carousel
             ref={c => (this._slider3Ref = c)}
-            data={this.state.finished}
+            data={finished}
             renderItem={this._renderItem}
             sliderWidth={sliderWidth}
             itemWidth={itemWidth}

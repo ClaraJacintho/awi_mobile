@@ -1,5 +1,5 @@
 import {StyleSheet, Dimensions, Platform} from 'react-native';
-import {colors, dimensions, fonts} from './base.js';
+import {colors, fonts} from './base.js';
 
 const IS_IOS = Platform.OS === 'ios';
 const {width: viewportWidth, height: viewportHeight} = Dimensions.get('window');
@@ -67,10 +67,10 @@ export default StyleSheet.create({
     backgroundColor: colors.dark_purple,
   },
   columnContainer: {
-    flexDirection: 'row', 
+    flexDirection: 'row',
     flex: 1,
-    justifyContent: "space-evenly",
-    alignItems: "center",
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
     height: slideHeight / 3,
     paddingHorizontal: 16,
     backgroundColor: 'white',
@@ -79,14 +79,14 @@ export default StyleSheet.create({
   },
   textContainer: {
     justifyContent: 'center',
-    width: (2 * slideWidth)/ 3
+    width: (2 * slideWidth) / 3,
   },
   columnContainerEven: {
     backgroundColor: colors.dark_purple,
   },
-  ratingsContainer:{
+  ratingsContainer: {
     justifyContent: 'center',
-    width: slideWidth/ 3
+    width: slideWidth / 3,
   },
   title: {
     color: colors.black,
@@ -106,19 +106,19 @@ export default StyleSheet.create({
   subtitleEven: {
     color: 'rgba(255, 255, 255, 0.7)',
   },
-  prof:{
+  prof: {
     marginTop: 6,
     color: colors.black,
     fontSize: fonts.sm,
   },
-  profEven:{
+  profEven: {
     color: 'rgba(255, 255, 255, 0.7)',
   },
-  ratings:{
+  ratings: {
     fontSize: fonts.lg,
-    color: colors.gray
+    color: colors.gray,
   },
-  ratingsEven:{
+  ratingsEven: {
     color: 'rgba(255, 255, 255, 0.7)',
-  }
+  },
 });

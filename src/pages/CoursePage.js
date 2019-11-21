@@ -68,7 +68,6 @@ export default class CoursePage extends React.Component {
   };
 
   render() {
-    
     return (
       <View style={styles.container}>
         <View>
@@ -96,8 +95,7 @@ export default class CoursePage extends React.Component {
         {this.props.videos.length > 0 ? (
           <FlatList
             data={this.props.videos}
-            renderItem={video => ( 
-              
+            renderItem={video => (
               <VideoItem
                 video={video}
                 courseName={this.state.name}
@@ -107,7 +105,7 @@ export default class CoursePage extends React.Component {
             )}
             keyExtractor={item => item.id.toString()}
             ItemSeparatorComponent={() => (
-              <View style={{height: 0.5, backgroundColor: '#E5E5E5'}} />
+              <View style={{height: 0.5, backgroundColor: '#E5E5E5'}}/>
             )}
           />
         ) : (
