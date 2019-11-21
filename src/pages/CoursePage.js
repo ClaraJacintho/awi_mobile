@@ -5,6 +5,7 @@ import ReadMore from 'react-native-read-more-text';
 import styles from '../styles/CoursePageStyle';
 import Orientation from 'react-native-orientation';
 import {checkTokenValidity} from '../utils/auth';
+import {padding} from '../styles/base';
 
 export default class CoursePage extends React.Component {
   constructor(props) {
@@ -44,11 +45,11 @@ export default class CoursePage extends React.Component {
       });
   };
 
-  /*static navigationOptions = ({navigation}) => {
+  static navigationOptions = ({navigation}) => {
     return {
-      title: navigation.getParam('courseTitle', 'Course'),
+      title: navigation.getParam('title', 'Course'),
     };
-  };*/
+  };
 
   _renderTruncatedFooter = handlePress => {
     return (
@@ -67,6 +68,7 @@ export default class CoursePage extends React.Component {
   };
 
   render() {
+    
     return (
       <View style={styles.container}>
         <View>
@@ -76,12 +78,12 @@ export default class CoursePage extends React.Component {
               height: 150,
               resizeMode: 'stretch',
               alignContent: 'center',
+              marginBottom: padding.md,
             }}
             source={{
-              uri: 'https://i.ytimg.com/vi/WiTxwdGWLoY/maxresdefault.jpg',
+              uri: this.state.picture,
             }}
           />
-          <Text style={styles.courseTitle}>{this.state.name}</Text>
           <ReadMore
             numberOfLines={3}
             renderTruncatedFooter={this._renderTruncatedFooter}
@@ -94,20 +96,22 @@ export default class CoursePage extends React.Component {
         {this.props.videos.length > 0 ? (
           <FlatList
             data={this.props.videos}
-            renderItem={video => (
+            renderItem={video => ( 
+              
               <VideoItem
                 video={video}
                 courseName={this.state.name}
+                isConnected={this.props.isConnected}
                 onItemPress={this.props}
               />
             )}
-            keyExtractor={item => item.videoId}
+            keyExtractor={item => item.id.toString()}
             ItemSeparatorComponent={() => (
               <View style={{height: 0.5, backgroundColor: '#E5E5E5'}} />
             )}
           />
         ) : (
-          <Text style={styles.textNoVideo}> Sorry. No Videos Available. </Text>
+          <Text style={styles.textNoVideo}> Sorry! No Videos Available. </Text>
         )}
       </View>
     );

@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import VideoItem from '../components/VideoItem';
+import SavedVideoItem from '../components/SavedVideoItem';
 import {setCurrentVideo} from '../actions/currentVideoAction';
 
 const mapDispatchToProps = dispatch => {
@@ -13,4 +13,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   null,
   mapDispatchToProps,
-)(VideoItem);
+)(SavedVideoItem);

@@ -33,7 +33,7 @@ The general store looks like this:
         username: String, 
         role: String
     },
-    isConnected: Boolean,
+    network.isConnected: Boolean,
     connection: String
 
 }

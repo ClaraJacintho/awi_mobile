@@ -77,10 +77,11 @@ export async function decodeToken(token) {
  * @return {Promise<{validity:Boolean, accessToken: String, refreshToken: String}>} The validity, and the current valid tokens.
  */
 export function checkTokenValidity(accessToken, refreshToken, networkStatus) {
+  console.log('ok');
   return new Promise((resolve, reject) => {
     if (networkStatus) {
       jwt
-        .decode(accessToken, CLIENT_SECRET, {skipValidation: false})
+        .decode(accessToken, CLIENT_SECRET, {skipValidation: true})
         .then(() => {
           axios.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
           resolve({

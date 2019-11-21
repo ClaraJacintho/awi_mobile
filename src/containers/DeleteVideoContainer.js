@@ -1,6 +1,6 @@
 import DeleteVideoButton from '../components/DeleteDownloadedVideoButton';
 import {connect} from 'react-redux';
-import {saveVideo, removeVideo} from '../actions/savedVideosAction';
+import {removeVideo} from '../actions/savedVideosAction';
 
 const mapDispatchToProps = dispatch => {
   return {

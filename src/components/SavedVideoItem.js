@@ -1,43 +1,46 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Text, View} from 'react-native';
 import ReadMore from 'react-native-read-more-text';
 import styles from '../styles/VideoItemStyle';
-import Colors from 'react-native/Libraries/NewAppScreen/components/Colors';
 import DeletionButton from '../containers/DeleteVideoContainer';
+import VideoCaching from '../utils/videoCaching';
 
-export default class VideoItem extends Component {
+export default class SavedVideoItem extends React.Component {
   constructor(props) {
     super(props);
     this.handleTextPress = this.handleTextPress.bind(this);
-    this.state = {
-      video: this.props.video
-    }
   }
 
   handleTextPress = () => {
     if (this.props.onItemPress) {
-      const {navigation} = this.props.onItemPress;
-      navigation.navigate('VideoPage');
+      VideoCaching.retrieveVideoPath({
+        videoName: this.props.video.item.videoName,
+        subtitlesName: this.props.video.item.subtitlesName,
+      })
+        .then(result => {
+          this.props.setVideo(result.videoURI, result.subtitlesURI);
+          const {navigation} = this.props.onItemPress;
+          navigation.navigate('VideoPage');
+        })
+        .catch(err => console.log(err));
     }
   };
 
   render() {
-    const video = this.state.video;
-    console.log(video);
+    const video = this.props.video.item;
     return (
-      
       <View style={styles.container}>
         <View style={styles.descContainer}>
-        <View style={{width: '30%'}}>
-              <ReadMore numberOfLines={2}>
-                <Text
-                  numberOfLines={2}
-                  style={styles.videoTitle}
-                  onPress={this.handleTextPress}>
-                  {video.courseName}
-                </Text>
-              </ReadMore>
-            </View>
+          <View style={{width: '30%'}}>
+            <ReadMore numberOfLines={2}>
+              <Text
+                numberOfLines={2}
+                style={styles.videoTitle}
+                onPress={this.handleTextPress}>
+                {video.courseName}
+              </Text>
+            </ReadMore>
+          </View>
           <View
             style={
               (styles.videoDetails, {marginRight: 100}, {flexDirection: 'row'})
@@ -53,7 +56,10 @@ export default class VideoItem extends Component {
               </ReadMore>
             </View>
             <View style={{width: '20%', marginRight: '30%'}}>
-            <DeletionButton video={video.videoName} subtitles={video.subtsubtitlesNameitles} />
+              <DeletionButton
+                video={video.videoName}
+                subtitles={video.subtitlesName}
+              />
             </View>
           </View>
         </View>
@@ -61,4 +67,3 @@ export default class VideoItem extends Component {
     );
   }
 }
-

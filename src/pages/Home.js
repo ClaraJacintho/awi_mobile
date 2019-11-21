@@ -15,12 +15,12 @@ export default class Home extends React.Component {
     super(props);
     const courses = this.props.courses;
     const itemsPerCarousel = courses.length / 3;
-    const recentlyWatched = courses.slice(0, itemsPerCarousel);
+    const bookmarked = courses.filter(course => course.bookmarked);
     const all = courses;
     const finished = courses.slice(itemsPerCarousel);
     this.state = {
       slider1ActiveSlide: SLIDER_FIRST_ITEM,
-      recentlyWatched: recentlyWatched,
+      bookmarked: bookmarked,
       all: all,
       finished: finished,
     };
@@ -61,7 +61,10 @@ export default class Home extends React.Component {
   onPress(id) {
     const {navigation} = this.props;
     const course = this.props.courses.filter(c => c.id === id)[0];
-    navigation.navigate('CoursePage', {course: course});
+    if(!this.props.isConnected){
+      alert("You are offline, please connect to internet in order to watch videos or go into the saved one.")
+    }
+    navigation.navigate('CoursePage', {course: course, title: course.name});
   }
 
   _renderItem({item, index}) {
@@ -76,12 +79,12 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <SafeAreaView>
-        <ScrollView style={componentStyles.container}>
-          <Text style={componentStyles.listTitle}>Recently watched</Text>
+      <SafeAreaView style={componentStyles.container}>
+        <ScrollView>
+          <Text style={componentStyles.listTitle}>Bookmarked courses</Text>
           <Carousel
             ref={c => (this._slider1Ref = c)}
-            data={this.state.recentlyWatched}
+            data={this.state.bookmarked}
             renderItem={this._renderItem}
             sliderWidth={sliderWidth}
             itemWidth={itemWidth}

@@ -5,6 +5,7 @@ export default class VideoPlayer extends React.Component {
   constructor(props) {
     super(props);
     this.getTextTracks = this.getTextTracks.bind(this);
+    this.activateSrt = this.activateSrt.bind(this);
   }
 
   getTextTracks = () => {
@@ -22,6 +23,17 @@ export default class VideoPlayer extends React.Component {
     }
   };
 
+  activateSrt = () => {
+    if (this.props.subtitlesURI !== null) {
+      return {
+        type: 'language',
+        value: 'en',
+      };
+    } else {
+      return {};
+    }
+  };
+
   render() {
     return (
       <Video
@@ -35,6 +47,8 @@ export default class VideoPlayer extends React.Component {
         resizeMode={'contain'}
         fullScreen={'true'}
         textTracks={this.getTextTracks()}
+        selectedTextTrack={this.activateSrt()}
+        muted={false}
       />
     );
   }

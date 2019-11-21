@@ -74,8 +74,8 @@ export default class AuthButton extends React.Component {
       } catch (e) {
         console.log(e);
       }
-    } else {
-      console.log('Not yet not yet');
+    } else if (this.props.accessToken !== undefined) {
+      return this.checkToken();
     }
   };
 
@@ -87,7 +87,7 @@ export default class AuthButton extends React.Component {
 
   render() {
     return (
-      <Button title="Connect with OAuth" onPress={this.connectWithOAuth} />
+      <Button title="Connect with Polytech" onPress={this.connectWithOAuth} />
     );
   }
 }
