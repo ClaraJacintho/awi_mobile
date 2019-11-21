@@ -1,16 +1,10 @@
 import {connect} from 'react-redux';
 import DownloadedVideos from '../pages/DownloadedVideos';
 
-const mapStateToProps = (state) => {
-  console.log("saved videos state" + state.savedVideos)
-  console.log("token " + state.user.token)
+const mapStateToProps = state => {
   return {
-    savedVideos: state.savedVideos
+    savedVideos: state.savedVideos,
   };
 };
 
-const DownloadedVideosContainer = connect(
-  mapStateToProps
-)(DownloadedVideos);
-
-export default DownloadedVideosContainer;
+export default connect(mapStateToProps)(DownloadedVideos);
