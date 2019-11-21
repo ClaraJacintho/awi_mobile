@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, FlatList} from 'react-native';
+import {Text, View, FlatList, SafeAreaView} from 'react-native';
 import styles from '../styles/CoursePageStyle';
 import Orientation from 'react-native-orientation';
 import SavedVideoItem from '../containers/SavedVideoItemContainer';
@@ -19,7 +19,7 @@ export default class DownloadPage extends React.Component {
   render() {
     const savedVideos = this.props.savedVideos;
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         {savedVideos.length > 0 ? (
           <FlatList
             data={savedVideos}
@@ -42,7 +42,7 @@ export default class DownloadPage extends React.Component {
             Sorry. No Videos Available.
           </Text>
         )}
-      </View>
+      </SafeAreaView>
     );
   }
 }
