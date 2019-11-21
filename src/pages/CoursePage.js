@@ -5,7 +5,7 @@ import ReadMore from 'react-native-read-more-text';
 import styles from '../styles/CoursePageStyle';
 import Orientation from 'react-native-orientation';
 import {checkTokenValidity} from '../utils/auth';
-import { padding } from '../styles/base';
+import {padding} from '../styles/base';
 
 export default class CoursePage extends React.Component {
   constructor(props) {
@@ -102,7 +102,7 @@ export default class CoursePage extends React.Component {
                 onItemPress={this.props}
               />
             )}
-            keyExtractor={item => item.videoId}
+            keyExtractor={item => item.id}
             ItemSeparatorComponent={() => (
               <View style={{height: 0.5, backgroundColor: '#E5E5E5'}} />
             )}

@@ -5,6 +5,8 @@ export default class VideoPlayer extends React.Component {
   constructor(props) {
     super(props);
     this.getTextTracks = this.getTextTracks.bind(this);
+    console.log('Video' + this.props.videoURI);
+    console.log('Subs ' + this.props.subtitlesURI);
   }
 
   getTextTracks = () => {

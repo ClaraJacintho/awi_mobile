@@ -11,13 +11,9 @@ export const fetchCourse = () => {
     return axios
       .get(`${apiUrl}/courses`)
       .then(response => {
-        console.log('Response');
-        console.log(response);
         dispatch(fetchCourseSuccess(response.data));
       })
       .catch(error => {
-        console.log('Axios error');
-        console.log(error);
         dispatch(fetchCourseFailure(error));
       });
   }
