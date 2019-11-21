@@ -17,6 +17,8 @@ export default StyleSheet.create({
   videoDetails: {
     paddingHorizontal: 15,
     flex: 1,
+    marginRight: 50,
+    flexDirection: 'row',
   },
   videoStats: {
     fontSize: 15,

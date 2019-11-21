@@ -41,11 +41,8 @@ export default class SavedVideoItem extends React.Component {
               </Text>
             </ReadMore>
           </View>
-          <View
-            style={
-              (styles.videoDetails, {marginRight: 100}, {flexDirection: 'row'})
-            }>
-            <View style={{width: '50%'}}>
+          <View style={styles.videoDetails}>
+            <View style={{width: '90%'}}>
               <ReadMore numberOfLines={2}>
                 <Text
                   numberOfLines={2}
@@ -55,7 +52,7 @@ export default class SavedVideoItem extends React.Component {
                 </Text>
               </ReadMore>
             </View>
-            <View style={{width: '20%', marginRight: '30%'}}>
+            <View>
               <DeletionButton
                 video={video.videoName}
                 subtitles={video.subtitlesName}

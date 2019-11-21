@@ -8,7 +8,6 @@ export default class Login extends React.Component {
     super(props);
   }
   render() {
-    // const {navigate} = this.props.navigation;
     return (
       <View style={styles.container}>
         <Image

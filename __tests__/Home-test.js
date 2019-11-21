@@ -11,6 +11,6 @@ test('renders correctly', () => {
 });
 
 test('slider render correctly', () => {
-  const treeComponent = renderer.create (<SliderEntry />).toJSON();
+  const treeComponent = renderer.create(<SliderEntry />).toJSON();
   expect(treeComponent).toMatchSnapshot();
 });
