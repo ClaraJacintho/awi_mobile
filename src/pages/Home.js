@@ -61,6 +61,9 @@ export default class Home extends React.Component {
   onPress(id) {
     const {navigation} = this.props;
     const course = this.props.courses.filter(c => c.id === id)[0];
+    if(!this.props.isConnected){
+      alert("You are offline, please connect to internet in order to watch videos or go into the saved one.")
+    }
     navigation.navigate('CoursePage', {course: course, title: course.name});
   }
 

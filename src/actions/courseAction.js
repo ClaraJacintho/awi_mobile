@@ -9,6 +9,7 @@ export const fetchCourse = () => {
     return axios
       .get(`${apiUrl}/courses`)
       .then(response => {
+        console.log("response" + response.data)
         dispatch(fetchCourseSuccess(response.data));
       })
       .catch(error => {

@@ -43,7 +43,7 @@ export default function videosReducer(state = [], action) {
     case FETCH_COURSE_VIDEO_FAILURE:
       return [];
     case offlineActionTypes.FETCH_OFFLINE_MODE:
-      return state;
+      return [];
     default:
       return state;
   }

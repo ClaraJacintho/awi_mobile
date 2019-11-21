@@ -68,6 +68,7 @@ export default class CoursePage extends React.Component {
   };
 
   render() {
+    
     return (
       <View style={styles.container}>
         <View>
@@ -95,10 +96,12 @@ export default class CoursePage extends React.Component {
         {this.props.videos.length > 0 ? (
           <FlatList
             data={this.props.videos}
-            renderItem={video => (
+            renderItem={video => ( 
+              
               <VideoItem
                 video={video}
                 courseName={this.state.name}
+                isConnected={this.props.isConnected}
                 onItemPress={this.props}
               />
             )}
