@@ -5,7 +5,7 @@ import {colors} from '../styles/base';
 import Home from '../containers/CourseHomeContainer';
 import CoursePageContainer from '../containers/CoursePageContainer';
 import DownloadedVideos from '../containers/CourseDownloadContainer.js';
-import Settings from '../containers/SettingsContainter';
+import Settings from '../containers/SettingsContainer';
 import VideoPage from '../pages/Video.js';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faHome, faDownload, faCog} from '@fortawesome/free-solid-svg-icons';

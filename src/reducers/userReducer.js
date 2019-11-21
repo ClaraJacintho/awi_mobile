@@ -30,10 +30,10 @@ export default function coursesReducer(state = {}, action) {
       };
     case DELETE_USER_DATA:
       return {
-        accessToken: null,
-        refreshToken: null,
-        username: null,
-        role: null,
+        accessToken: undefined,
+        refreshToken: undefined,
+        username: undefined,
+        role: undefined,
       };
     case offlineActionTypes.FETCH_OFFLINE_MODE:
       return state;

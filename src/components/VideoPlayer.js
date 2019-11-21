@@ -24,7 +24,7 @@ export default class VideoPlayer extends React.Component {
   };
 
   activateSrt = () => {
-    if (this.props.subtitlesURI !== null ) {
+    if (this.props.subtitlesURI !== null) {
       return {
         type: 'language',
         value: 'en',

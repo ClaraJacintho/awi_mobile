@@ -15,7 +15,6 @@ export const fetchVideosForCourse = courseId => {
         dispatch(fetchVideoSuccess(response.data));
       })
       .catch(error => {
-        console.log(error);
         dispatch(fetchVideoFailure(error));
       });
   }

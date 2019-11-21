@@ -102,7 +102,7 @@ export default class CoursePage extends React.Component {
                 onItemPress={this.props}
               />
             )}
-            keyExtractor={item => item.id}
+            keyExtractor={item => item.id.toString()}
             ItemSeparatorComponent={() => (
               <View style={{height: 0.5, backgroundColor: '#E5E5E5'}} />
             )}

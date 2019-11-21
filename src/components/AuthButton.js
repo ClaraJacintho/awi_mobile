@@ -74,6 +74,8 @@ export default class AuthButton extends React.Component {
       } catch (e) {
         console.log(e);
       }
+    } else if (this.props.accessToken !== undefined) {
+      return this.checkToken();
     }
   };
 
