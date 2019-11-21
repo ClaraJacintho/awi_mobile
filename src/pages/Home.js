@@ -15,12 +15,12 @@ export default class Home extends React.Component {
     super(props);
     const courses = this.props.courses;
     const itemsPerCarousel = courses.length / 3;
-    const recentlyWatched = courses.slice(0, itemsPerCarousel);
+    const bookmarked = courses.filter(course => course.bookmarked);
     const all = courses;
     const finished = courses.slice(itemsPerCarousel);
     this.state = {
       slider1ActiveSlide: SLIDER_FIRST_ITEM,
-      recentlyWatched: recentlyWatched,
+      bookmarked: bookmarked,
       all: all,
       finished: finished,
     };
@@ -78,27 +78,23 @@ export default class Home extends React.Component {
     return (
       <SafeAreaView style={componentStyles.container}>
         <ScrollView>
-          <Text style={componentStyles.listTitle}>Recently watched</Text>
-          {this.state.recentlyWatched.length > 0 ? (
-            <Carousel
-              ref={c => (this._slider1Ref = c)}
-              data={this.state.recentlyWatched}
-              renderItem={this._renderItem}
-              sliderWidth={sliderWidth}
-              itemWidth={itemWidth}
-              hasParallaxImages={false}
-              firstItem={SLIDER_FIRST_ITEM}
-              inactiveSlideScale={0.94}
-              inactiveSlideOpacity={0.7}
-              containerCustomStyle={styles.slider}
-              contentContainerCustomStyle={styles.sliderContentContainer}
-              loop={true}
-              loopClonesPerSide={2}
-              onSnapToItem={index => this.setState({slider1ActiveSlide: index})}
-            />
-          ) : (
-            <Text style={styles.textNoVideo}> Nothing to see here... </Text>
-          )}
+          <Text style={componentStyles.listTitle}>Bookmarked courses</Text>
+          <Carousel
+            ref={c => (this._slider1Ref = c)}
+            data={this.state.bookmarked}
+            renderItem={this._renderItem}
+            sliderWidth={sliderWidth}
+            itemWidth={itemWidth}
+            hasParallaxImages={false}
+            firstItem={SLIDER_FIRST_ITEM}
+            inactiveSlideScale={0.94}
+            inactiveSlideOpacity={0.7}
+            containerCustomStyle={styles.slider}
+            contentContainerCustomStyle={styles.sliderContentContainer}
+            loop={true}
+            loopClonesPerSide={2}
+            onSnapToItem={index => this.setState({slider1ActiveSlide: index})}
+          />
           <Text style={componentStyles.listTitle}>All courses</Text>
           <Carousel
             ref={c => (this._slider2Ref = c)}
