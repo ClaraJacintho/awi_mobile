@@ -85,7 +85,7 @@ export default class AuthButton extends React.Component {
 
   render() {
     return (
-      <Button title="Connect with OAuth" onPress={this.connectWithOAuth} />
+      <Button title="Connect with Polytech" onPress={this.connectWithOAuth} />
     );
   }
 }

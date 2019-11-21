@@ -4,7 +4,7 @@ import {createStackNavigator} from 'react-navigation-stack';
 import {colors} from '../styles/base';
 import Home from '../containers/CourseHomeContainer';
 import CoursePageContainer from '../containers/CoursePageContainer';
-import DownloadedVideos from '../pages/DownloadedVideos.js';
+import DownloadedVideos from '../containers/CourseDownloadContainer.js';
 import Settings from '../containers/SettingsContainter';
 import VideoPage from '../pages/Video.js';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';

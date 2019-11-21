@@ -110,11 +110,9 @@ function deleteVideo(videoName, subtitlesName) {
     const videoPath =
       RNFS.DocumentDirectoryPath + '/' + videoName.replace(/%20/g, '_');
 
-    if (video.subtitlesName !== null) {
+    if (subtitlesName !== null) {
       const subPath =
-        RNFS.DocumentDirectoryPath +
-        '/' +
-        subtitlesName.replace(/%20/g, '_');
+        RNFS.DocumentDirectoryPath + '/' + subtitlesName.replace(/%20/g, '_');
       Promise.all([RNFS.unlink(videoPath), RNFS.unlink(subPath)])
         .then(() => resolve(true))
         .catch(err => reject(err));

@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Text, View} from 'react-native';
 import ReadMore from 'react-native-read-more-text';
 import styles from '../styles/VideoItemStyle';
 import SaveVideosContainer from '../containers/SaveVideosContainer';
 
-export default class VideoItem extends Component {
+export default class VideoItem extends React.Component {
   constructor(props) {
     super(props);
     this.handleTextPress = this.handleTextPress.bind(this);
@@ -43,8 +43,8 @@ export default class VideoItem extends Component {
             <View>
               <SaveVideosContainer
                 videoURI={this.state.videoUrl}
-                subtitle={this.state.vttUrl}
-                courseId={this.props.courseName}
+                subtitlesURI={this.state.vttUrl}
+                courseName={this.props.courseName}
               />
             </View>
           </View>
