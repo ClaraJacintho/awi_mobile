@@ -7,6 +7,7 @@ import {offlineActionTypes} from 'react-native-offline';
 export default function coursesReducer(state = [], action) {
   switch (action.type) {
     case FETCH_COURSE_SUCCESS:
+      console.log("course success" + action.courses)
       return action.courses;
     case FETCH_COURSE_FAILURE:
       return state;
