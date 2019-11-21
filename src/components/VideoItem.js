@@ -9,8 +9,6 @@ export default class VideoItem extends Component {
     super(props);
     this.handleTextPress = this.handleTextPress.bind(this);
     this.state = this.props.video.item;
-    console.log('state');
-    console.log(this.state);
   }
 
   handleTextPress = () => {

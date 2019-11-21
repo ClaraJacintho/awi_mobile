@@ -5,7 +5,6 @@ import {ENTRIES1} from './../assets/entries';
 import {deleteUserData, updateUserToken} from '../actions/userAction';
 
 const mapStateToProps = state => {
-  console.log("course state" + state.courses)
   return {
     courses: state.courses,
     isConnected: state.network.isConnected,

@@ -74,8 +74,6 @@ export default class AuthButton extends React.Component {
       } catch (e) {
         console.log(e);
       }
-    } else {
-      console.log('Not yet not yet');
     }
   };
 
