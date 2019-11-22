@@ -32,7 +32,7 @@ export default StyleSheet.create({
     marginBottom: 10,
     marginLeft: 10,
     fontWeight: '100',
-    fontSize: 16,
+    fontSize: fonts.md,
     borderBottomColor: '#999',
     color: colors.white,
   },
