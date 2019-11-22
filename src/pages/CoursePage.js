@@ -75,7 +75,7 @@ export default class CoursePage extends React.Component {
             style={{
               width: '100%',
               height: 150,
-              resizeMode: 'stretch',
+              resizeMode: 'cover',
               alignContent: 'center',
               marginBottom: padding.md,
             }}
