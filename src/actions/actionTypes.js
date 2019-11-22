@@ -1,5 +1,3 @@
-export const FETCH_USER_SUCCESS = 'fetch_user_success';
-export const FETCH_USER_FAILURE = 'fetch_user_failure';
 export const UPDATE_USER_DATA = 'update_user_data';
 export const UPDATE_USER_TOKEN = 'update_user_token';
 export const DELETE_USER_DATA = 'delete_user_data';

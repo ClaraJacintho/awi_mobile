@@ -21,7 +21,7 @@ export default class AuthButton extends React.Component {
       this.props.accessToken !== undefined &&
       this.props.refreshToken !== undefined
     ) {
-      this.checkToken();
+      return this.checkToken();
     }
     if (Platform.OS === 'android') {
       Linking.getInitialURL().then(url => {
@@ -82,7 +82,7 @@ export default class AuthButton extends React.Component {
   connectWithOAuth = () => {
     const conn = getConnectionURI();
     this.props.saveState(conn.state);
-    Linking.openURL(conn.URI);
+    return Linking.openURL(conn.URI);
   };
 
   render() {

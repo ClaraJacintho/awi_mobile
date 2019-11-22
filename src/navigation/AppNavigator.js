@@ -1,4 +1,3 @@
-import React from 'react';
 import {createSwitchNavigator} from 'react-navigation';
 import TabNavigator from './TabNavigator.js/';
 import Login from '../pages/Login.js';

@@ -1,7 +1,6 @@
 import {connect} from 'react-redux';
 import Home from '../pages/Home';
 import {fetchCourse} from '../actions/courseAction';
-import {ENTRIES1} from './../assets/entries';
 import {deleteUserData, updateUserToken} from '../actions/userAction';
 
 const mapStateToProps = state => {

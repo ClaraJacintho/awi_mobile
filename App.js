@@ -10,10 +10,9 @@ import '@react-native-community/netinfo';
 
 const prefix = 'polyteach://';
 
-
 const AppContainer = createAppContainer(AppNavigator);
 
-const Loading = () => <div>Loading...</div>;
+//const Loading = () => <div>Loading...</div>;
 
 export default class App extends React.Component {
   render() {
@@ -28,9 +27,7 @@ export default class App extends React.Component {
             pingOnlyIfOffline={false}
             pingInBackground={false}
             httpMethod={'HEAD'}>
-
             <AppContainer uriPrefix={prefix} />
-
           </ReduxNetworkProvider>
         </PersistGate>
       </Provider>

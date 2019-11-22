@@ -1,6 +1,4 @@
 import {
-  FETCH_USER_FAILURE,
-  FETCH_USER_SUCCESS,
   UPDATE_USER_DATA,
   UPDATE_USER_TOKEN,
   DELETE_USER_DATA,
@@ -9,11 +7,6 @@ import {offlineActionTypes} from 'react-native-offline';
 
 export default function coursesReducer(state = {}, action) {
   switch (action.type) {
-    case FETCH_USER_SUCCESS: {
-      return action.key;
-    }
-    case FETCH_USER_FAILURE:
-      return state;
     case UPDATE_USER_DATA:
       return {
         accessToken: action.payload.accessToken,

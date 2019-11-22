@@ -25,17 +25,15 @@ export default class SliderEntry extends Component {
       even,
     } = this.props;
 
-    const uppercaseTitle = name ? (
+    const uppercaseTitle = (
       <Text
         style={[styles.title, even ? styles.titleEven : {}]}
         numberOfLines={2}>
         {name.toUpperCase()}
       </Text>
-    ) : (
-      false
     );
     const {click} = this.props;
-    const avgRating = averageRating ? averageRating : "?"
+    const avgRating = averageRating ? averageRating : '?';
     return (
       <TouchableOpacity
         activeOpacity={1}
@@ -69,13 +67,12 @@ export default class SliderEntry extends Component {
             <Text
               style={[styles.prof, even ? styles.profEven : {}]}
               numberOfLines={2}>
-              {teacher.firstName + ' ' + teacher.lastName}
+              {teacher.firstname + ' ' + teacher.lastname}
             </Text>
           </View>
           <View styles={styles.ratingsContainer}>
-            <Text
-              style={[styles.ratings, even ? styles.ratingsEven : {}]}>
-              {avgRating  + '/10'}
+            <Text style={[styles.ratings, even ? styles.ratingsEven : {}]}>
+              {avgRating + '/5'}
             </Text>
           </View>
         </View>
