@@ -25,14 +25,12 @@ export default class SliderEntry extends Component {
       even,
     } = this.props;
 
-    const uppercaseTitle = name ? (
+    const uppercaseTitle = (
       <Text
         style={[styles.title, even ? styles.titleEven : {}]}
         numberOfLines={2}>
         {name.toUpperCase()}
       </Text>
-    ) : (
-      false
     );
     const {click} = this.props;
     const avgRating = averageRating ? averageRating : '?';

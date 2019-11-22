@@ -57,7 +57,8 @@ npm start
 
 We chose to use React-native because it is a cross-platform language that facilitates the development of the app and allows us to go faster.
 
-We use Redux to manage the state of the app and we make the store persistent with a specific library of Redux. Redux allows us to well manage the data in the app and to easily have persistent data for the offline mode.  
+We use Redux to manage the state of the app and we make the store persistent with a specific library of Redux. Redux allows us to well manage the data in the app and to easily have persistent data for the offline mode.
+For a better view of the state, please read `store.md`.  
 
 To make the data persistent we use the Async Storage system because it is an asynchronous and persistent storage adapt to React native platform.  Moreover, it is a popular storage so a lot of documentation and tutorials exist to help us. Moreover, it is well adapted to our case because it is a key-value storage so it is adapted to store the state of the application. 
 

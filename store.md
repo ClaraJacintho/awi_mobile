@@ -15,22 +15,36 @@ The general store looks like this:
     savedVideos: [ { videoName: String, subtitlesName: String }],
     currentVideo: { videoURI: String, subtitlesURI: String },
     videos: [{
-            videoId: Number,
-            videoName: String,  
-            videoURI: String,
-            subtitlesURI: String,
-            courseId: Number
+            id: Number,
+            title: String,  
+            videoUrl: String,
+            vttUrl: String,
+            averageRating: Number
     }],
     courses: [{
-        courseId: Number,
-        courseName: String,
-        courseDesc: String,
-        courseImgLink: String
+        id: Number,
+        name: String,
+        description: String,
+        picture: String,
+        idteacher: Number,
+        creationdate: Date,
+        isig3: Boolean,
+        isig4: Boolean,
+        isig5: Boolean,
+        teacher: {
+            id: Number,
+            email: String,
+            role: Number,
+            firstName: String,
+            lastName: String
+        },
+        rating: Number,
+        averageRating: Number
     }],
     user: {
         accessToken: String,
         refreshToken: String,
-        username: String, 
+        username: String,
         role: String
     },
     network.isConnected: Boolean,
@@ -60,20 +74,28 @@ The currentVideo object is used to store the video playing in the application.
 It's an array containing every videos we retrieved from the backend. It is mainly used to store videos of a specific course. It is updated at every course selection change.
 It contains the objects describes as follows:
 
-- videoId: Number. The video ID in the database.
-- videoName: String. The video name.
-- videoURI: String. The video location.
-- subtitlesURI: The subtitles location.
-- courseId: Number. The course the video is about.
+- id: Number. The video ID.
+- title: String. The video title.
+- videoUrl: String. The video URL.
+- vttUrl: String. The subtitles URL.
+- averageRating: Number. The average rating of the video.
 
 ### courses
 
 It's an array containing the courses we retrieved from the backend. It contains every courses that the user subscribed to. It contains the following objects:
 
-- courseId: Number. The course ID in the database.
-- courseName: String. The course name.
-- courseDesc: String. The course description.
-- courseImgLink: String. The link to a hosted image representing the course.
+- id: Number. The course ID in the database.
+- name: String. The course name.
+- description: String. The course description.
+- picture: String. The link to the course image.
+- idteacher: Number. The course's teacher's id.
+- creationdate: Date. The date of creation of the course.
+- isig3: Boolean. If the course is for IG3.
+- isig4: Boolean. If the course is for IG4.
+- isig5: Boolean. If the course if for IG5.
+- teacher: Object. The teacher's information.
+- rating: Number. The rating the user gave.
+- averageRating: Number. The average rating of the course.
 
 ### user
 

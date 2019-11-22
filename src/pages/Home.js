@@ -74,9 +74,7 @@ export default class Home extends React.Component {
 
   render() {
     const courses = this.props.courses;
-    const itemsPerCarousel = courses.length / 3;
     const bookmarked = courses.filter(course => course.bookmarked);
-    const finished = courses.slice(itemsPerCarousel);
     return (
       <SafeAreaView style={componentStyles.container}>
         <ScrollView>
@@ -101,23 +99,6 @@ export default class Home extends React.Component {
           <Carousel
             ref={c => (this._slider2Ref = c)}
             data={courses}
-            renderItem={this._renderItem}
-            sliderWidth={sliderWidth}
-            itemWidth={itemWidth}
-            hasParallaxImages={false}
-            firstItem={SLIDER_FIRST_ITEM}
-            inactiveSlideScale={0.94}
-            inactiveSlideOpacity={0.7}
-            containerCustomStyle={styles.slider}
-            contentContainerCustomStyle={styles.sliderContentContainer}
-            loop={true}
-            loopClonesPerSide={2}
-            onSnapToItem={index => this.setState({slider1ActiveSlide: index})}
-          />
-          <Text style={componentStyles.listTitle}>Finished</Text>
-          <Carousel
-            ref={c => (this._slider3Ref = c)}
-            data={finished}
             renderItem={this._renderItem}
             sliderWidth={sliderWidth}
             itemWidth={itemWidth}
