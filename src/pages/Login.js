@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
   header: {
     width: dimensions.fullWidth / 2,
     height: dimensions.fullHeight / 8,
+    resizeMode: 'contain',
   },
   textField: {
     width: dimensions.fullWidth / 2,
