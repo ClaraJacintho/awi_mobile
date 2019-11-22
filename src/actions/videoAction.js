@@ -2,15 +2,13 @@ import {
   FETCH_COURSE_VIDEO_SUCCESS,
   FETCH_COURSE_VIDEO_FAILURE,
 } from './actionTypes';
-
+import {API_URL} from 'react-native-dotenv';
 import axios from 'axios';
-
-const apiUrl = 'https://polyteach-back-staging.igpolytech.fr';
 
 export const fetchVideosForCourse = courseId => {
   function thunk(dispatch) {
     return axios
-      .get(`${apiUrl}/courses/${courseId}/videos`)
+      .get(`${API_URL}/courses/${courseId}/videos`)
       .then(response => {
         dispatch(fetchVideoSuccess(response.data));
       })

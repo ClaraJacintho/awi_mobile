@@ -23,7 +23,6 @@ async function storeVideo(videoURI, subtitlesURI = null) {
       background: true,
     }).promise;
   };
-  console.log('Downloading');
   const exists = await RNFS.exists(videoPath);
   if (exists) {
     throw new Error('Already downloaded');
