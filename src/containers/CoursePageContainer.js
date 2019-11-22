@@ -4,6 +4,7 @@ import {fetchVideosForCourse} from '../actions/videoAction';
 import {deleteUserData, updateUserToken} from '../actions/userAction';
 
 const mapStateToProps = state => {
+  console.log("Staaate "+ JSON.stringify(state))
   return {
     isConnected: state.network.isConnected,
     videos: state.videos,

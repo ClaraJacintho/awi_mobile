@@ -69,7 +69,7 @@ export default class SliderEntry extends Component {
             <Text
               style={[styles.prof, even ? styles.profEven : {}]}
               numberOfLines={2}>
-              {teacher.firstName + ' ' + teacher.lastName}
+              {teacher.firstname + ' ' + teacher.lastname}
             </Text>
           </View>
           <View styles={styles.ratingsContainer}>
