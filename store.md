@@ -12,7 +12,11 @@ The general store looks like this:
 
 ```JSON
 {
-    savedVideos: [ { videoName: String, subtitlesName: String }],
+    savedVideos: [ { 
+        videoName: String, 
+        subtitlesName: String, 
+        courseName:String 
+        }],
     currentVideo: { videoURI: String, subtitlesURI: String },
     videos: [{
             id: Number,

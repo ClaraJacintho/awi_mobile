@@ -72,7 +72,7 @@ export default class SliderEntry extends Component {
           </View>
           <View styles={styles.ratingsContainer}>
             <Text style={[styles.ratings, even ? styles.ratingsEven : {}]}>
-              {avgRating + '/10'}
+              {avgRating + '/5'}
             </Text>
           </View>
         </View>
