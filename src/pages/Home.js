@@ -4,7 +4,7 @@ import Carousel from 'react-native-snap-carousel';
 import {sliderWidth, itemWidth} from '../styles/SliderEntryStyle.js';
 import SliderEntry from '../components/SliderEntry';
 import styles from '../styles/sliderBaseStyle.js';
-import {colors, fonts, padding} from './../styles/base.js';
+import {colors, fonts, padding, dimensions} from './../styles/base.js';
 import Orientation from 'react-native-orientation';
 import {checkTokenValidity} from '../utils/auth';
 
@@ -121,6 +121,7 @@ export default class Home extends React.Component {
 const componentStyles = StyleSheet.create({
   container: {
     backgroundColor: colors.background,
+    height: dimensions.fullHeight,
   },
   listTitle: {
     marginTop: padding.sm,
