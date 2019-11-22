@@ -1,12 +1,11 @@
 import {FETCH_COURSE_SUCCESS, FETCH_COURSE_FAILURE} from './actionTypes';
+import {API_URL} from 'react-native-dotenv';
 import axios from 'axios';
-
-const apiUrl = 'https://polyteach-back-staging.igpolytech.fr';
 
 export const fetchCourse = () => {
   function thunk(dispatch) {
     return axios
-      .get(`${apiUrl}/courses`)
+      .get(`${API_URL}/courses`)
       .then(response => {
         dispatch(fetchCourseSuccess(response.data));
       })
